@@ -1,0 +1,274 @@
+/**
+ * As peças dos jogos de tabuleiro.
+ */
+
+/* ------------------------------------------------------------------ *
+ * Memória
+ * ------------------------------------------------------------------ */
+
+.mem {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-8);
+  flex: 1;
+  min-height: 0;
+}
+
+.mem__placar,
+.mem__acoes {
+  flex: none;
+}
+
+.mem__placar {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin: 0;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.mem__tentativas {
+  color: var(--ink2);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+}
+
+/*
+ * Três colunas por quatro fileiras: doze cartas de ~113px num celular de
+ * 375px. Com as dezesseis do app antigo a carta cairia para 85px, e a
+ * pergunta de 80 caracteres teria de ser desenhada em corpo 8.
+ */
+.mem__mesa {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: var(--sp-8);
+}
+
+.mem__carta {
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  border-radius: var(--r-md);
+  background: transparent;
+  perspective: 800px;
+}
+
+.mem__gira {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform var(--transition-base);
+}
+
+.mem__carta--aberta .mem__gira,
+.mem__carta--casada .mem__gira {
+  transform: rotateY(180deg);
+}
+
+.mem__face {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: var(--sp-4);
+  border: 1px solid var(--border-mid);
+  border-radius: var(--r-md);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  overflow: hidden;
+  text-align: center;
+  hyphens: auto;
+}
+
+.mem__verso {
+  background: var(--c-primary);
+  color: #fff;
+  font-size: 28px;
+}
+
+.mem__frente {
+  transform: rotateY(180deg);
+  background: var(--surf-card);
+  line-height: 1.15;
+}
+
+/*
+ * Pergunta e resposta em cores diferentes: uma pergunta nunca casa com outra
+ * pergunta, e mostrar isso na carta evita o par que já se sabe impossível.
+ */
+.mem__frente--pergunta {
+  background: color-mix(in srgb, var(--c-primary) 10%, var(--surf-card));
+  color: var(--ink);
+  font-size: 10.5px;
+  /* Seis linhas e o resto some: a carta não pode crescer. */
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  align-content: center;
+}
+
+.mem__frente--resposta {
+  background: color-mix(in srgb, var(--c-warn) 14%, var(--surf-card));
+  color: var(--c-warn);
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.mem__carta--casada .mem__face {
+  border-color: color-mix(in srgb, var(--c-ok) 55%, transparent);
+  opacity: 0.55;
+}
+
+/*
+ * O resultado ocupa a linha do placar, em cima do tabuleiro que continua ali.
+ *
+ * Mesma altura mínima que o placar que ele substitui: trocar um pelo outro
+ * não pode mexer no tabuleiro. O emoji de 22px é mais alto que o texto do
+ * placar, e sem este piso as cartas dariam um pulo ao fechar o último par.
+ */
+.mem__resultado {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: var(--sp-8);
+  margin: 0;
+  min-height: calc(var(--fs-base) * var(--lh));
+}
+
+.mem__emoji {
+  font-size: 22px;
+  line-height: 1;
+}
+
+.mem__sub {
+  color: var(--ink2);
+  font-size: var(--fs-sm);
+}
+
+.mem__acoes {
+  display: flex;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.mem__acoes .btn {
+  flex: 1;
+}
+
+/* ------------------------------------------------------------------ *
+ * Bingo
+ * ------------------------------------------------------------------ */
+
+.bingo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-8);
+  flex: 1;
+  min-height: 0;
+}
+
+.bingo__chamada,
+.bingo__placar {
+  flex: none;
+}
+
+/* A pergunta cantada. Fica parada no alto: é o que se lê a cada rodada. */
+.bingo__chamada {
+  margin: 0;
+  padding: var(--sp-12);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--c-grupo);
+  border-radius: var(--r-md);
+  background: var(--surf-card);
+  font-size: var(--fs-md);
+  font-weight: 600;
+  line-height: 1.25;
+  text-wrap: balance;
+}
+
+.bingo__cartela {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: var(--sp-4);
+}
+
+.bingo__casa {
+  display: grid;
+  place-items: center;
+  min-width: 0;
+  padding: 2px;
+  border: 1px solid var(--border-mid);
+  border-radius: var(--r-sm);
+  background: var(--surf-card);
+  color: inherit;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.1;
+  text-align: center;
+  overflow: hidden;
+  overflow-wrap: anywhere;
+  hyphens: auto;
+}
+
+.bingo__casa--marcada {
+  border-color: color-mix(in srgb, var(--c-ok) 55%, transparent);
+  background: color-mix(in srgb, var(--c-ok) 20%, transparent);
+  color: var(--c-ok-text);
+}
+
+.bingo__casa--errada {
+  border-color: var(--c-err);
+  background: color-mix(in srgb, var(--c-err) 24%, transparent);
+  color: var(--c-err-text);
+}
+
+/*
+ * Casa queimada: era a resposta de uma pergunta que o time errou. Fica à
+ * vista, riscada, e não conta mais para fechar linha.
+ */
+.bingo__casa--perdida {
+  border-color: color-mix(in srgb, var(--c-err) 40%, transparent);
+  background: color-mix(in srgb, var(--c-err) 10%, transparent);
+  color: var(--c-err-text);
+  text-decoration: line-through;
+  opacity: 0.75;
+}
+
+/* A linha que fechou a cartela. */
+.bingo__casa--linha {
+  border-color: var(--c-warn);
+  border-width: 2px;
+  background: color-mix(in srgb, var(--c-warn) 26%, transparent);
+  color: var(--c-warn);
+}
+
+.bingo__placar {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin: 0;
+  color: var(--ink2);
+  font-size: var(--fs-sm);
+  font-variant-numeric: tabular-nums;
+}
+
+/* No fim, a linha de cima deixa de ser a pergunta e vira o resultado. */
+.bingo__chamada--fim {
+  border-left-color: var(--c-ok);
+  background: color-mix(in srgb, var(--c-ok) 12%, transparent);
+  color: var(--c-ok-text);
+}
+
+.bingo__erros--alerta {
+  color: var(--c-err-text);
+  font-weight: 700;
+}

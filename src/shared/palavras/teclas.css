@@ -1,0 +1,73 @@
+/**
+ * O teclado QWERTY compartilhado pela forca e pelas cruzadas.
+ */
+
+.teclado {
+  /* A largura de tecla sai da fileira mais cheia — dez letras e nove vãos —
+     e vale para as três. É o que faz as fileiras curtas ficarem centradas em
+     vez de esticadas, como num teclado de verdade. */
+  --vao: 3px;
+  --tecla: calc((100% - 9 * var(--vao)) / 10);
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--vao);
+  flex: none;
+  /* Largura cheia: a forca centra os filhos, e sem isto o teclado encolheria
+     até o conteúdo — e a conta da largura de tecla, que é percentual, não
+     teria de que ser percentual. */
+  width: 100%;
+}
+
+.teclado__fila {
+  display: flex;
+  justify-content: center;
+  gap: var(--vao);
+}
+
+.teclado__tecla {
+  flex: 0 0 var(--tecla);
+  min-width: 0;
+  min-height: var(--tap-min);
+  padding: 0;
+  border: 1px solid var(--border-mid);
+  border-radius: var(--r-xs);
+  background: var(--surf-card);
+  color: inherit;
+  font-size: var(--fs-sm);
+  font-weight: 700;
+}
+
+.teclado__tecla:active:not(:disabled) {
+  background: var(--surf-raised);
+}
+
+.teclado__tecla:disabled {
+  cursor: default;
+}
+
+/* O ⌫ ocupa uma tecla e meia, como no teclado do sistema. */
+.teclado__tecla--larga {
+  flex-basis: calc(var(--tecla) * 1.5 + var(--vao) / 2);
+  background: var(--surf-raised);
+}
+
+/*
+ * A cor mora na tecla — é o que permitiu à forca dispensar a fileira de
+ * "letras usadas" que o app antigo desenhava logo abaixo, dizendo a mesma
+ * coisa uma segunda vez.
+ */
+.teclado__tecla--tem {
+  border-color: color-mix(in srgb, var(--c-ok) 55%, transparent);
+  background: color-mix(in srgb, var(--c-ok) 16%, transparent);
+  color: var(--c-ok-text);
+  opacity: 1;
+}
+
+.teclado__tecla--nao {
+  border-color: var(--border);
+  background: transparent;
+  color: var(--ink3);
+  text-decoration: line-through;
+  opacity: 1;
+}

@@ -1,0 +1,75 @@
+/**
+ * A face do dado.
+ *
+ * Nove casas numa grade 3×3, e os pontos aparecem nas casas que a face pede.
+ * A grade é a mesma para as seis faces — é isso que mantém os pontos alinhados
+ * de um dado para o outro.
+ */
+
+.dado {
+  --lado: 34px;
+  --ponto: 6px;
+
+  flex: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  place-items: center;
+  width: var(--lado);
+  height: var(--lado);
+  padding: 4px;
+  border: 1px solid var(--border-mid);
+  border-radius: 7px;
+  background: #fff;
+  box-shadow: var(--shadow-sm);
+}
+
+.dado--grande {
+  --lado: 60px;
+  --ponto: 11px;
+  border-radius: 12px;
+}
+
+.dado i {
+  display: block;
+  width: var(--ponto);
+  height: var(--ponto);
+}
+
+.dado__ponto {
+  border-radius: 50%;
+  background: var(--ink);
+}
+
+/*
+ * O tremor da rolagem: gira e sacode um pouco, sem sair do lugar. Curto e em
+ * laço — quem decide quando parar é a tela, ao trocar `rolando` por falso.
+ */
+.dado--rolando {
+  animation: dado-treme 300ms linear infinite;
+}
+
+@keyframes dado-treme {
+  0% {
+    transform: rotate(0deg) translateY(0);
+  }
+  25% {
+    transform: rotate(-14deg) translateY(-4px);
+  }
+  50% {
+    transform: rotate(0deg) translateY(0);
+  }
+  75% {
+    transform: rotate(14deg) translateY(-4px);
+  }
+  100% {
+    transform: rotate(0deg) translateY(0);
+  }
+}
+
+/* Os dois dados lado a lado, antes de a rodada começar. */
+.dados {
+  display: flex;
+  justify-content: center;
+  gap: var(--sp-12);
+}

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- viewport-fit=cover: sem isto, o rodapé do app fica atrás da barra
+         inicial dos iPhones com entalhe. O CSS já reserva o espaço com
+         env(safe-area-inset-bottom); esta linha é o que faz esse valor existir. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="description" content="Dezesseis jogos bíblicos para jogar com amigos." />
+    <meta name="theme-color" content="#2e4268" />
+
+    <title>Quizzer</title>
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+
+    <!-- Instalado na tela inicial do iPhone, abre sem a barra do navegador. -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Quizzer" />
+
+    <!-- A cor de fundo antes do CSS chegar: sem isto, o primeiro quadro é
+         branco puro e pisca contra o azulado do app. -->
+    <style>
+      html,
+      body {
+        margin: 0;
+        background: #edf2fa;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

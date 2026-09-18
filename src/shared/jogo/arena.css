@@ -1,0 +1,282 @@
+/**
+ * A arena e as peças que os jogos montam dentro dela.
+ *
+ * Mora ao lado do componente, não no CSS global: quem procura por que um botão
+ * de partida está com esse espaçamento tem um arquivo só para abrir.
+ */
+
+.arena {
+  /* Ocupa a altura que a casca deixou, e nunca mais que isso. É o que faz o
+     miolo rolar por dentro em vez de empurrar os botões para fora. */
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-12);
+  flex: 1;
+  min-height: 0;
+}
+
+.arena__barra {
+  height: 4px;
+  flex: none;
+  border-radius: var(--r-pill);
+  background: var(--surf-raised);
+  overflow: hidden;
+}
+
+.arena__barra i {
+  display: block;
+  height: 100%;
+  /* A cor do grupo, herdada da casca: a barra é identidade, não ação. */
+  background: var(--c-grupo);
+  transition: width var(--transition-base);
+}
+
+.arena__topo {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+
+.arena__enunciado {
+  font-size: var(--fs-lg);
+  font-weight: 600;
+  line-height: 1.35;
+  text-wrap: balance;
+}
+
+.arena__detalhe {
+  margin: 0;
+  color: var(--ink2);
+  font-size: var(--fs-sm);
+}
+
+.arena__miolo {
+  /*
+   * Cresce até o conteúdo e para — não engole o espaço que sobra.
+   *
+   * Com `flex: 1` ele engolia, e a explicação era empurrada para o fim da
+   * tela: no cloze, 392px de nada entre a última opção e a explicação, num
+   * celular de 812px. A coisa que se quer ler depois de responder ficava no
+   * ponto mais longe possível da opção que o dedo acabou de tocar.
+   *
+   * Encolher continua permitido (o `1` do meio) e é o que faz a lista rolar
+   * por dentro quando não cabe — os 24 itens do `select`, por exemplo.
+   */
+  flex: 0 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  /* Só a lista rola; o gesto não vaza para a página atrás. */
+  overscroll-behavior: contain;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-8);
+}
+
+/*
+ * O conteúdo começa no alto, e isso é decisão de toque, não de estética.
+ *
+ * A explicação entra **abaixo** do miolo depois da resposta. Se o miolo
+ * estivesse colado embaixo — ou centrado —, cada explicação que aparece
+ * empurraria as alternativas para cima: o botão que a pessoa acabou de tocar
+ * sairia de baixo do dedo dela, no instante em que ela olha para ele. Começando
+ * no alto, nada acima da explicação se mexe.
+ *
+ * Foi por aqui que se tentou `justify-content: flex-end`, para deixar as
+ * opções perto do polegar. Além do salto, aquilo escondia o excesso: com
+ * conteúdo maior que a altura, o que sobrava vazava por cima e ficava fora do
+ * `scrollHeight` — três opções sem como alcançar.
+ */
+
+/* Nenhuma opção encolhe abaixo do alvo de toque quando a lista é longa. */
+.arena__miolo > * {
+  flex-shrink: 0;
+}
+
+.arena__miolo:focus-visible {
+  outline: 2px solid var(--c-grupo);
+  outline-offset: 4px;
+  border-radius: var(--r-sm);
+}
+
+.arena__explicacao {
+  flex: none;
+  padding: var(--sp-8) var(--sp-12);
+  border-left: 3px solid var(--c-grupo);
+  border-radius: 0 var(--r-sm) var(--r-sm) 0;
+  background: color-mix(in srgb, var(--c-grupo) 8%, transparent);
+}
+
+.expl__ref,
+.expl__nota {
+  margin: 0;
+  font-size: var(--fs-sm);
+}
+
+.expl__ref {
+  font-weight: 600;
+  color: var(--c-grupo-ink);
+}
+
+.expl__nota {
+  margin-top: 2px;
+  color: var(--ink2);
+}
+
+.arena__acoes {
+  flex: none;
+  /*
+   * O vazio agora fica aqui, e não no meio.
+   *
+   * A margem automática absorve tudo o que sobra e prende a barra embaixo —
+   * um espaçador de verdade custaria mais um `gap` de 12px entre a explicação
+   * e os botões. Faltando espaço ela resolve em zero sozinha, e quem encolhe
+   * volta a ser o miolo.
+   */
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: var(--sp-8);
+  padding-top: var(--sp-4);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.arena__placar {
+  display: flex;
+  gap: var(--sp-8);
+  font-variant-numeric: tabular-nums;
+  font-size: var(--fs-sm);
+  font-weight: 700;
+}
+
+.arena__placar b::before {
+  font-weight: 400;
+  margin-right: 2px;
+}
+
+.arena__placar .ok {
+  color: var(--c-ok-text);
+}
+.arena__placar .ok::before {
+  content: '✓';
+}
+
+.arena__placar .no {
+  color: var(--c-err-text);
+}
+.arena__placar .no::before {
+  content: '✗';
+}
+
+.arena__btn {
+  flex: 1;
+  min-height: var(--btn-height);
+  padding: 0 var(--sp-12);
+  border: 1px solid var(--c-primary);
+  border-radius: var(--r-md);
+  background: var(--c-primary);
+  color: #fff;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  transition: background var(--transition-fast);
+}
+
+.arena__btn:hover:not(:disabled) {
+  background: var(--c-primary-dim);
+}
+
+.arena__btn:disabled {
+  opacity: 0.45;
+}
+
+.arena__btn--ghost {
+  flex: 0 1 auto;
+  background: transparent;
+  border-color: var(--border-mid);
+  color: var(--ink2);
+}
+
+.arena__btn--ghost:hover:not(:disabled) {
+  background: var(--surf-raised);
+}
+
+/* ------------------------------------------------------------------ *
+ * Opções — a peça que quase todo jogo usa
+ * ------------------------------------------------------------------ */
+
+.opcao {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-8);
+  width: 100%;
+  min-height: var(--tap-min);
+  padding: var(--sp-8) var(--sp-12);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--surf-card);
+  color: inherit;
+  font-size: var(--fs-md);
+  text-align: left;
+  transition:
+    background var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+.opcao:hover:not(:disabled) {
+  background: var(--surf-raised);
+}
+
+.opcao[aria-pressed='true'] {
+  border-color: var(--c-primary);
+  border-width: 2px;
+  background: color-mix(in srgb, var(--c-primary) 10%, transparent);
+}
+
+/*
+ * O acerto e o erro aparecem onde o dedo tocou (decisão D9).
+ *
+ * Cor **e** símbolo: quem não distingue verde de vermelho precisa do ✓ e do ✗
+ * para ler a mesma informação.
+ */
+.opcao--certa {
+  border-color: var(--c-ok);
+  border-width: 2px;
+  background: color-mix(in srgb, var(--c-ok) 14%, transparent);
+  color: var(--c-ok-text);
+  font-weight: 600;
+}
+
+.opcao--errada {
+  border-color: var(--c-err);
+  border-width: 2px;
+  background: color-mix(in srgb, var(--c-err) 12%, transparent);
+  color: var(--c-err-text);
+}
+
+.opcao--certa::after {
+  content: '✓';
+  margin-left: auto;
+  font-weight: 700;
+}
+
+.opcao--errada::after {
+  content: '✗';
+  margin-left: auto;
+  font-weight: 700;
+}
+
+.opcao:disabled {
+  cursor: default;
+}
+
+/* Alternativas curtas, lado a lado — usado onde o texto é sempre curto. */
+.opcoes-grade {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-8);
+}
+
+.opcoes-grade .opcao {
+  justify-content: center;
+  text-align: center;
+}

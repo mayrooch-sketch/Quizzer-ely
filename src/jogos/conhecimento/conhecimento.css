@@ -1,0 +1,230 @@
+/**
+ * As peças que só os modos de conhecimento usam.
+ *
+ * O que é comum aos dezesseis jogos mora em `shared/jogo/arena.css`.
+ */
+
+/* ------------------------------------------------------------------ *
+ * Complete a frase
+ * ------------------------------------------------------------------ */
+
+.lacuna {
+  display: inline-block;
+  min-width: 5ch;
+  padding: 0 var(--sp-8);
+  margin: 0 2px;
+  border-bottom: 2px solid var(--c-grupo);
+  text-align: center;
+  color: var(--c-grupo-ink);
+}
+
+/* ------------------------------------------------------------------ *
+ * Quem sou eu
+ * ------------------------------------------------------------------ */
+
+.pistas {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+
+.pista {
+  padding: var(--sp-8) var(--sp-12);
+  border: 1px dashed var(--border-mid);
+  border-radius: var(--r-md);
+  color: var(--ink3);
+  font-size: var(--fs-sm);
+  text-align: center;
+}
+
+.pista--aberta {
+  border-style: solid;
+  border-left: 3px solid var(--c-grupo);
+  background: var(--surf-card);
+  color: var(--ink);
+  font-size: var(--fs-md);
+  text-align: left;
+}
+
+/* ------------------------------------------------------------------ *
+ * Associação
+ * ------------------------------------------------------------------ */
+
+.assoc {
+  /* Nome curto à esquerda, frase longa à direita. Ver o comentário do
+     componente: 50/50 quebraria a frase em seis linhas. */
+  display: grid;
+  grid-template-columns: minmax(88px, 0.42fr) 1fr;
+  gap: var(--sp-8);
+  align-items: start;
+}
+
+.assoc__col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-8);
+}
+
+.assoc__item {
+  min-height: var(--tap-min);
+  padding: var(--sp-8);
+  border: 1px solid var(--border);
+  border-left: 4px solid transparent;
+  border-radius: var(--r-sm);
+  background: var(--surf-card);
+  color: inherit;
+  font-size: var(--fs-sm);
+  line-height: 1.3;
+  text-align: left;
+  transition: border-color var(--transition-fast);
+}
+
+.assoc__col--esq .assoc__item {
+  font-weight: 600;
+}
+
+.assoc__item[aria-pressed='true'] {
+  border-color: var(--c-primary);
+  border-width: 2px;
+  border-left-width: 4px;
+  background: color-mix(in srgb, var(--c-primary) 10%, transparent);
+}
+
+/* As quatro cores de par. Aparecem dos dois lados, na tarja da esquerda. */
+.assoc__item--a { border-left-color: #3fae6a; background: color-mix(in srgb, #3fae6a 9%, transparent); }
+.assoc__item--b { border-left-color: #476291; background: color-mix(in srgb, #476291 9%, transparent); }
+.assoc__item--c { border-left-color: #b8860b; background: color-mix(in srgb, #b8860b 9%, transparent); }
+.assoc__item--d { border-left-color: #7c3aed; background: color-mix(in srgb, #7c3aed 9%, transparent); }
+
+.assoc__item--certa {
+  border-color: var(--c-ok);
+  border-left-color: var(--c-ok);
+  background: color-mix(in srgb, var(--c-ok) 14%, transparent);
+  color: var(--c-ok-text);
+}
+
+.assoc__item--errada {
+  border-color: var(--c-err);
+  border-left-color: var(--c-err);
+  background: color-mix(in srgb, var(--c-err) 12%, transparent);
+  color: var(--c-err-text);
+}
+
+/* ------------------------------------------------------------------ *
+ * Ordem
+ * ------------------------------------------------------------------ */
+
+.ordem {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+
+.ordem__item {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-8);
+  padding: var(--sp-4) var(--sp-8);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--surf-card);
+  font-size: var(--fs-sm);
+  line-height: 1.3;
+}
+
+.ordem__n {
+  flex: none;
+  width: 20px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink3);
+  text-align: center;
+}
+
+.ordem__texto {
+  flex: 1;
+  min-width: 0;
+}
+
+.ordem__setas {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+}
+
+/*
+ * Desenho pequeno, alvo grande.
+ *
+ * As duas setas somam 44px de altura tocável — o mínimo para o polegar —
+ * mesmo com o triângulo desenhado em 10px. É o mesmo truque de área de toque
+ * ampliada que o app antigo já usava nos botões de placar.
+ */
+.ordem__setas button {
+  width: 34px;
+  height: 22px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--ink2);
+  font-size: 10px;
+  line-height: 1;
+  border-radius: var(--r-sm);
+}
+
+.ordem__setas button:hover:not(:disabled) {
+  background: var(--surf-raised);
+  color: var(--c-primary);
+}
+
+.ordem__setas button:disabled {
+  opacity: 0.25;
+}
+
+.ordem__item--certa {
+  border-color: var(--c-ok);
+  background: color-mix(in srgb, var(--c-ok) 12%, transparent);
+}
+
+.ordem__item--certa .ordem__n {
+  color: var(--c-ok-text);
+}
+
+.ordem__item--errada {
+  border-color: var(--c-err);
+  background: color-mix(in srgb, var(--c-err) 10%, transparent);
+}
+
+.ordem__item--errada .ordem__n {
+  color: var(--c-err-text);
+}
+
+/* ------------------------------------------------------------------ *
+ * Verdadeiro ou falso
+ * ------------------------------------------------------------------ */
+
+/*
+ * As duas respostas são a única coisa que se toca nesta tela, então recebem a
+ * zona do polegar inteira: altas, largas, empilhando emoji e palavra.
+ */
+.vf-botoes .opcao {
+  flex-direction: column;
+  gap: var(--sp-4);
+  min-height: 84px;
+  font-size: var(--fs-lg);
+  font-weight: 600;
+}
+
+.vf-botoes .opcao span {
+  font-size: 24px;
+  line-height: 1;
+}
+
+.vf-botoes .opcao--certa::after,
+.vf-botoes .opcao--errada::after {
+  margin-left: 0;
+}

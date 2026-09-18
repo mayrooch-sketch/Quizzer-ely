@@ -1,0 +1,250 @@
+/**
+ * A mesa — o que vale para os jogos jogados em volta de uma mesa.
+ *
+ * Dois times, dados, relógio e o veredito de um mediador. O quiz competitivo e
+ * o dinâmico competitivo desenham a mesma mesa; o que muda entre eles é o que
+ * cai no meio dela. Antes isto morava dentro do CSS do quiz, e o segundo jogo
+ * teria de copiar tudo — que é exatamente como o app antigo foi ficando
+ * desalinhado sozinho.
+ */
+
+/* ------------------------------------------------------------------ *
+ * Competitivo
+ * ------------------------------------------------------------------ */
+
+/*
+ * A mesma ideia da arena, numa tela mais cheia: placar e relógio ficam parados
+ * em cima, o texto que se lê rola no meio, e os botões de veredito ficam
+ * presos embaixo.
+ *
+ * Medido a 375×667: sem isso o conteúdo passa da tela em 106px, e o que fica
+ * abaixo da dobra são justamente os botões mais tocados da partida.
+ */
+.comp {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-8);
+  flex: 1;
+  min-height: 0;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.comp__times,
+.comp__relogio,
+.comp__veredito,
+.comp__passar {
+  flex: none;
+}
+
+.comp__meio {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-8);
+}
+
+.comp__times {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-8);
+}
+
+.comp__time {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--sp-8);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--surf-card);
+  color: inherit;
+  text-align: center;
+}
+
+/*
+ * O time da vez precisa se ver do outro lado da mesa: o telefone está na mão
+ * de alguém e os outros olham de longe. Borda de 2px e fundo tingido.
+ */
+.comp__time--vez {
+  border-color: var(--c-primary);
+  border-width: 2px;
+  background: color-mix(in srgb, var(--c-primary) 12%, transparent);
+}
+
+.comp__rotulo {
+  font-size: var(--fs-xs);
+  color: var(--ink2);
+}
+
+.comp__time--vez .comp__rotulo {
+  color: var(--c-primary-dim);
+  font-weight: 600;
+}
+
+.comp__time b {
+  font-size: 30px;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+
+.comp__vazio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-12);
+  padding: var(--sp-24) 0;
+  text-align: center;
+}
+
+.comp__vazio p {
+  margin: 0;
+  color: var(--ink2);
+}
+
+.comp__regra {
+  display: flex;
+  gap: var(--sp-12);
+  padding: var(--sp-12);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--c-grupo);
+  border-radius: var(--r-md);
+  background: var(--surf-card);
+}
+
+.comp__dados {
+  flex: none;
+  display: flex;
+  gap: var(--sp-4);
+}
+
+.comp__regra p {
+  margin: 0;
+}
+
+.comp__regra-titulo {
+  font-weight: 700;
+  font-size: var(--fs-md);
+}
+
+.comp__regra-texto {
+  margin-top: 2px !important;
+  color: var(--ink2);
+  font-size: var(--fs-sm);
+}
+
+.comp__regra-pontos {
+  margin-top: var(--sp-4) !important;
+  color: var(--c-primary-dim);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+}
+
+.comp__relogio {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-8);
+}
+
+.comp__relogio .cr-contagem {
+  flex: 1;
+  font-size: 26px;
+}
+
+.comp__relogio .btn {
+  flex: none;
+  min-height: var(--tap-min);
+}
+
+.comp__pergunta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-8);
+  padding: var(--sp-12);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--surf-card);
+}
+
+.comp__enunciado {
+  margin: 0;
+  font-size: var(--fs-lg);
+  font-weight: 600;
+  line-height: 1.3;
+  text-wrap: balance;
+}
+
+.comp__alts {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+
+.comp__alt {
+  padding: var(--sp-4) var(--sp-8);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  background: var(--surf-body);
+  font-size: var(--fs-sm);
+}
+
+.comp__alt--certa {
+  border-color: var(--c-ok);
+  border-width: 2px;
+  background: color-mix(in srgb, var(--c-ok) 14%, transparent);
+  color: var(--c-ok-text);
+  font-weight: 600;
+}
+
+.comp__ref {
+  margin: 0;
+  color: var(--c-primary-dim);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+}
+
+.comp__veredito {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-8);
+}
+
+/* O passa-a-vez tem um botão só, e ele ocupa a linha inteira. */
+.comp__veredito--um {
+  grid-template-columns: 1fr;
+}
+
+/* O dado 9 tem quatro botões; eles ocupam duas linhas de dois. */
+.comp__veredito .btn {
+  min-height: var(--btn-height);
+}
+
+.comp__passar {
+  min-height: var(--tap-min);
+  border: 0;
+  background: transparent;
+  color: var(--ink2);
+  font-size: var(--fs-sm);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Números tabulares: sem isso o relógio treme a cada segundo. */
+.cr-contagem {
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  color: var(--c-primary-dim);
+}
+
+/*
+ * Últimos dez segundos: muda de cor, não pisca. Piscar atrapalha quem está
+ * lendo a pergunta — que é justamente o que se faz nos últimos segundos.
+ */
+.cr-contagem--fim {
+  color: var(--c-err-text);
+}

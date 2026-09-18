@@ -1,0 +1,6 @@
+# Uma aplicação de página só: qualquer caminho é resolvido pelo React Router.
+#
+# Sem esta linha, abrir https://.../jogo/forca direto — ou recarregar a página
+# no meio de uma partida — daria 404, porque não existe um arquivo com esse
+# nome no servidor. O 200 (e não 301) é o que preserva o endereço na barra.
+/*    /index.html   200

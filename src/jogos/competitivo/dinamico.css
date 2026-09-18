@@ -1,0 +1,173 @@
+/**
+ * O item da rodada no dinâmico competitivo.
+ *
+ * Onze modos caem no mesmo lugar da mesa, então todos usam a mesma caixa: um
+ * enunciado, uma lista quando há lista, e a resposta que só aparece quando o
+ * mediador pede.
+ */
+
+.din__item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-8);
+  padding: var(--sp-12);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--surf-card);
+}
+
+.din__enunciado {
+  margin: 0;
+  font-size: var(--fs-lg);
+  font-weight: 600;
+  line-height: 1.3;
+  text-wrap: balance;
+}
+
+/* A resposta. Grande, porque é lida de longe, do outro lado da mesa. */
+.din__resposta {
+  margin: 0;
+  padding: var(--sp-8) var(--sp-12);
+  border-radius: var(--r-sm);
+  background: color-mix(in srgb, var(--c-ok) 16%, transparent);
+  color: var(--c-ok-text);
+  font-size: var(--fs-lg);
+  font-weight: 700;
+}
+
+.din__ref {
+  margin: 0;
+  color: var(--c-primary-dim);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+}
+
+.din__nota {
+  margin: 0;
+  color: var(--ink2);
+  font-size: var(--fs-sm);
+}
+
+.din__vazio {
+  margin: 0;
+  padding: var(--sp-12);
+  border: 1px dashed var(--border-mid);
+  border-radius: var(--r-md);
+  color: var(--ink2);
+  text-align: center;
+}
+
+.din__lista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+
+.din__lista--linha {
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.din__linha {
+  padding: var(--sp-4) var(--sp-8);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  background: var(--surf-body);
+  font-size: var(--fs-sm);
+}
+
+.din__linha--certa {
+  border-color: var(--c-ok);
+  border-width: 2px;
+  background: color-mix(in srgb, var(--c-ok) 14%, transparent);
+  color: var(--c-ok-text);
+  font-weight: 600;
+}
+
+/* Associação: o nome de um lado, a frase do outro — ou um "?" até revelar. */
+.din__par {
+  display: grid;
+  grid-template-columns: minmax(88px, 0.42fr) 1fr;
+  gap: var(--sp-8);
+  align-items: baseline;
+  padding: var(--sp-4) var(--sp-8);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  background: var(--surf-body);
+  font-size: var(--fs-sm);
+}
+
+.din__certo {
+  color: var(--c-ok-text);
+  font-weight: 600;
+}
+
+.din__escondido {
+  color: var(--ink3);
+}
+
+.din__pistas {
+  margin: 0;
+  padding-left: var(--sp-24);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+  font-size: var(--fs-md);
+}
+
+.din__ordem {
+  margin: 0;
+  padding-left: var(--sp-24);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+  font-size: var(--fs-sm);
+}
+
+.din__ordem--certa {
+  color: var(--c-ok-text);
+  font-weight: 600;
+}
+
+/* Forca e anagrama: as letras em quadradinhos, para ler de longe. */
+.din__letras {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--sp-4);
+}
+
+.din__letra {
+  display: grid;
+  place-items: center;
+  min-width: 30px;
+  height: 38px;
+  padding: 0 var(--sp-4);
+  border-radius: var(--r-sm);
+  background: var(--surf-raised);
+  font-size: var(--fs-lg);
+  font-weight: 700;
+}
+
+.din__letra--oculta {
+  background: transparent;
+  border-bottom: 3px solid var(--border-mid);
+  border-radius: 0;
+}
+
+/* O contador da forca e o aviso de pistas lidas. */
+.din__contador {
+  margin: 0;
+  color: var(--ink2);
+  font-size: var(--fs-sm);
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+}
+
+.din__contador--alerta {
+  color: var(--c-err-text);
+  font-weight: 600;
+}

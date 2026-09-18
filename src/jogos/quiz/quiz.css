@@ -1,0 +1,91 @@
+/**
+ * As peças dos jogos de múltipla escolha.
+ */
+
+/* ------------------------------------------------------------------ *
+ * Escolha do assunto
+ * ------------------------------------------------------------------ */
+
+.assuntos {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+
+.assunto {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-12);
+  min-height: var(--tap-min);
+  padding: var(--sp-8) var(--sp-12);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--surf-card);
+  color: inherit;
+  text-align: left;
+}
+
+.assunto:hover {
+  background: var(--surf-raised);
+}
+
+.assunto__nome {
+  flex: 1;
+  font-weight: 600;
+  font-size: var(--fs-sm);
+}
+
+/*
+ * Quantas perguntas o assunto tem.
+ *
+ * É a única contagem da interface, e existe porque muda a escolha: um assunto
+ * de 12 perguntas e um de 233 pedem decisões diferentes.
+ */
+.assunto__n {
+  flex: none;
+  min-width: 2.5em;
+  padding: 2px var(--sp-8);
+  border-radius: var(--r-pill);
+  background: color-mix(in srgb, var(--c-primary) 12%, transparent);
+  color: var(--c-primary-dim);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+}
+
+/* ------------------------------------------------------------------ *
+ * Contra o relógio
+ * ------------------------------------------------------------------ */
+
+.cr-abertura {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-12);
+  text-align: center;
+}
+
+.cr-abertura p {
+  margin: 0;
+  color: var(--ink2);
+}
+
+.cr-relogio {
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--c-grupo-ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.cr-recorde {
+  font-size: var(--fs-sm);
+}
+
+.cr-recorde--novo {
+  color: var(--c-warn);
+  font-weight: 700;
+}

@@ -1,0 +1,645 @@
+/**
+ * As peças dos jogos de palavra.
+ */
+
+/* ------------------------------------------------------------------ *
+ * Caça-palavras
+ * ------------------------------------------------------------------ */
+
+/*
+ * Três zonas, a mesma regra da arena: contador e opções parados em cima, a
+ * grade fixa no meio, ações presas embaixo. Só a lista de palavras rola —
+ * e só quando são dez.
+ */
+.caca {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-8);
+  flex: 1;
+  min-height: 0;
+}
+
+.caca__topo {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-8);
+  flex: none;
+}
+
+.caca__contador {
+  flex: 1;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.caca__contador--fim {
+  color: var(--c-ok-text);
+}
+
+.caca__opcoes {
+  display: flex;
+  gap: var(--sp-4);
+  flex: none;
+}
+
+.caca__chip {
+  min-height: var(--tap-min);
+  padding: 0 var(--sp-12);
+  border: 1px solid var(--border-mid);
+  border-radius: var(--r-pill);
+  background: var(--surf-card);
+  color: var(--ink2);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+}
+
+.caca__chip[aria-pressed='true'] {
+  border-color: var(--c-primary);
+  background: color-mix(in srgb, var(--c-primary) 14%, transparent);
+  color: var(--c-primary-dim);
+}
+
+/*
+ * A grade é quadrada e ocupa a largura toda. `touch-action: none` é o que
+ * permite arrastar o dedo pelas letras sem que o navegador entenda o gesto
+ * como rolagem — sem isso, selecionar uma palavra vertical rola a página.
+ */
+.caca__grade {
+  flex: none;
+  display: grid;
+  grid-template-columns: repeat(var(--n), 1fr);
+  gap: 2px;
+  width: 100%;
+  max-width: min(100%, 420px);
+  margin: 0 auto;
+  aspect-ratio: 1;
+  padding: var(--sp-4);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--surf-card);
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.caca__cel {
+  display: grid;
+  place-items: center;
+  border-radius: var(--r-sm);
+  background: transparent;
+  color: var(--ink);
+  font-size: var(--fs-cel);
+  font-weight: 600;
+  line-height: 1;
+  transition: background var(--transition-fast);
+}
+
+/* Já achada. Fica assim até o fim da grade. */
+.caca__cel--achada {
+  background: color-mix(in srgb, var(--c-ok) 26%, transparent);
+  color: var(--c-ok-text);
+}
+
+/* Sob o dedo agora. */
+.caca__cel--traco {
+  background: var(--c-primary);
+  color: #fff;
+}
+
+/* Meio segundo de vermelho quando o traço não é palavra nenhuma. */
+.caca__cel--erro {
+  background: color-mix(in srgb, var(--c-err) 40%, transparent);
+  color: var(--c-err-text);
+}
+
+/* A primeira letra, esperando a segunda no modo dois toques. */
+.caca__cel--ancora {
+  background: var(--c-primary);
+  color: #fff;
+  outline: 2px solid var(--c-primary-dim);
+  outline-offset: -2px;
+}
+
+/* Revelada por desistência: aparece, mas não como conquista. */
+.caca__cel--revelada {
+  background: color-mix(in srgb, var(--c-warn) 26%, transparent);
+  color: var(--c-warn);
+}
+
+.caca__lista {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: var(--sp-4);
+  padding: 2px;
+}
+
+.caca__palavra {
+  padding: var(--sp-4) var(--sp-8);
+  border: 1px solid var(--border);
+  border-radius: var(--r-pill);
+  background: var(--surf-card);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+}
+
+.caca__palavra--achada {
+  border-color: color-mix(in srgb, var(--c-ok) 50%, transparent);
+  background: color-mix(in srgb, var(--c-ok) 14%, transparent);
+  color: var(--c-ok-text);
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+}
+
+.caca__palavra--revelada {
+  border-color: color-mix(in srgb, var(--c-warn) 50%, transparent);
+  background: color-mix(in srgb, var(--c-warn) 12%, transparent);
+  color: var(--c-warn);
+}
+
+.caca__acoes {
+  flex: none;
+  display: flex;
+  gap: var(--sp-8);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.caca__acoes .btn {
+  flex: 1;
+}
+
+/* ------------------------------------------------------------------ *
+ * Anagrama
+ * ------------------------------------------------------------------ */
+
+.ana {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-12);
+}
+
+/*
+ * O monte embaralhado é um botão inteiro: tocar nele embaralha de novo. É a
+ * única coisa que "embaralhar" mexe, então é nele que se toca — e um botão a
+ * menos na barra de baixo.
+ */
+.ana__monte {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--sp-4);
+  width: 100%;
+  padding: var(--sp-8);
+  border: 1px dashed var(--border-mid);
+  border-radius: var(--r-md);
+  background: transparent;
+  color: inherit;
+}
+
+.ana__monte:active {
+  background: var(--surf-raised);
+}
+
+.ana__letra {
+  display: grid;
+  place-items: center;
+  min-width: 34px;
+  height: 40px;
+  padding: 0 var(--sp-4);
+  border-radius: var(--r-sm);
+  background: var(--surf-raised);
+  font-size: var(--fs-lg);
+  font-weight: 700;
+}
+
+.ana__slots {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--sp-4);
+}
+
+.ana__slot {
+  display: grid;
+  place-items: center;
+  min-width: 34px;
+  height: 44px;
+  padding: 0 var(--sp-4);
+  border: 1px solid var(--border-mid);
+  border-bottom-width: 3px;
+  border-radius: var(--r-sm);
+  background: var(--surf-card);
+  font-size: var(--fs-lg);
+  font-weight: 700;
+}
+
+/* Letra dada pela dica: fica no lugar e não se apaga. */
+.ana__slot--dado {
+  border-color: color-mix(in srgb, var(--c-warn) 60%, transparent);
+  background: color-mix(in srgb, var(--c-warn) 12%, transparent);
+  color: var(--c-warn);
+}
+
+.ana__slots--certo .ana__slot {
+  border-color: var(--c-ok);
+  background: color-mix(in srgb, var(--c-ok) 16%, transparent);
+  color: var(--c-ok-text);
+}
+
+.ana__slots--errado .ana__slot {
+  border-color: var(--c-err);
+  background: color-mix(in srgb, var(--c-err) 12%, transparent);
+  color: var(--c-err-text);
+}
+
+.ana__dica {
+  margin: 0;
+  padding: var(--sp-8) var(--sp-12);
+  border-left: 3px solid var(--c-warn);
+  border-radius: var(--r-sm);
+  background: color-mix(in srgb, var(--c-warn) 10%, transparent);
+  color: var(--ink2);
+  font-size: var(--fs-sm);
+}
+
+.ana__teclado {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--sp-4);
+}
+
+.ana__tecla {
+  min-width: var(--tap-min);
+  min-height: var(--tap-min);
+  padding: 0 var(--sp-8);
+  border: 1px solid var(--border-mid);
+  border-radius: var(--r-sm);
+  background: var(--surf-card);
+  font-size: var(--fs-md);
+  font-weight: 700;
+}
+
+.ana__tecla:active:not(:disabled) {
+  background: var(--surf-raised);
+}
+
+/* Já usei todas as vezes que esta letra aparece na palavra. */
+.ana__tecla--gasta {
+  border-color: var(--border);
+  background: transparent;
+  color: var(--ink3);
+}
+
+.ana__tecla--apagar {
+  border-color: var(--border-mid);
+  background: var(--surf-raised);
+}
+
+/* ------------------------------------------------------------------ *
+ * Forca
+ * ------------------------------------------------------------------ */
+
+.forca {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-8);
+}
+
+.forca__svg {
+  width: 110px;
+  height: 120px;
+  flex: none;
+}
+
+.forca__parte {
+  stroke: var(--ink2);
+  stroke-width: 3;
+  stroke-linecap: round;
+  fill: none;
+}
+
+/* Ocupa o lugar mesmo antes de aparecer: sem isso o desenho salta a cada erro. */
+.forca__parte--oculta {
+  opacity: 0;
+}
+
+.forca__palavra {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--sp-4);
+}
+
+.forca__slot {
+  display: grid;
+  place-items: center;
+  min-width: 26px;
+  height: 38px;
+  border-bottom: 3px solid var(--border-mid);
+  font-size: var(--fs-lg);
+  font-weight: 700;
+}
+
+.forca__slot--aberto {
+  border-bottom-color: var(--c-grupo);
+}
+
+/* Revelada por derrota: aparece, mas não como conquista. */
+.forca__slot--perdido {
+  border-bottom-color: color-mix(in srgb, var(--c-err) 60%, transparent);
+  color: var(--c-err-text);
+}
+
+.forca__dica {
+  margin: 0;
+  color: var(--ink2);
+  font-size: var(--fs-sm);
+  text-align: center;
+  text-wrap: balance;
+}
+
+/* ------------------------------------------------------------------ *
+ * Palavras cruzadas
+ * ------------------------------------------------------------------ */
+
+.cw {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-8);
+  flex: 1;
+  min-height: 0;
+}
+
+.cw__barra,
+.cw__acoes,
+.cw__fim {
+  flex: none;
+}
+
+/*
+ * A dica da vez, fixa. É a informação que se lê a cada palavra, e no app
+ * antigo estava abaixo da grade — longe do teclado e fora da tela.
+ */
+.cw__barra {
+  display: flex;
+  align-items: stretch;
+  gap: var(--sp-4);
+}
+
+.cw__seta {
+  width: var(--tap-min);
+  flex: none;
+  border: 1px solid var(--border-mid);
+  border-radius: var(--r-sm);
+  background: var(--surf-card);
+  font-size: 22px;
+  line-height: 1;
+}
+
+.cw__dica {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--sp-4) var(--sp-8);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--c-primary);
+  border-radius: var(--r-sm);
+  background: var(--surf-card);
+  color: inherit;
+  text-align: left;
+}
+
+.cw__dica-num {
+  color: var(--c-primary-dim);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Duas linhas no máximo: a barra não pode crescer e comer a grade. */
+.cw__dica-texto {
+  font-size: var(--fs-sm);
+  line-height: 1.25;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/*
+ * A grade cabe no que sobrar, com a célula sempre quadrada.
+ *
+ * `max-width` e `max-height` juntos não resolvem: quando o limite que pega é
+ * o da altura, a largura não é recalculada e as células saem retangulares. A
+ * conta certa é escolher o menor dos dois lados possíveis, e para isso a caixa
+ * vira um **contêiner de tamanho** — é o que dá a `cqh`, a altura disponível,
+ * um número com que a largura pode ser calculada.
+ */
+.cw__caixa {
+  flex: 1;
+  min-height: 0;
+  container-type: size;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cw__grade {
+  display: grid;
+  grid-template-columns: repeat(var(--colunas), 1fr);
+  gap: 1px;
+  width: min(100cqw, calc(100cqh * var(--colunas) / var(--linhas)));
+  aspect-ratio: var(--colunas) / var(--linhas);
+  padding: 2px;
+  border-radius: var(--r-sm);
+  background: var(--border-mid);
+}
+
+.cw__casa {
+  position: relative;
+  display: grid;
+  place-items: center;
+  background: var(--surf-card);
+  font-size: var(--fs-md);
+  font-weight: 700;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.cw__casa--preta {
+  background: transparent;
+}
+
+.cw__num {
+  position: absolute;
+  top: 1px;
+  left: 2px;
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--ink3);
+  line-height: 1;
+}
+
+/* A palavra da vez, e dentro dela a casa onde a letra vai cair. */
+.cw__casa--linha {
+  background: color-mix(in srgb, var(--c-primary) 12%, var(--surf-card));
+}
+
+.cw__casa--ativa {
+  background: color-mix(in srgb, var(--c-primary) 34%, var(--surf-card));
+  box-shadow: inset 0 0 0 2px var(--c-primary);
+}
+
+.cw__casa--dada {
+  color: var(--c-warn);
+}
+
+.cw__casa--certa {
+  color: var(--c-ok-text);
+}
+
+.cw__casa--errada {
+  color: var(--c-err-text);
+  text-decoration: line-through;
+}
+
+.cw__fim {
+  margin: 0;
+  padding: var(--sp-8);
+  border-radius: var(--r-sm);
+  background: color-mix(in srgb, var(--c-ok) 14%, transparent);
+  color: var(--c-ok-text);
+  font-weight: 700;
+  text-align: center;
+}
+
+.cw__acoes {
+  display: flex;
+  gap: var(--sp-8);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.cw__acoes .btn {
+  flex: 1;
+}
+
+.cw__mais {
+  flex: none !important;
+  width: var(--btn-height);
+  padding: 0;
+  font-size: 20px;
+}
+
+/* ------------------------------------------------------------------ *
+ * A folha que sobe por cima
+ * ------------------------------------------------------------------ */
+
+.folha {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.folha__fundo {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: rgba(15, 22, 35, 0.45);
+}
+
+.folha__painel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  max-height: 78dvh;
+  border-radius: var(--r-md) var(--r-md) 0 0;
+  background: var(--surf-body);
+  box-shadow: var(--shadow-lg);
+}
+
+.folha__cabeca {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-8);
+  padding: var(--sp-12);
+  border-bottom: 1px solid var(--border);
+}
+
+.folha__fechar {
+  min-height: var(--tap-min);
+  padding: 0 var(--sp-12);
+  border: 0;
+  border-radius: var(--r-sm);
+  background: transparent;
+  color: var(--c-primary-dim);
+  font-weight: 600;
+}
+
+.folha__corpo {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: var(--sp-12);
+  padding-bottom: max(var(--sp-12), env(safe-area-inset-bottom));
+}
+
+.folha__grupo + .folha__grupo {
+  margin-top: var(--sp-16);
+}
+
+.folha__titulo {
+  margin: 0 0 var(--sp-4);
+  color: var(--ink2);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+.folha__dica {
+  display: block;
+  width: 100%;
+  min-height: var(--tap-min);
+  margin-bottom: var(--sp-4);
+  padding: var(--sp-8) var(--sp-12);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  background: var(--surf-card);
+  color: inherit;
+  font-size: var(--fs-sm);
+  text-align: left;
+}
+
+.folha__dica--ativa {
+  border-color: var(--c-primary);
+  background: color-mix(in srgb, var(--c-primary) 12%, transparent);
+}
+
+.folha__dica--feita {
+  border-color: color-mix(in srgb, var(--c-ok) 45%, transparent);
+  background: color-mix(in srgb, var(--c-ok) 10%, transparent);
+  color: var(--c-ok-text);
+}
+
+.folha__tam {
+  color: var(--ink3);
+  font-size: var(--fs-xs);
+  white-space: nowrap;
+}
+
+.folha__opcoes {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-8);
+}

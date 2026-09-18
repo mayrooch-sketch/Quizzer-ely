@@ -1,0 +1,135 @@
+/**
+ * Tokens — a paleta do Quizzer, herdada do app antigo.
+ *
+ * As cores, a tipografia e a escala de z-index vêm do `index.html` original
+ * sem mudança de valor: o app já tinha um sistema, e trocá-lo seria mexer no
+ * que não está quebrado.
+ *
+ * O que mudou foi a quantidade. O original declarava cerca de setenta tokens
+ * que eram só uma cor-base numa opacidade — `--c-ok-a18`, `--c-ok-a22`,
+ * `--c-ok-a35`, `--c-ok-a36`, `--c-ok-a50`… Cada tom novo virava um token
+ * novo, e ninguém conseguia dizer de cabeça qual era qual. Aqui a cor-base é
+ * declarada uma vez e a transparência sai de `color-mix()` no lugar de uso:
+ *
+ *   background: color-mix(in srgb, var(--c-ok) 18%, transparent);
+ *
+ * É o mesmo valor computado que `rgba(63,174,106,.18)`, escrito onde se lê.
+ */
+
+:root {
+  /* Superfícies — três níveis: fundo → cartão → elevado.
+     Nenhuma é branco puro; era assim no original e é o que dá o ar do app. */
+  --surf-body: #edf2fa;
+  --surf-card: #f5f8fc;
+  --surf-raised: #dde8f5;
+
+  /* Cor primária */
+  --c-primary: #476291;
+  --c-primary-dim: #3a5278;
+
+  /* Cabeçalho — navy escuro, distinto do fundo de propósito */
+  --c-header-bg: #2e4268;
+  --c-header-fg: #ffffff;
+
+  /* Semântica — só para acerto e erro. Não usar para decorar. */
+  --c-ok: #3fae6a;
+  --c-ok-text: #1a6b3a;
+  --c-err: #d96b6b;
+  --c-err-text: #a03030;
+
+  /* Aviso — usado em sequência de acertos e tempo acabando */
+  --c-warn: #be8214;
+
+  /* ------------------------------------------------------------------ *
+   * Os quatro grupos
+   *
+   * Cada grupo da home tem uma cor, e ela acompanha o jogo por dentro: é o
+   * que faz saber de que prateleira se veio sem ler o título.
+   *
+   * **Dois tons por grupo, e o amarelo é o motivo.** `--g-*` é a cor viva,
+   * para faixa e preenchimento, onde contraste não se aplica. `--g-*-ink` é a
+   * mesma cor escurecida até passar em contraste como texto sobre o cartão
+   * claro — um amarelo de verdade escrito em #f5f8fc não se lê. Nos outros
+   * três a diferença é pequena, mas existir nos quatro é o que impede alguém
+   * de usar o tom errado por engano.
+   * ------------------------------------------------------------------ */
+  --g-competitivo: #6b46a8;
+  --g-competitivo-ink: #563a86;
+  --g-palavras: #78849a;
+  --g-palavras-ink: #4c586a;
+  --g-conhecimento: #e2a112;
+  --g-conhecimento-ink: #8a5f0a;
+  --g-tabuleiro: #a63a52;
+  --g-tabuleiro-ink: #8c2f43;
+
+  /* Fora de um grupo — a home inteira, um erro de rota — vale a primária. */
+  --c-grupo: var(--c-primary);
+  --c-grupo-ink: var(--c-primary-dim);
+
+  /* Texto */
+  --ink: #1e2633;
+  --ink2: #5a6478;
+  --ink3: #8d9aae;
+
+  /* Bordas — azuladas, para combinar com o fundo */
+  --border: #c8d6ea;
+  --border-mid: #b0c2d8;
+
+  /* Sombras */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.09), 0 8px 20px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 4px 8px rgba(0, 0, 0, 0.11), 0 16px 32px rgba(0, 0, 0, 0.12);
+
+  /* Tipografia */
+  --fs-base: 17px;
+  --fs-xs: 0.76rem;
+  --fs-sm: 0.82rem;
+  --fs-md: 1rem;
+  --fs-lg: 1.12rem;
+  --fs-xxl: 1.65rem;
+  --lh: 1.6;
+
+  /* Espaçamento */
+  --sp-4: 4px;
+  --sp-8: 8px;
+  --sp-12: 12px;
+  --sp-16: 16px;
+  --sp-24: 24px;
+  --sp-32: 32px;
+
+  /* Cantos */
+  --r-sm: 8px;
+  --r-xs: 10px;
+  --r-md: 14px;
+  --r-pill: 999px;
+
+  /* Controles.
+     48px de altura e 44px de alvo mínimo: o app é usado no celular, e 44px é
+     o menor alvo que um polegar acerta sem tentar duas vezes. */
+  --btn-height: 48px;
+  --tap-min: 44px;
+
+  --transition-fast: 100ms ease;
+  --transition-base: 180ms ease;
+
+  /* Escala de z-index — fonte única. Números soltos no CSS são proibidos:
+     é assim que um modal acaba atrás da barra que devia cobrir. */
+  --z-content: 0;
+  --z-header: 20;
+  --z-actionbar: 30;
+  --z-overlay: 1000;
+  --z-modal: 1010;
+  --z-toast: 1100;
+}
+
+/* Quem pede menos movimento no sistema recebe menos movimento aqui. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
