@@ -1,7 +1,7 @@
 import { useState } from 'react';
+import { useTrechos } from '../../app/store';
 import { Arena } from '../../shared/jogo/Arena';
 import { useBaralho, usePlacar, type Placar } from '../../shared/jogo/useBaralho';
-import { TRECHOS_BIBLICOS } from '../../shared/trechos/trechos';
 import type { TrechoBiblico } from '../../shared/trechos/types';
 import {
   criarPecas,
@@ -12,7 +12,8 @@ import {
 import './embaralhado.css';
 
 export function EmbaralhadoScreen() {
-  const baralho = useBaralho(TRECHOS_BIBLICOS);
+  const trechos = useTrechos();
+  const baralho = useBaralho(trechos);
   const placar = usePlacar();
 
   if (!baralho.atual) return <p>Nenhum trecho disponível.</p>;
@@ -21,6 +22,7 @@ export function EmbaralhadoScreen() {
     <Rodada
       key={baralho.atual.id}
       trecho={baralho.atual}
+      todos={trechos}
       placar={placar}
       progresso={{ posicao: baralho.posicao, total: baralho.total }}
       aoSeguir={baralho.proxima}
@@ -30,16 +32,18 @@ export function EmbaralhadoScreen() {
 
 function Rodada({
   trecho,
+  todos,
   placar,
   progresso,
   aoSeguir,
 }: {
   trecho: TrechoBiblico;
+  todos: readonly TrechoBiblico[];
   placar: Placar;
   progresso: { posicao: number; total: number };
   aoSeguir: () => void;
 }) {
-  const [pecas] = useState(() => criarPecas(trecho, TRECHOS_BIBLICOS));
+  const [pecas] = useState(() => criarPecas(trecho, todos));
   const [selecionadas, setSelecionadas] = useState<PecaDePalavra[]>([]);
   const [feedback, setFeedback] = useState<'quente' | 'frio' | null>(null);
   const [teveErro, setTeveErro] = useState(false);

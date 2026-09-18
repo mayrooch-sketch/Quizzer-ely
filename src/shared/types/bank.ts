@@ -1,7 +1,7 @@
 /**
  * O banco de perguntas, em tipos.
  *
- * São dois bancos independentes, com formas diferentes, e é por isso que eles
+ * São três bancos independentes, com formas diferentes, e é por isso que eles
  * têm tipos separados em vez de um "item" genérico:
  *
  * - **Quiz** (`banco/quiz`): 1185 perguntas de múltipla escolha A/B/C/D.
@@ -23,6 +23,8 @@
  * existe — e obrigar toda tela a tratar o caso vazio para sempre. Voltam no
  * dia em que forem preenchidos.
  */
+
+import type { TrechoBiblico } from '../trechos/types';
 
 /* ------------------------------------------------------------------ *
  * Quiz — múltipla escolha
@@ -155,8 +157,15 @@ export type KnowsItemOf<T extends KnowsType> = Extract<KnowsItem, { type: T }>;
 export interface Banco {
   perguntas: Pergunta[];
   knows: KnowsItem[];
+  /** Trechos compartilhados por Encontre a referência e Texto embaralhado. */
+  trechos: readonly TrechoBiblico[];
   /** Versão publicada em `banco/_meta/version`. Governa o cache. */
   versao: string | null;
 }
 
-export const BANCO_VAZIO: Banco = { perguntas: [], knows: [], versao: null };
+export const BANCO_VAZIO: Banco = {
+  perguntas: [],
+  knows: [],
+  trechos: [],
+  versao: null,
+};

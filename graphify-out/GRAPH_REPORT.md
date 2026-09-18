@@ -1,17 +1,17 @@
 # Graph Report - quizzer-ts  (2026-09-18)
 
 ## Corpus Check
-- 70 files · ~43,945 words
+- 69 files · ~41,699 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 20 file(s) not represented in the graph (top: .css 12, (none) 5, .cmd 2)
 
 ## Summary
-- 525 nodes · 1075 edges · 24 communities (18 shown, 6 thin omitted)
+- 526 nodes · 1091 edges · 25 communities (19 shown, 6 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 15 edges (avg confidence: 0.86)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `ca42f314`
+- Built from commit: `3a196760`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -20,7 +20,7 @@
 - routes.tsx
 - DinamicoScreen.tsx
 - package.json
-- Rodada
+- Teclado.tsx
 - normalize.ts
 - games.ts
 - compilerOptions
@@ -31,6 +31,7 @@
 - sw.js
 - What You Must Do When Invoked
 - poco.ts
+- ContraRelogioScreen.tsx
 - graphify reference: extra exports and benchmark
 - graphify reference: query, path, explain
 - graphify reference: add a URL and watch a folder
@@ -51,7 +52,7 @@
 7. `compilerOptions` - 15 edges
 8. `useItensDoTipo()` - 14 edges
 9. `Arena()` - 13 edges
-10. `usePerguntas()` - 12 edges
+10. `texto()` - 13 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `Como o código está organizado` --references--> `JogoId`  [INFERRED]
@@ -68,35 +69,35 @@
 ## Import Cycles
 - None detected.
 
-## Communities (24 total, 6 thin omitted)
+## Communities (25 total, 6 thin omitted)
 
 ### Community 0 - "CacaPalavrasScreen.tsx"
 Cohesion: 0.11
-Nodes (29): CacaPalavrasScreen(), alternarDiagonais(), escolherTamanho(), FONTE_DA_CELULA, gravar(), ler(), PropsTabuleiro, Tabuleiro() (+21 more)
+Nodes (28): CacaPalavrasScreen(), alternarDiagonais(), escolherTamanho(), FONTE_DA_CELULA, gravar(), ler(), PropsTabuleiro, Tabuleiro() (+20 more)
 
 ### Community 1 - "routes.tsx"
-Cohesion: 0.07
-Nodes (41): react, TELAS, AssociationScreen(), CORES, embaralharEstavel(), Ligacao, ClozeScreen(), src_jogos_conhecimento_conhecimento (+33 more)
+Cohesion: 0.08
+Nodes (38): react, TELAS, useTrechos(), AssociationScreen(), CORES, embaralharEstavel(), Ligacao, ClozeScreen() (+30 more)
 
 ### Community 2 - "DinamicoScreen.tsx"
-Cohesion: 0.08
-Nodes (40): useKnows(), usePerguntas(), src_jogos_competitivo_dinamico, DinamicoScreen(), julgar(), proximaRodada(), rolar(), sortearItem() (+32 more)
+Cohesion: 0.07
+Nodes (40): src_jogos_competitivo_dinamico, DinamicoScreen(), julgar(), proximaRodada(), rolar(), sortearItem(), tirarDaFila(), embaralhar() (+32 more)
 
 ### Community 3 - "package.json"
 Cohesion: 0.06
 Nodes (33): dependencies, react, react-dom, react-router-dom, zustand, devDependencies, oxlint, @types/node (+25 more)
 
-### Community 4 - "Rodada"
-Cohesion: 0.20
-Nodes (6): Rodada(), embaralharLetras(), FILAS, LETRAS, ordemDeTeclado(), POSICAO
+### Community 4 - "Teclado.tsx"
+Cohesion: 0.17
+Nodes (8): Rodada(), embaralharLetras(), Props, Teclado(), FILAS, LETRAS, ordemDeTeclado(), POSICAO
 
 ### Community 5 - "normalize.ts"
 Cohesion: 0.09
-Nodes (49): ref_node_fs, amostra, categorias, knows, knowsBruto, perguntas, porTipo, quizBruto (+41 more)
+Nodes (47): ref_node_fs, amostra, categorias, knows, knowsBruto, perguntas, porTipo, quizBruto (+39 more)
 
 ### Community 6 - "games.ts"
-Cohesion: 0.09
-Nodes (26): Ao publicar uma versão nova, Como o código está organizado, Desenvolver, Funciona sem internet, O banco de perguntas, Quizzer, Subir no Netlify, react-dom (+18 more)
+Cohesion: 0.08
+Nodes (27): Ao publicar uma versão nova, Como o código está organizado, Desenvolver, Funciona sem internet, O banco de perguntas, Quizzer, Subir no Netlify, react-dom (+19 more)
 
 ### Community 7 - "compilerOptions"
 Cohesion: 0.10
@@ -104,7 +105,7 @@ Nodes (19): compilerOptions, allowArbitraryExtensions, allowImportingTsExtension
 
 ### Community 8 - "biblioteca.ts"
 Cohesion: 0.09
-Nodes (37): src_jogos_embaralhado_embaralhado, Rodada(), conferir(), criarPecas(), embaralhar(), ordemEstaCorreta(), PecaDePalavra, tokenizar() (+29 more)
+Nodes (35): Rodada(), conferir(), criarPecas(), embaralhar(), ordemEstaCorreta(), PecaDePalavra, tokenizar(), criarEtapas() (+27 more)
 
 ### Community 9 - "compilerOptions"
 Cohesion: 0.12
@@ -119,8 +120,12 @@ Cohesion: 0.08
 Nodes (24): For /graphify add and --watch, For /graphify query, For the commit hook and native CLAUDE.md integration, For --update and --cluster-only, /graphify, Honesty Rules, Interpreter guard for subcommands, Part A - Structural extraction for code files (+16 more)
 
 ### Community 14 - "poco.ts"
-Cohesion: 0.05
-Nodes (50): CruzadasScreen(), PropsTabuleiro, Tabuleiro(), ForcaScreen(), PropsRodada, Rodada(), cabe(), Casa (+42 more)
+Cohesion: 0.06
+Nodes (45): CruzadasScreen(), PropsTabuleiro, Tabuleiro(), cabe(), Casa, Cruzada, cruzar(), Direcao (+37 more)
+
+### Community 15 - "ContraRelogioScreen.tsx"
+Cohesion: 0.20
+Nodes (12): usePerguntas(), Alternativas(), Props, ContraRelogioScreen(), Fase, gravarRecorde(), lerRecorde(), src_jogos_quiz_quiz (+4 more)
 
 ### Community 18 - "graphify reference: extra exports and benchmark"
 Cohesion: 0.22
@@ -150,17 +155,17 @@ Nodes (3): For --cluster-only, For --update (incremental re-extraction), graphif
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `react` connect `routes.tsx` to `CacaPalavrasScreen.tsx`, `DinamicoScreen.tsx`, `package.json`, `games.ts`, `biblioteca.ts`, `poco.ts`?**
-  _High betweenness centrality (0.145) - this node is a cross-community bridge._
+- **Why does `react` connect `routes.tsx` to `CacaPalavrasScreen.tsx`, `DinamicoScreen.tsx`, `package.json`, `games.ts`, `poco.ts`, `ContraRelogioScreen.tsx`?**
+  _High betweenness centrality (0.116) - this node is a cross-community bridge._
 - **What connects `$schema`, `plugins`, `react/rules-of-hooks` to the rest of the system?**
   _161 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `CacaPalavrasScreen.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.10887096774193548 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.11397849462365592 - nodes in this community are weakly interconnected._
 - **Should `routes.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.06962025316455696 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.07508771929824562 - nodes in this community are weakly interconnected._
 - **Should `DinamicoScreen.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.07591836734693877 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.07346938775510205 - nodes in this community are weakly interconnected._
 - **Should `package.json` be split into smaller, more focused modules?**
   _Cohesion score 0.058823529411764705 - nodes in this community are weakly interconnected._
 - **Should `normalize.ts` be split into smaller, more focused modules?**
-  _Cohesion score 0.0861952861952862 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.09276018099547512 - nodes in this community are weakly interconnected._

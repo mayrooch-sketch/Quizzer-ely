@@ -19,6 +19,7 @@ function EstadoDoBanco() {
   const erro = useAppStore((s) => s.erro);
   const perguntas = useAppStore((s) => s.banco.perguntas.length);
   const knows = useAppStore((s) => s.banco.knows.length);
+  const trechos = useAppStore((s) => s.banco.trechos.length);
   const buscarAgora = useAppStore((s) => s.buscarAgora);
 
   if (carregando) {
@@ -43,7 +44,7 @@ function EstadoDoBanco() {
    * o carregador; quem abre o app quer escolher um jogo. O número aparece só
    * quando falta alguma coisa.
    */
-  if (perguntas === 0 && knows === 0) {
+  if (perguntas === 0 && knows === 0 && trechos === 0) {
     return <p className="aviso">Nenhuma pergunta disponível ainda.</p>;
   }
 

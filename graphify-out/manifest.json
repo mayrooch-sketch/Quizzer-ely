@@ -36,9 +36,9 @@
     "semantic_hash": ""
   },
   "src/app/HomeScreen.tsx": {
-    "mtime": 1789773948.7117202,
-    "seen": 1789773965.705376,
-    "ast_hash": "ae7bb9150a93a2caf49dd9580ebcb859",
+    "mtime": 1789774983.031324,
+    "seen": 1789775093.5711393,
+    "ast_hash": "fbd7b3654209c5fc4deb6b3cbcbc2882",
     "semantic_hash": ""
   },
   "src/app/games.ts": {
@@ -54,10 +54,10 @@
     "semantic_hash": ""
   },
   "src/app/store.ts": {
-    "mtime": 1787497270.0,
-    "seen": 1789770952.8817139,
-    "ast_hash": "1217fdc5506e24c305c63b13fe5768eb",
-    "semantic_hash": "1217fdc5506e24c305c63b13fe5768eb"
+    "mtime": 1789774983.0303206,
+    "seen": 1789775093.5711453,
+    "ast_hash": "828c480c66641f7b10938813410295ba",
+    "semantic_hash": ""
   },
   "src/jogos/competitivo/DinamicoScreen.tsx": {
     "mtime": 1787572860.0,
@@ -210,10 +210,10 @@
     "semantic_hash": "ff805b3713fe8e14dc1aa9e0d326bfb9"
   },
   "src/shared/data/bancoLoader.ts": {
-    "mtime": 1787497252.0,
-    "seen": 1789770952.8817751,
-    "ast_hash": "1cf2b609eae107162674314c2eec5f31",
-    "semantic_hash": "1cf2b609eae107162674314c2eec5f31"
+    "mtime": 1789775048.1544702,
+    "seen": 1789775093.5711942,
+    "ast_hash": "fc716f5be3029390cb1987b4588e063c",
+    "semantic_hash": ""
   },
   "src/shared/jogo/Arena.tsx": {
     "mtime": 1789773948.7136462,
@@ -270,16 +270,16 @@
     "semantic_hash": "6aa0fa469e5e0c560f5ca862075b991a"
   },
   "src/shared/types/bank.ts": {
-    "mtime": 1787497082.0,
-    "seen": 1789770952.8817997,
-    "ast_hash": "19f0b701159473d07109b66cd3714efa",
-    "semantic_hash": "19f0b701159473d07109b66cd3714efa"
+    "mtime": 1789774983.0245278,
+    "seen": 1789775093.5712118,
+    "ast_hash": "bdadc100eb64e22819040035c3d006f5",
+    "semantic_hash": ""
   },
   "src/shared/validation/normalize.ts": {
-    "mtime": 1787497195.0,
-    "seen": 1789770952.8818018,
-    "ast_hash": "4245583a5bc9060ec55e520fe7305f77",
-    "semantic_hash": "4245583a5bc9060ec55e520fe7305f77"
+    "mtime": 1789774983.026713,
+    "seen": 1789775093.5712132,
+    "ast_hash": "1b5ac5dff570f231bb5e12ced05f1a75",
+    "semantic_hash": ""
   },
   "tsconfig.app.json": {
     "mtime": 1787270464.0,
@@ -306,9 +306,9 @@
     "semantic_hash": "a3968db16fb089ccddf9df6cdea2514d"
   },
   "src/jogos/embaralhado/EmbaralhadoScreen.tsx": {
-    "mtime": 1789773948.7240455,
-    "seen": 1789773965.705398,
-    "ast_hash": "6d60801c27ede7dd151fb1f29fc5e330",
+    "mtime": 1789774983.0374725,
+    "seen": 1789775093.571165,
+    "ast_hash": "ff761af5f8eb73d112fdb4368e89d584",
     "semantic_hash": ""
   },
   "src/jogos/embaralhado/motorEmbaralhado.ts": {
@@ -318,9 +318,9 @@
     "semantic_hash": ""
   },
   "src/jogos/referencia/ReferenciaScreen.tsx": {
-    "mtime": 1789773575.9341938,
-    "seen": 1789773965.7054255,
-    "ast_hash": "7ce231e23f2f12d3a5c94bf6df959996",
+    "mtime": 1789774983.0342002,
+    "seen": 1789775093.571187,
+    "ast_hash": "cedcc2acc8869a5a030f2918e6f4373b",
     "semantic_hash": ""
   },
   "src/jogos/referencia/motorReferencia.ts": {
@@ -335,12 +335,6 @@
     "ast_hash": "023e8e8a58faf9ec48a68ab44851060b",
     "semantic_hash": ""
   },
-  "src/shared/trechos/trechos.ts": {
-    "mtime": 1789773419.5952392,
-    "seen": 1789773965.7054482,
-    "ast_hash": "3b5cf9f99e0ab53bdc59be6b3e51ea0a",
-    "semantic_hash": ""
-  },
   "src/shared/trechos/types.ts": {
     "mtime": 1789773302.302374,
     "seen": 1789773965.7054496,
@@ -348,9 +342,9 @@
     "semantic_hash": ""
   },
   "tests/trechos.test.ts": {
-    "mtime": 1789774773.6435387,
-    "seen": 1789774803.892483,
-    "ast_hash": "b7ccf15103a9558d9e74c537eededfd6",
+    "mtime": 1789775048.153227,
+    "seen": 1789775093.5712147,
+    "ast_hash": "54c93805d6ffa628047da9a5c0bf6ca3",
     "semantic_hash": ""
   },
   ".codex/skills/graphify/SKILL.md": {

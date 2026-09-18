@@ -12,12 +12,16 @@
  * edições concorrentes em que a última sincronização apaga a outra. O pior
  * caso aqui é estudar com um banco de uma semana atrás.
  *
- * Lê pela REST do Realtime Database, sem o SDK do Firebase: são três GETs de
+ * Lê pela REST do Realtime Database, sem o SDK do Firebase: são quatro GETs de
  * JSON, e o SDK inteiro custaria uns 300 KB para não fazer mais nada.
  */
 
 import { BANCO_VAZIO, type Banco } from '../types/bank';
-import { normalizeKnows, normalizeQuiz } from '../validation/normalize';
+import {
+  normalizeKnows,
+  normalizeQuiz,
+  normalizeTrechos,
+} from '../validation/normalize';
 
 const BASE = 'https://quizzer-ely-default-rtdb.firebaseio.com';
 
@@ -43,13 +47,19 @@ function lerCache(): Banco | null {
     const dados = JSON.parse(raw) as unknown;
     if (typeof dados !== 'object' || dados === null) return null;
 
-    const { perguntas, knows, versao } = dados as Partial<Banco>;
+    const { perguntas, knows, trechos, versao } = dados as Partial<Banco>;
     // Cache pela metade é o mesmo que cache nenhum: melhor buscar de novo do
-    // que abrir um app com um dos dois bancos faltando.
-    if (!Array.isArray(perguntas) || !Array.isArray(knows)) return null;
-    if (perguntas.length === 0 && knows.length === 0) return null;
+    // que abrir um app com um dos bancos faltando.
+    if (
+      !Array.isArray(perguntas) ||
+      !Array.isArray(knows) ||
+      !Array.isArray(trechos)
+    ) return null;
+    if (perguntas.length === 0 && knows.length === 0 && trechos.length === 0) {
+      return null;
+    }
 
-    return { perguntas, knows, versao: versao ?? null };
+    return { perguntas, knows, trechos, versao: versao ?? null };
   } catch {
     // JSON corrompido ou armazenamento bloqueado: segue para a rede.
     return null;
@@ -87,25 +97,31 @@ async function pegarJson(caminho: string): Promise<unknown> {
 /**
  * Busca o banco inteiro.
  *
- * Os dois arquivos vêm em paralelo — são 1,8 MB e buscá-los em fila dobraria a
+ * Os três arquivos vêm em paralelo — buscá-los em fila aumentaria a espera de
  * espera de quem não tem cache.
  */
 export async function buscarDaRede(): Promise<Banco> {
-  const [versaoBruta, quizBruto, knowsBruto] = await Promise.all([
+  const [versaoBruta, quizBruto, knowsBruto, trechosBrutos] = await Promise.all([
     pegarJson('banco/_meta/version').catch(() => null),
     pegarJson('banco/quiz'),
     pegarJson('banco/knows'),
+    pegarJson('banco/trechos'),
   ]);
 
   const banco: Banco = {
     perguntas: normalizeQuiz(quizBruto),
     knows: normalizeKnows(knowsBruto),
+    trechos: normalizeTrechos(trechosBrutos),
     versao: versaoBruta == null ? null : String(versaoBruta),
   };
 
   // Só grava o que dá para jogar. Uma resposta vazia — servidor fora do ar
   // devolvendo 200 com `null` — não pode apagar um cache que funciona.
-  if (banco.perguntas.length > 0 || banco.knows.length > 0) gravarCache(banco);
+  if (
+    banco.perguntas.length > 0 ||
+    banco.knows.length > 0 ||
+    banco.trechos.length > 0
+  ) gravarCache(banco);
 
   return banco;
 }

@@ -73,7 +73,11 @@ export const useAppStore = create<AppState>((set, get) => ({
   async buscarAgora() {
     try {
       const banco = await buscarDaRede();
-      if (banco.perguntas.length === 0 && banco.knows.length === 0) {
+      if (
+        banco.perguntas.length === 0 &&
+        banco.knows.length === 0 &&
+        banco.trechos.length === 0
+      ) {
         // Resposta vazia não substitui um cache que funciona.
         if (get().origem === 'cache') {
           set({ carregando: false });
@@ -108,4 +112,8 @@ export function usePerguntas() {
 
 export function useKnows() {
   return useAppStore((s) => s.banco.knows);
+}
+
+export function useTrechos() {
+  return useAppStore((s) => s.banco.trechos);
 }

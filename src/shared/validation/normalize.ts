@@ -25,6 +25,8 @@ import {
   type PayloadWhoAmI,
   type Pergunta,
 } from '../types/bank';
+import { prepararTrechos } from '../trechos/biblioteca';
+import type { TrechoBiblico, TrechoBruto } from '../trechos/types';
 
 /* ------------------------------------------------------------------ *
  * Leitores de campo
@@ -310,4 +312,37 @@ export function normalizeKnows(raw: unknown): KnowsItem[] {
   return lista
     .map((item, i) => normalizeKnowsItem(item, i))
     .filter((item): item is KnowsItem => item !== null);
+}
+
+/* ------------------------------------------------------------------ *
+ * Trechos — base dos dois jogos de citações
+ * ------------------------------------------------------------------ */
+
+function normalizeTrecho(raw: unknown, indice: number): TrechoBiblico | null {
+  if (!isRecord(raw)) return null;
+
+  const trecho: TrechoBruto = {
+    id: texto(raw.id) || `trecho_${indice}`,
+    trecho: texto(raw.trecho),
+    referencia: texto(raw.referencia),
+    temas: Array.isArray(raw.temas)
+      ? raw.temas.filter((tema): tema is number => Number.isInteger(tema))
+      : [],
+  };
+  if (!trecho.trecho || !trecho.referencia) return null;
+
+  try {
+    return prepararTrechos([trecho])[0] ?? null;
+  } catch {
+    // Livro desconhecido invalida somente este trecho, não o banco inteiro.
+    return null;
+  }
+}
+
+export function normalizeTrechos(raw: unknown): TrechoBiblico[] {
+  if (!isRecord(raw)) return [];
+  const lista = Array.isArray(raw.items) ? raw.items : [];
+  return lista
+    .map((item, indice) => normalizeTrecho(item, indice))
+    .filter((item): item is TrechoBiblico => item !== null);
 }

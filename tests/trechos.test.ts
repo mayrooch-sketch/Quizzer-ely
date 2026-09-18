@@ -3,7 +3,7 @@ import {
   LIVROS_BIBLICOS,
   contarPalavras,
 } from '../src/shared/trechos/biblioteca';
-import { TRECHOS_BIBLICOS } from '../src/shared/trechos/trechos';
+import { normalizeTrechos } from '../src/shared/validation/normalize';
 import {
   criarPecas,
   ordemEstaCorreta,
@@ -14,21 +14,62 @@ import {
   separarLocalDaReferencia,
 } from '../src/jogos/referencia/motorReferencia';
 
+const TRECHOS_TESTE = normalizeTrechos({
+  items: [
+    {
+      id: 'corintios',
+      trecho: 'O próprio Filho também se sujeitará Àquele que lhe sujeitou todas as coisas.',
+      referencia: '1 Coríntios 15:28',
+      temas: [5],
+    },
+    {
+      id: 'mateus',
+      trecho: 'Venha o teu Reino. Seja feita a tua vontade, como no céu, assim também na terra.',
+      referencia: 'Mateus 6:10',
+      temas: [5],
+    },
+    {
+      id: 'mateus-composta',
+      trecho: 'Eles estipularam para ele trinta moedas de prata.',
+      referencia: 'Mateus 26:14, 15; 27:5',
+      temas: [6],
+    },
+    {
+      id: 'salmo',
+      trecho: 'Seu prazer está na lei de Jeová.',
+      referencia: 'Salmo 1:1-3',
+      temas: [1],
+    },
+    {
+      id: 'joao',
+      trecho: 'Todos os que estão nos túmulos memoriais ouvirão a sua voz.',
+      referencia: 'João 5:28, 29',
+      temas: [11],
+    },
+    {
+      id: 'atos',
+      trecho: 'Ele não está longe de cada um de nós.',
+      referencia: 'Atos 17:27',
+      temas: [2],
+    },
+  ],
+});
+
 describe('biblioteca compartilhada', () => {
   it('mantém os 66 livros em uma classificação única', () => {
     expect(LIVROS_BIBLICOS).toHaveLength(66);
     expect(new Set(LIVROS_BIBLICOS.map((livro) => livro.nome)).size).toBe(66);
   });
 
-  it('mantém as 103 referências únicas da seleção', () => {
-    expect(TRECHOS_BIBLICOS).toHaveLength(103);
+  it('normaliza os trechos recebidos do banco', () => {
+    expect(TRECHOS_TESTE).toHaveLength(6);
     expect(
-      new Set(TRECHOS_BIBLICOS.map((trecho) => trecho.referencia)).size,
-    ).toBe(103);
+      new Set(TRECHOS_TESTE.map((trecho) => trecho.referencia)).size,
+    ).toBe(6);
   });
 
   it('entrega fragmentos jogáveis e sem endereço externo', () => {
-    for (const trecho of TRECHOS_BIBLICOS) {
+    for (const trecho of TRECHOS_TESTE) {
       expect(contarPalavras(trecho.trecho)).toBeGreaterThanOrEqual(4);
       expect(contarPalavras(trecho.trecho)).toBeLessThanOrEqual(20);
       expect(trecho.trecho).not.toContain('…');
@@ -39,8 +80,8 @@ describe('biblioteca compartilhada', () => {
 
 describe('Encontre a referência', () => {
   it('termina com capítulo e versículo separados, ambos com quatro opções', () => {
-    for (const trecho of TRECHOS_BIBLICOS) {
-      const etapas = criarEtapas(trecho, TRECHOS_BIBLICOS, () => 0.37);
+    for (const trecho of TRECHOS_TESTE) {
+      const etapas = criarEtapas(trecho, TRECHOS_TESTE, () => 0.37);
       for (const etapa of etapas) {
         expect(etapa.opcoes).toContain(etapa.correta);
         expect(new Set(etapa.opcoes).size).toBe(etapa.opcoes.length);
@@ -53,7 +94,7 @@ describe('Encontre a referência', () => {
   });
 
   it('separa também uma referência que passa por dois capítulos', () => {
-    const trecho = TRECHOS_BIBLICOS.find(
+    const trecho = TRECHOS_TESTE.find(
       (item) => item.referencia === 'Mateus 26:14, 15; 27:5',
     )!;
     expect(separarLocalDaReferencia(trecho)).toEqual({
@@ -73,8 +114,8 @@ describe('Texto embaralhado', () => {
   });
 
   it('mistura quatro palavras vindas de quatro textos diferentes', () => {
-    const atual = TRECHOS_BIBLICOS[0];
-    const pecas = criarPecas(atual, TRECHOS_BIBLICOS, () => 0.41);
+    const atual = TRECHOS_TESTE[0];
+    const pecas = criarPecas(atual, TRECHOS_TESTE, () => 0.41);
     const intrusas = pecas.filter((peca) => peca.posicaoCorreta === null);
     expect(intrusas).toHaveLength(4);
     expect(new Set(intrusas.map((peca) => peca.origemId)).size).toBe(4);
@@ -82,8 +123,8 @@ describe('Texto embaralhado', () => {
   });
 
   it('não aceita prefixo, palavra intrusa ou ordem errada', () => {
-    const atual = TRECHOS_BIBLICOS[0];
-    const pecas = criarPecas(atual, TRECHOS_BIBLICOS, () => 0.53);
+    const atual = TRECHOS_TESTE[0];
+    const pecas = criarPecas(atual, TRECHOS_TESTE, () => 0.53);
     const corretas = pecas
       .filter((peca) => peca.posicaoCorreta !== null)
       .sort((a, b) => (a.posicaoCorreta ?? 0) - (b.posicaoCorreta ?? 0));

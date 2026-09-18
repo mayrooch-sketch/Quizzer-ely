@@ -1,13 +1,14 @@
 import { useState } from 'react';
+import { useTrechos } from '../../app/store';
 import { Arena } from '../../shared/jogo/Arena';
 import { useBaralho, usePlacar, type Placar } from '../../shared/jogo/useBaralho';
-import { TRECHOS_BIBLICOS } from '../../shared/trechos/trechos';
 import type { TrechoBiblico } from '../../shared/trechos/types';
 import { criarEtapas } from './motorReferencia';
 import './referencia.css';
 
 export function ReferenciaScreen() {
-  const baralho = useBaralho(TRECHOS_BIBLICOS);
+  const trechos = useTrechos();
+  const baralho = useBaralho(trechos);
   const placar = usePlacar();
 
   if (!baralho.atual) return <p>Nenhum trecho disponível.</p>;
@@ -16,6 +17,7 @@ export function ReferenciaScreen() {
     <Rodada
       key={baralho.atual.id}
       trecho={baralho.atual}
+      todos={trechos}
       placar={placar}
       progresso={{ posicao: baralho.posicao, total: baralho.total }}
       aoSeguir={baralho.proxima}
@@ -25,16 +27,18 @@ export function ReferenciaScreen() {
 
 function Rodada({
   trecho,
+  todos,
   placar,
   progresso,
   aoSeguir,
 }: {
   trecho: TrechoBiblico;
+  todos: readonly TrechoBiblico[];
   placar: Placar;
   progresso: { posicao: number; total: number };
   aoSeguir: () => void;
 }) {
-  const [etapas] = useState(() => criarEtapas(trecho, TRECHOS_BIBLICOS));
+  const [etapas] = useState(() => criarEtapas(trecho, todos));
   const [indice, setIndice] = useState(0);
   const [feedback, setFeedback] = useState<'quente' | 'frio' | null>(null);
   const [teveErro, setTeveErro] = useState(false);
