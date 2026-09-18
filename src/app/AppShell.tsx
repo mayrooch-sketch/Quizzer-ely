@@ -2,7 +2,7 @@
  * Casca do app.
  *
  * Topo com o nome da tela e, fora da home, a seta de voltar. Não há menu
- * lateral: os dezesseis jogos cabem na home, e um menu seria um segundo
+ * lateral: os dezoito jogos cabem na home, e um menu seria um segundo
  * caminho para a mesma lista.
  *
  * A seta volta sempre para a home, e não para a tela anterior do histórico.

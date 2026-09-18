@@ -10,8 +10,8 @@
  * há cabeçalho interno nem etiqueta de tipo. O nome do jogo já está na barra
  * do topo.
  *
- * Os dezesseis jogos entram aqui. Mexer no espaçamento dos botões passa a ser
- * uma linha, dezesseis telas — no app antigo era dezesseis lugares, e é assim
+ * Os dezoito jogos entram aqui. Mexer no espaçamento dos botões passa a ser
+ * uma linha, dezoito telas — no app antigo era dezesseis lugares, e é assim
  * que ele foi ficando desalinhado sozinho.
  */
 

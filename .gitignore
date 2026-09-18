@@ -26,3 +26,4 @@ dist-ssr
 # Graphify local/regenerable files
 graphify-out/cache/
 graphify-out/cost.json
+graphify-out/20??-??-??/

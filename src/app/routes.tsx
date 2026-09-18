@@ -4,7 +4,7 @@
  * `TELAS` é um `Record` completo, não um `Partial`: **acrescentar um jogo ao
  * catálogo sem escrever a tela dele não compila**. Enquanto faltavam jogos a
  * portar, aqui havia um cartaz de "em breve" e um `??` para cair nele; agora
- * que os dezesseis existem, quem garante que nenhum link leva a lugar nenhum é
+ * que os dezoito existem, quem garante que nenhum link leva a lugar nenhum é
  * o compilador.
  */
 
@@ -32,6 +32,8 @@ import { CruzadasScreen } from '../jogos/palavras/CruzadasScreen';
 
 import { MemoriaScreen } from '../jogos/tabuleiro/MemoriaScreen';
 import { BingoScreen } from '../jogos/tabuleiro/BingoScreen';
+import { ReferenciaScreen } from '../jogos/referencia/ReferenciaScreen';
+import { EmbaralhadoScreen } from '../jogos/embaralhado/EmbaralhadoScreen';
 
 /** Jogo → tela. Um por `JogoId`, sem falta. */
 const TELAS: Record<JogoId, React.ReactElement> = {
@@ -41,6 +43,7 @@ const TELAS: Record<JogoId, React.ReactElement> = {
   association: <AssociationScreen />,
   whoami: <WhoAmIScreen />,
   order: <OrderScreen />,
+  'encontre-referencia': <ReferenciaScreen />,
 
   'quiz-categoria': <QuizCategoriaScreen />,
   'contra-relogio': <ContraRelogioScreen />,
@@ -51,6 +54,7 @@ const TELAS: Record<JogoId, React.ReactElement> = {
   anagrama: <AnagramaScreen />,
   forca: <ForcaScreen />,
   cruzadas: <CruzadasScreen />,
+  'texto-embaralhado': <EmbaralhadoScreen />,
 
   memoria: <MemoriaScreen />,
   bingo: <BingoScreen />,

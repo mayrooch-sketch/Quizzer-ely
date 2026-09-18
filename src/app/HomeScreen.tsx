@@ -1,5 +1,5 @@
 /**
- * A home — os dezesseis jogos, nos quatro grupos do app antigo.
+ * A home — os dezoito jogos, nos quatro grupos do app.
  *
  * Cada bloco é um cartão e cada jogo é um link de verdade (`<Link>`, não um
  * `<button>` que navega): dá para abrir em outra aba, o navegador mostra o
@@ -7,7 +7,7 @@
  *
  * O estado do banco aparece aqui e em nenhum outro lugar. É a única tela que
  * todo mundo vê antes de jogar, e avisar em cada jogo repetiria a mesma frase
- * dezesseis vezes.
+ * dezoito vezes.
  */
 
 import { Link } from 'react-router-dom';

@@ -157,7 +157,7 @@ button:disabled {
  * Um atributo só, `data-grupo`, e tudo abaixo dele se pinta sozinho. A home
  * põe no cartão; a casca põe enquanto um jogo está aberto. Nenhum jogo sabe
  * a própria cor — acrescentar um grupo é acrescentar um bloco aqui, não
- * visitar dezesseis arquivos.
+ * visitar dezoito arquivos.
  * ------------------------------------------------------------------ */
 
 [data-grupo='competitivo'] {

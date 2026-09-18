@@ -1,0 +1,67 @@
+.embaralhado__area,
+.embaralhado__banco {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: var(--sp-8);
+  padding: var(--sp-12);
+  border-radius: var(--r-md);
+}
+
+.embaralhado__area {
+  min-height: 76px;
+  border: 2px dashed var(--border-mid);
+  background: color-mix(in srgb, var(--c-grupo) 5%, var(--surf-card));
+}
+
+.embaralhado__banco {
+  border: 1px solid var(--border);
+  background: var(--surf-raised);
+}
+
+.embaralhado__vazio {
+  align-self: center;
+  color: var(--ink3);
+  font-size: var(--fs-sm);
+}
+
+.palavra {
+  min-height: 38px;
+  padding: var(--sp-4) var(--sp-12);
+  border: 1px solid var(--border-mid);
+  border-radius: var(--r-pill);
+  background: var(--surf-card);
+  color: var(--ink);
+  font-size: var(--fs-sm);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-fast), background var(--transition-fast);
+}
+
+.palavra:hover:not(:disabled) {
+  background: #fff;
+  transform: translateY(-1px);
+}
+
+.palavra--montada {
+  border-color: var(--c-grupo);
+  background: color-mix(in srgb, var(--c-grupo) 12%, white);
+}
+
+.palavra:disabled {
+  opacity: 1;
+}
+
+.embaralhado__resultado {
+  display: grid;
+  gap: var(--sp-4);
+}
+
+.embaralhado__resultado q {
+  font-size: var(--fs-sm);
+  line-height: 1.35;
+}
+
+.embaralhado__resultado strong {
+  color: var(--c-grupo-ink);
+  font-size: var(--fs-sm);
+}

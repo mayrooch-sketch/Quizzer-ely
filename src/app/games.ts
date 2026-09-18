@@ -42,6 +42,8 @@ export type JogoId =
   | 'association'
   | 'whoami'
   | 'order'
+  | 'encontre-referencia'
+  | 'texto-embaralhado'
   | 'memoria'
   | 'bingo';
 
@@ -58,7 +60,7 @@ export interface Jogo {
    */
   descricao: string;
   /** De qual banco o jogo se alimenta. Governa o aviso de banco vazio. */
-  fonte: 'quiz' | 'knows' | 'palavras';
+  fonte: 'quiz' | 'knows' | 'palavras' | 'trechos';
 }
 
 export const JOGOS: Jogo[] = [
@@ -175,6 +177,22 @@ export const JOGOS: Jogo[] = [
     grupo: 'conhecimento',
     descricao: 'Coloque os acontecimentos na sequência certa.',
     fonte: 'knows',
+  },
+  {
+    id: 'encontre-referencia',
+    label: 'Encontre a referência',
+    emoji: '🚪',
+    grupo: 'conhecimento',
+    descricao: 'Siga as pistas até encontrar de onde vem o trecho.',
+    fonte: 'trechos',
+  },
+  {
+    id: 'texto-embaralhado',
+    label: 'Texto embaralhado',
+    emoji: '🧱',
+    grupo: 'palavras',
+    descricao: 'Organize as palavras e descubra a referência.',
+    fonte: 'trechos',
   },
 
   {

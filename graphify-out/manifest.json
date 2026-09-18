@@ -12,10 +12,10 @@
     "semantic_hash": "029f4905006c1fffd96bc863e2d98d3e"
   },
   "package.json": {
-    "mtime": 1787496952.0,
-    "seen": 1789770952.881696,
-    "ast_hash": "822396c002ca689f8079d649a2304f7c",
-    "semantic_hash": "822396c002ca689f8079d649a2304f7c"
+    "mtime": 1789773682.4006102,
+    "seen": 1789773965.7053678,
+    "ast_hash": "1b6315cd951fe75f9d30f9d92528b3a8",
+    "semantic_hash": ""
   },
   "public/sw.js": {
     "mtime": 1787538873.0,
@@ -30,28 +30,28 @@
     "semantic_hash": "fae7c97cd04a5746338c3ee24f2e1133"
   },
   "src/app/AppShell.tsx": {
-    "mtime": 1787586697.0,
-    "seen": 1789770952.8817039,
-    "ast_hash": "33dd3a74cdd465d18332ea5dbcdbf3b1",
-    "semantic_hash": "33dd3a74cdd465d18332ea5dbcdbf3b1"
+    "mtime": 1789773948.7081754,
+    "seen": 1789773965.7053742,
+    "ast_hash": "237e71df3618010f7c7dc0f302e135f7",
+    "semantic_hash": ""
   },
   "src/app/HomeScreen.tsx": {
-    "mtime": 1787582924.0,
-    "seen": 1789770952.8817067,
-    "ast_hash": "2b68a969de708f08c62ca991b5503647",
-    "semantic_hash": "2b68a969de708f08c62ca991b5503647"
+    "mtime": 1789773948.7117202,
+    "seen": 1789773965.705376,
+    "ast_hash": "ae7bb9150a93a2caf49dd9580ebcb859",
+    "semantic_hash": ""
   },
   "src/app/games.ts": {
-    "mtime": 1787499377.0,
-    "seen": 1789770952.881709,
-    "ast_hash": "a4334ae6ccc320824f9485ec255ea76b",
-    "semantic_hash": "a4334ae6ccc320824f9485ec255ea76b"
+    "mtime": 1789773591.5518267,
+    "seen": 1789773965.7053773,
+    "ast_hash": "a21c80ea84d849b716abe1694f3dcd0f",
+    "semantic_hash": ""
   },
   "src/app/routes.tsx": {
-    "mtime": 1787536339.0,
-    "seen": 1789770952.8817112,
-    "ast_hash": "7f7e2a7b8737bcb8194f63ee47756a83",
-    "semantic_hash": "7f7e2a7b8737bcb8194f63ee47756a83"
+    "mtime": 1789773948.7107196,
+    "seen": 1789773965.705379,
+    "ast_hash": "b075cefd0211e4729af5bbef5d4555cb",
+    "semantic_hash": ""
   },
   "src/app/store.ts": {
     "mtime": 1787497270.0,
@@ -216,10 +216,10 @@
     "semantic_hash": "1cf2b609eae107162674314c2eec5f31"
   },
   "src/shared/jogo/Arena.tsx": {
-    "mtime": 1787499418.0,
-    "seen": 1789770952.8817778,
-    "ast_hash": "8cd8e49b4d4a8b0698ffc03e55d1f525",
-    "semantic_hash": "8cd8e49b4d4a8b0698ffc03e55d1f525"
+    "mtime": 1789773948.7136462,
+    "seen": 1789773965.7054338,
+    "ast_hash": "c505d354dc2965d4827a378b5bde22f6",
+    "semantic_hash": ""
   },
   "src/shared/jogo/Dado.tsx": {
     "mtime": 1787572669.0,
@@ -304,5 +304,155 @@
     "seen": 1789770952.8818111,
     "ast_hash": "a3968db16fb089ccddf9df6cdea2514d",
     "semantic_hash": "a3968db16fb089ccddf9df6cdea2514d"
+  },
+  "src/jogos/embaralhado/EmbaralhadoScreen.tsx": {
+    "mtime": 1789773948.7240455,
+    "seen": 1789773965.705398,
+    "ast_hash": "6d60801c27ede7dd151fb1f29fc5e330",
+    "semantic_hash": ""
+  },
+  "src/jogos/embaralhado/motorEmbaralhado.ts": {
+    "mtime": 1789773575.9331734,
+    "seen": 1789773965.7053995,
+    "ast_hash": "855b366ed02f1da5015120fceee12d11",
+    "semantic_hash": ""
+  },
+  "src/jogos/referencia/ReferenciaScreen.tsx": {
+    "mtime": 1789773575.9341938,
+    "seen": 1789773965.7054255,
+    "ast_hash": "7ce231e23f2f12d3a5c94bf6df959996",
+    "semantic_hash": ""
+  },
+  "src/jogos/referencia/motorReferencia.ts": {
+    "mtime": 1789773474.4239845,
+    "seen": 1789773965.7054267,
+    "ast_hash": "eb87004abdbc21cf55398d4fa4a5835d",
+    "semantic_hash": ""
+  },
+  "src/shared/trechos/biblioteca.ts": {
+    "mtime": 1789773302.304455,
+    "seen": 1789773965.7054472,
+    "ast_hash": "023e8e8a58faf9ec48a68ab44851060b",
+    "semantic_hash": ""
+  },
+  "src/shared/trechos/trechos.ts": {
+    "mtime": 1789773419.5952392,
+    "seen": 1789773965.7054482,
+    "ast_hash": "3b5cf9f99e0ab53bdc59be6b3e51ea0a",
+    "semantic_hash": ""
+  },
+  "src/shared/trechos/types.ts": {
+    "mtime": 1789773302.302374,
+    "seen": 1789773965.7054496,
+    "ast_hash": "5be97c88e1d371ff182b7edca47b0c6b",
+    "semantic_hash": ""
+  },
+  "tests/trechos.test.ts": {
+    "mtime": 1789773693.5086198,
+    "seen": 1789773965.7054536,
+    "ast_hash": "4b03a06e993bf49f80a098b1fd8adbce",
+    "semantic_hash": ""
+  },
+  ".codex/skills/graphify/SKILL.md": {
+    "mtime": 1789770938.6670294,
+    "seen": 1789773965.7054608,
+    "ast_hash": "212b55d95333d84e14262f8ec83faa2b",
+    "semantic_hash": ""
+  },
+  ".codex/skills/graphify/references/add-watch.md": {
+    "mtime": 1789770913.5823205,
+    "seen": 1789773965.705462,
+    "ast_hash": "d59d027fe449f06aa03905a01184e779",
+    "semantic_hash": ""
+  },
+  ".codex/skills/graphify/references/exports.md": {
+    "mtime": 1789770913.618654,
+    "seen": 1789773965.705463,
+    "ast_hash": "9da2a2152e60a22f07f05fed5158f287",
+    "semantic_hash": ""
+  },
+  ".codex/skills/graphify/references/extraction-spec.md": {
+    "mtime": 1789770913.621415,
+    "seen": 1789773965.7054644,
+    "ast_hash": "bf895ec4d4e40f5f66f7d31c2a9bd4a7",
+    "semantic_hash": ""
+  },
+  ".codex/skills/graphify/references/github-and-merge.md": {
+    "mtime": 1789770913.6235585,
+    "seen": 1789773965.705465,
+    "ast_hash": "cde13df085e4c492aeb7ba298a996d0d",
+    "semantic_hash": ""
+  },
+  ".codex/skills/graphify/references/hooks.md": {
+    "mtime": 1789770913.6255693,
+    "seen": 1789773965.705466,
+    "ast_hash": "3f545db6ce646650bb9de588f5512a27",
+    "semantic_hash": ""
+  },
+  ".codex/skills/graphify/references/query.md": {
+    "mtime": 1789770913.6295965,
+    "seen": 1789773965.7054675,
+    "ast_hash": "3c46f8ad006874260614ed8657d02307",
+    "semantic_hash": ""
+  },
+  ".codex/skills/graphify/references/transcribe.md": {
+    "mtime": 1789770913.6336179,
+    "seen": 1789773965.7054684,
+    "ast_hash": "67b6a5fa6c0974e18f60db9f8932fbd8",
+    "semantic_hash": ""
+  },
+  ".codex/skills/graphify/references/update.md": {
+    "mtime": 1789770913.6356304,
+    "seen": 1789773965.7054694,
+    "ast_hash": "9378bd03d56baaf78bd738ab3848f142",
+    "semantic_hash": ""
+  },
+  "AGENTS.md": {
+    "mtime": 1789770938.6770368,
+    "seen": 1789773965.7054706,
+    "ast_hash": "21ceb6533048be51308e69e7b74a35cf",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1789773948.7268062,
+    "seen": 1789773965.7054715,
+    "ast_hash": "6519c4e628d95b62f3b98bf065484aee",
+    "semantic_hash": ""
+  },
+  "index.html": {
+    "mtime": 1787538733.0,
+    "seen": 1789773965.7054725,
+    "ast_hash": "64fa2b9693cdb1015992fc84efb01987",
+    "semantic_hash": ""
+  },
+  "public/apple-touch-icon.png": {
+    "mtime": 1787538476.0,
+    "seen": 1789773965.7054734,
+    "ast_hash": "5c54466c708cffea92b18ce6b53a163e",
+    "semantic_hash": ""
+  },
+  "public/favicon.svg": {
+    "mtime": 1787538301.0,
+    "seen": 1789773965.7054746,
+    "ast_hash": "ba584985f10c5840cdc5e40c70d5b7bc",
+    "semantic_hash": ""
+  },
+  "public/icone-192.png": {
+    "mtime": 1787538676.0,
+    "seen": 1789773965.7054756,
+    "ast_hash": "97376035a6e31a5157295c565db97b82",
+    "semantic_hash": ""
+  },
+  "public/icone-maskable.svg": {
+    "mtime": 1787538301.0,
+    "seen": 1789773965.7054768,
+    "ast_hash": "ef0f57637feefa1eead35b89eb053aa4",
+    "semantic_hash": ""
+  },
+  "public/icone.svg": {
+    "mtime": 1787538301.0,
+    "seen": 1789773965.705478,
+    "ast_hash": "ba584985f10c5840cdc5e40c70d5b7bc",
+    "semantic_hash": ""
   }
 }

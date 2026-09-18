@@ -100,4 +100,4 @@ Três lugares valem conhecer antes de mexer:
   **não compila**.
 - **[`src/shared/jogo/Arena.tsx`](src/shared/jogo/Arena.tsx)** é a casca de
   toda partida: enunciado parado no alto, miolo rolando no meio, ações presas
-  embaixo. Mexer no espaçamento dos botões é uma linha, dezesseis telas.
+  embaixo. Mexer no espaçamento dos botões é uma linha, dezoito telas.
