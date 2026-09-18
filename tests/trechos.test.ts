@@ -9,7 +9,10 @@ import {
   ordemEstaCorreta,
   tokenizar,
 } from '../src/jogos/embaralhado/motorEmbaralhado';
-import { criarEtapas } from '../src/jogos/referencia/motorReferencia';
+import {
+  criarEtapas,
+  separarLocalDaReferencia,
+} from '../src/jogos/referencia/motorReferencia';
 
 describe('biblioteca compartilhada', () => {
   it('mantém os 66 livros em uma classificação única', () => {
@@ -35,17 +38,28 @@ describe('biblioteca compartilhada', () => {
 });
 
 describe('Encontre a referência', () => {
-  it('sempre inclui a resposta correta e quatro referências no final', () => {
+  it('termina com capítulo e versículo separados, ambos com quatro opções', () => {
     for (const trecho of TRECHOS_BIBLICOS) {
       const etapas = criarEtapas(trecho, TRECHOS_BIBLICOS, () => 0.37);
       for (const etapa of etapas) {
         expect(etapa.opcoes).toContain(etapa.correta);
         expect(new Set(etapa.opcoes).size).toBe(etapa.opcoes.length);
       }
-      const final = etapas.at(-1);
-      expect(final?.tipo).toBe('referencia');
-      expect(final?.opcoes).toHaveLength(4);
+      expect(etapas.at(-2)?.tipo).toBe('capitulo');
+      expect(etapas.at(-2)?.opcoes).toHaveLength(4);
+      expect(etapas.at(-1)?.tipo).toBe('versiculo');
+      expect(etapas.at(-1)?.opcoes).toHaveLength(4);
     }
+  });
+
+  it('separa também uma referência que passa por dois capítulos', () => {
+    const trecho = TRECHOS_BIBLICOS.find(
+      (item) => item.referencia === 'Mateus 26:14, 15; 27:5',
+    )!;
+    expect(separarLocalDaReferencia(trecho)).toEqual({
+      capitulo: '26 e 27',
+      versiculo: '14, 15 e 5',
+    });
   });
 });
 

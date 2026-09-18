@@ -324,9 +324,9 @@
     "semantic_hash": ""
   },
   "src/jogos/referencia/motorReferencia.ts": {
-    "mtime": 1789773474.4239845,
-    "seen": 1789773965.7054267,
-    "ast_hash": "eb87004abdbc21cf55398d4fa4a5835d",
+    "mtime": 1789774773.6430254,
+    "seen": 1789774803.8924553,
+    "ast_hash": "ebd85281b63eaa3330057fc80728d19f",
     "semantic_hash": ""
   },
   "src/shared/trechos/biblioteca.ts": {
@@ -348,9 +348,9 @@
     "semantic_hash": ""
   },
   "tests/trechos.test.ts": {
-    "mtime": 1789773693.5086198,
-    "seen": 1789773965.7054536,
-    "ast_hash": "4b03a06e993bf49f80a098b1fd8adbce",
+    "mtime": 1789774773.6435387,
+    "seen": 1789774803.892483,
+    "ast_hash": "b7ccf15103a9558d9e74c537eededfd6",
     "semantic_hash": ""
   },
   ".codex/skills/graphify/SKILL.md": {
