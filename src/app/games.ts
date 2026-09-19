@@ -190,7 +190,7 @@ export const JOGOS: Jogo[] = [
     id: 'texto-embaralhado',
     label: 'Texto embaralhado',
     emoji: '🧱',
-    grupo: 'palavras',
+    grupo: 'conhecimento',
     descricao: 'Organize as palavras e descubra a referência.',
     fonte: 'trechos',
   },
