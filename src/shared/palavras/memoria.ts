@@ -1,7 +1,7 @@
 /**
  * A memória curta dos jogos de palavra.
  *
- * Os quatro jogos bebem do mesmo poço de 355 palavras. Sem nada que os
+ * Os jogos bebem do mesmo poço de respostas. Sem nada que os
  * ligasse, era comum sair da forca com "TABERNACULO" e cair no anagrama com
  * "TABERNACULO" — o app parecia ter meia dúzia de palavras.
  *

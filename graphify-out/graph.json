@@ -121,6 +121,19 @@
       "source_location": "L45"
     },
     {
+      "id": "src_jogos_quiz_contrarelogioscreen_fase",
+      "label": "Fase",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "routes.tsx",
+      "file_type": "code",
+      "norm_label": "fase",
+      "source_file": "src/jogos/quiz/ContraRelogioScreen.tsx",
+      "source_location": "L43"
+    },
+    {
       "id": "src_shared_jogo_arena_acaoarena",
       "label": "AcaoArena",
       "_callable": true,
@@ -355,58 +368,6 @@
       "source_location": "L20"
     },
     {
-      "id": "src_jogos_quiz_alternativas_props",
-      "label": "Props",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "ContraRelogioScreen.tsx",
-      "file_type": "code",
-      "norm_label": "props",
-      "source_file": "src/jogos/quiz/Alternativas.tsx",
-      "source_location": "L16"
-    },
-    {
-      "id": "src_jogos_quiz_contrarelogioscreen_fase",
-      "label": "Fase",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "ContraRelogioScreen.tsx",
-      "file_type": "code",
-      "norm_label": "fase",
-      "source_file": "src/jogos/quiz/ContraRelogioScreen.tsx",
-      "source_location": "L43"
-    },
-    {
-      "id": "src_shared_types_bank_letra",
-      "label": "Letra",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "ContraRelogioScreen.tsx",
-      "file_type": "code",
-      "norm_label": "letra",
-      "source_file": "src/shared/types/bank.ts",
-      "source_location": "L35"
-    },
-    {
-      "id": "src_shared_types_bank_pergunta",
-      "label": "Pergunta",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "ContraRelogioScreen.tsx",
-      "file_type": "code",
-      "norm_label": "pergunta",
-      "source_file": "src/shared/types/bank.ts",
-      "source_location": "L37"
-    },
-    {
       "id": "src_jogos_competitivo_dinamicoscreen_rolagem",
       "label": "Rolagem",
       "_callable": true,
@@ -550,6 +511,19 @@
       "source_location": "L33"
     },
     {
+      "id": "src_shared_palavras_teclado_props",
+      "label": "Props",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "DinamicoScreen.tsx",
+      "file_type": "code",
+      "norm_label": "props",
+      "source_file": "src/shared/palavras/Teclado.tsx",
+      "source_location": "L16"
+    },
+    {
       "id": "src_shared_types_bank_knowstype",
       "label": "KnowsType",
       "_callable": true,
@@ -563,19 +537,6 @@
       "source_location": "L61"
     },
     {
-      "id": "src_shared_palavras_teclado_props",
-      "label": "Props",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "Teclado.tsx",
-      "file_type": "code",
-      "norm_label": "props",
-      "source_file": "src/shared/palavras/Teclado.tsx",
-      "source_location": "L16"
-    },
-    {
       "id": "src_app_store_appstate",
       "label": "AppState",
       "_callable": true,
@@ -587,6 +548,19 @@
       "norm_label": "appstate",
       "source_file": "src/app/store.ts",
       "source_location": "L24"
+    },
+    {
+      "id": "src_jogos_quiz_alternativas_props",
+      "label": "Props",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "normalize.ts",
+      "file_type": "code",
+      "norm_label": "props",
+      "source_file": "src/jogos/quiz/Alternativas.tsx",
+      "source_location": "L16"
     },
     {
       "id": "src_shared_data_bancoloader_estadobanco",
@@ -652,6 +626,19 @@
       "norm_label": "knowsitem",
       "source_file": "src/shared/types/bank.ts",
       "source_location": "L142"
+    },
+    {
+      "id": "src_shared_types_bank_letra",
+      "label": "Letra",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "normalize.ts",
+      "file_type": "code",
+      "norm_label": "letra",
+      "source_file": "src/shared/types/bank.ts",
+      "source_location": "L35"
     },
     {
       "id": "src_shared_types_bank_payloadassociation",
@@ -730,6 +717,19 @@
       "norm_label": "payloadwhoami",
       "source_file": "src/shared/types/bank.ts",
       "source_location": "L117"
+    },
+    {
+      "id": "src_shared_types_bank_pergunta",
+      "label": "Pergunta",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "normalize.ts",
+      "file_type": "code",
+      "norm_label": "pergunta",
+      "source_file": "src/shared/types/bank.ts",
+      "source_location": "L37"
     },
     {
       "id": "src_app_games_grupo",
@@ -1297,18 +1297,6 @@
       "source_location": "L20"
     },
     {
-      "id": "src_jogos_conhecimento_orderscreen_embaralhardiferente",
-      "label": "embaralharDiferente()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "routes.tsx",
-      "file_type": "code",
-      "norm_label": "embaralhardiferente()",
-      "source_file": "src/jogos/conhecimento/OrderScreen.tsx",
-      "source_location": "L29"
-    },
-    {
       "id": "src_jogos_conhecimento_orderscreen_orderscreen",
       "label": "OrderScreen()",
       "_callable": true,
@@ -1319,42 +1307,6 @@
       "norm_label": "orderscreen()",
       "source_file": "src/jogos/conhecimento/OrderScreen.tsx",
       "source_location": "L46"
-    },
-    {
-      "id": "src_jogos_conhecimento_orderscreen_rodada",
-      "label": "Rodada()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "routes.tsx",
-      "file_type": "code",
-      "norm_label": "rodada()",
-      "source_file": "src/jogos/conhecimento/OrderScreen.tsx",
-      "source_location": "L71"
-    },
-    {
-      "id": "src_jogos_conhecimento_orderscreen_rodada_conferir",
-      "label": "conferir()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "routes.tsx",
-      "file_type": "code",
-      "norm_label": "conferir()",
-      "source_file": "src/jogos/conhecimento/OrderScreen.tsx",
-      "source_location": "L95"
-    },
-    {
-      "id": "src_jogos_conhecimento_orderscreen_rodada_mover",
-      "label": "mover()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "routes.tsx",
-      "file_type": "code",
-      "norm_label": "mover()",
-      "source_file": "src/jogos/conhecimento/OrderScreen.tsx",
-      "source_location": "L86"
     },
     {
       "id": "src_jogos_conhecimento_selectscreen_selectscreen",
@@ -1595,6 +1547,114 @@
       "norm_label": "tocar()",
       "source_file": "src/jogos/palavras/ForcaScreen.tsx",
       "source_location": "L61"
+    },
+    {
+      "id": "src_jogos_quiz_alternativas_alternativas",
+      "label": "Alternativas()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "routes.tsx",
+      "file_type": "code",
+      "norm_label": "alternativas()",
+      "source_file": "src/jogos/quiz/Alternativas.tsx",
+      "source_location": "L23"
+    },
+    {
+      "id": "src_jogos_quiz_contrarelogioscreen_contrarelogioscreen",
+      "label": "ContraRelogioScreen()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "routes.tsx",
+      "file_type": "code",
+      "norm_label": "contrarelogioscreen()",
+      "source_file": "src/jogos/quiz/ContraRelogioScreen.tsx",
+      "source_location": "L45"
+    },
+    {
+      "id": "src_jogos_quiz_contrarelogioscreen_contrarelogioscreen_comecar",
+      "label": "comecar()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "routes.tsx",
+      "file_type": "code",
+      "norm_label": "comecar()",
+      "source_file": "src/jogos/quiz/ContraRelogioScreen.tsx",
+      "source_location": "L112"
+    },
+    {
+      "id": "src_jogos_quiz_contrarelogioscreen_gravarrecorde",
+      "label": "gravarRecorde()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "routes.tsx",
+      "file_type": "code",
+      "norm_label": "gravarrecorde()",
+      "source_file": "src/jogos/quiz/ContraRelogioScreen.tsx",
+      "source_location": "L35"
+    },
+    {
+      "id": "src_jogos_quiz_contrarelogioscreen_lerrecorde",
+      "label": "lerRecorde()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "routes.tsx",
+      "file_type": "code",
+      "norm_label": "lerrecorde()",
+      "source_file": "src/jogos/quiz/ContraRelogioScreen.tsx",
+      "source_location": "L26"
+    },
+    {
+      "id": "src_jogos_quiz_quizcategoriascreen_quizcategoriascreen",
+      "label": "QuizCategoriaScreen()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "routes.tsx",
+      "file_type": "code",
+      "norm_label": "quizcategoriascreen()",
+      "source_file": "src/jogos/quiz/QuizCategoriaScreen.tsx",
+      "source_location": "L22"
+    },
+    {
+      "id": "src_jogos_quiz_quizcategoriascreen_rodadas",
+      "label": "Rodadas()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "routes.tsx",
+      "file_type": "code",
+      "norm_label": "rodadas()",
+      "source_file": "src/jogos/quiz/QuizCategoriaScreen.tsx",
+      "source_location": "L72"
+    },
+    {
+      "id": "src_jogos_quiz_quizcategoriascreen_rodadas_responder",
+      "label": "responder()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "routes.tsx",
+      "file_type": "code",
+      "norm_label": "responder()",
+      "source_file": "src/jogos/quiz/QuizCategoriaScreen.tsx",
+      "source_location": "L91"
+    },
+    {
+      "id": "src_jogos_quiz_quizcategoriascreen_rodadas_seguir",
+      "label": "seguir()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "routes.tsx",
+      "file_type": "code",
+      "norm_label": "seguir()",
+      "source_file": "src/jogos/quiz/QuizCategoriaScreen.tsx",
+      "source_location": "L97"
     },
     {
       "id": "src_jogos_referencia_referenciascreen_referenciascreen",
@@ -2146,7 +2206,19 @@
       "file_type": "code",
       "norm_label": "extrairpalavras()",
       "source_file": "src/shared/palavras/poco.ts",
-      "source_location": "L49"
+      "source_location": "L58"
+    },
+    {
+      "id": "src_shared_palavras_poco_letrasdaresposta",
+      "label": "letrasDaResposta()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 14,
+      "community_name": "poco.ts",
+      "file_type": "code",
+      "norm_label": "letrasdaresposta()",
+      "source_file": "src/shared/palavras/poco.ts",
+      "source_location": "L42"
     },
     {
       "id": "src_shared_palavras_poco_semacento",
@@ -2170,7 +2242,7 @@
       "file_type": "code",
       "norm_label": "usepocodepalavras()",
       "source_file": "src/shared/palavras/poco.ts",
-      "source_location": "L70"
+      "source_location": "L79"
     },
     {
       "id": "src_shared_validation_normalize_chavedetexto",
@@ -2189,120 +2261,12 @@
       "label": "usePerguntas()",
       "_callable": true,
       "_origin": "ast",
-      "community": 15,
-      "community_name": "ContraRelogioScreen.tsx",
+      "community": 2,
+      "community_name": "DinamicoScreen.tsx",
       "file_type": "code",
       "norm_label": "useperguntas()",
       "source_file": "src/app/store.ts",
       "source_location": "L109"
-    },
-    {
-      "id": "src_jogos_quiz_alternativas_alternativas",
-      "label": "Alternativas()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "ContraRelogioScreen.tsx",
-      "file_type": "code",
-      "norm_label": "alternativas()",
-      "source_file": "src/jogos/quiz/Alternativas.tsx",
-      "source_location": "L23"
-    },
-    {
-      "id": "src_jogos_quiz_contrarelogioscreen_contrarelogioscreen",
-      "label": "ContraRelogioScreen()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "ContraRelogioScreen.tsx",
-      "file_type": "code",
-      "norm_label": "contrarelogioscreen()",
-      "source_file": "src/jogos/quiz/ContraRelogioScreen.tsx",
-      "source_location": "L45"
-    },
-    {
-      "id": "src_jogos_quiz_contrarelogioscreen_contrarelogioscreen_comecar",
-      "label": "comecar()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "ContraRelogioScreen.tsx",
-      "file_type": "code",
-      "norm_label": "comecar()",
-      "source_file": "src/jogos/quiz/ContraRelogioScreen.tsx",
-      "source_location": "L112"
-    },
-    {
-      "id": "src_jogos_quiz_contrarelogioscreen_gravarrecorde",
-      "label": "gravarRecorde()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "ContraRelogioScreen.tsx",
-      "file_type": "code",
-      "norm_label": "gravarrecorde()",
-      "source_file": "src/jogos/quiz/ContraRelogioScreen.tsx",
-      "source_location": "L35"
-    },
-    {
-      "id": "src_jogos_quiz_contrarelogioscreen_lerrecorde",
-      "label": "lerRecorde()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "ContraRelogioScreen.tsx",
-      "file_type": "code",
-      "norm_label": "lerrecorde()",
-      "source_file": "src/jogos/quiz/ContraRelogioScreen.tsx",
-      "source_location": "L26"
-    },
-    {
-      "id": "src_jogos_quiz_quizcategoriascreen_quizcategoriascreen",
-      "label": "QuizCategoriaScreen()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "ContraRelogioScreen.tsx",
-      "file_type": "code",
-      "norm_label": "quizcategoriascreen()",
-      "source_file": "src/jogos/quiz/QuizCategoriaScreen.tsx",
-      "source_location": "L22"
-    },
-    {
-      "id": "src_jogos_quiz_quizcategoriascreen_rodadas",
-      "label": "Rodadas()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "ContraRelogioScreen.tsx",
-      "file_type": "code",
-      "norm_label": "rodadas()",
-      "source_file": "src/jogos/quiz/QuizCategoriaScreen.tsx",
-      "source_location": "L72"
-    },
-    {
-      "id": "src_jogos_quiz_quizcategoriascreen_rodadas_responder",
-      "label": "responder()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "ContraRelogioScreen.tsx",
-      "file_type": "code",
-      "norm_label": "responder()",
-      "source_file": "src/jogos/quiz/QuizCategoriaScreen.tsx",
-      "source_location": "L91"
-    },
-    {
-      "id": "src_jogos_quiz_quizcategoriascreen_rodadas_seguir",
-      "label": "seguir()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "ContraRelogioScreen.tsx",
-      "file_type": "code",
-      "norm_label": "seguir()",
-      "source_file": "src/jogos/quiz/QuizCategoriaScreen.tsx",
-      "source_location": "L97"
     },
     {
       "id": "src_jogos_competitivo_dinamicoscreen_dinamicoscreen",
@@ -2473,6 +2437,66 @@
       "source_location": "L44"
     },
     {
+      "id": "src_jogos_palavras_anagramascreen_rodada",
+      "label": "Rodada()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "DinamicoScreen.tsx",
+      "file_type": "code",
+      "norm_label": "rodada()",
+      "source_file": "src/jogos/palavras/AnagramaScreen.tsx",
+      "source_location": "L57"
+    },
+    {
+      "id": "src_jogos_palavras_anagramascreen_rodada_apagar",
+      "label": "apagar()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "DinamicoScreen.tsx",
+      "file_type": "code",
+      "norm_label": "apagar()",
+      "source_file": "src/jogos/palavras/AnagramaScreen.tsx",
+      "source_location": "L108"
+    },
+    {
+      "id": "src_jogos_palavras_anagramascreen_rodada_digitar",
+      "label": "digitar()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "DinamicoScreen.tsx",
+      "file_type": "code",
+      "norm_label": "digitar()",
+      "source_file": "src/jogos/palavras/AnagramaScreen.tsx",
+      "source_location": "L85"
+    },
+    {
+      "id": "src_jogos_palavras_anagramascreen_rodada_pedirajuda",
+      "label": "pedirAjuda()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "DinamicoScreen.tsx",
+      "file_type": "code",
+      "norm_label": "pedirajuda()",
+      "source_file": "src/jogos/palavras/AnagramaScreen.tsx",
+      "source_location": "L121"
+    },
+    {
+      "id": "src_jogos_palavras_usefiladepalavras_embaralharletras",
+      "label": "embaralharLetras()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "DinamicoScreen.tsx",
+      "file_type": "code",
+      "norm_label": "embaralharletras()",
+      "source_file": "src/jogos/palavras/useFilaDePalavras.ts",
+      "source_location": "L76"
+    },
+    {
       "id": "src_jogos_quiz_competitivoscreen_competitivoscreen",
       "label": "CompetitivoScreen()",
       "_callable": true,
@@ -2569,72 +2593,12 @@
       "source_location": "L9"
     },
     {
-      "id": "src_jogos_palavras_anagramascreen_rodada",
-      "label": "Rodada()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "Teclado.tsx",
-      "file_type": "code",
-      "norm_label": "rodada()",
-      "source_file": "src/jogos/palavras/AnagramaScreen.tsx",
-      "source_location": "L57"
-    },
-    {
-      "id": "src_jogos_palavras_anagramascreen_rodada_apagar",
-      "label": "apagar()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "Teclado.tsx",
-      "file_type": "code",
-      "norm_label": "apagar()",
-      "source_file": "src/jogos/palavras/AnagramaScreen.tsx",
-      "source_location": "L108"
-    },
-    {
-      "id": "src_jogos_palavras_anagramascreen_rodada_digitar",
-      "label": "digitar()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "Teclado.tsx",
-      "file_type": "code",
-      "norm_label": "digitar()",
-      "source_file": "src/jogos/palavras/AnagramaScreen.tsx",
-      "source_location": "L85"
-    },
-    {
-      "id": "src_jogos_palavras_anagramascreen_rodada_pedirajuda",
-      "label": "pedirAjuda()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "Teclado.tsx",
-      "file_type": "code",
-      "norm_label": "pedirajuda()",
-      "source_file": "src/jogos/palavras/AnagramaScreen.tsx",
-      "source_location": "L121"
-    },
-    {
-      "id": "src_jogos_palavras_usefiladepalavras_embaralharletras",
-      "label": "embaralharLetras()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "Teclado.tsx",
-      "file_type": "code",
-      "norm_label": "embaralharletras()",
-      "source_file": "src/jogos/palavras/useFilaDePalavras.ts",
-      "source_location": "L76"
-    },
-    {
       "id": "src_shared_palavras_teclado_teclado",
       "label": "Teclado()",
       "_callable": true,
       "_origin": "ast",
-      "community": 4,
-      "community_name": "Teclado.tsx",
+      "community": 2,
+      "community_name": "DinamicoScreen.tsx",
       "file_type": "code",
       "norm_label": "teclado()",
       "source_file": "src/shared/palavras/Teclado.tsx",
@@ -2645,12 +2609,60 @@
       "label": "ordemDeTeclado()",
       "_callable": true,
       "_origin": "ast",
-      "community": 4,
-      "community_name": "Teclado.tsx",
+      "community": 2,
+      "community_name": "DinamicoScreen.tsx",
       "file_type": "code",
       "norm_label": "ordemdeteclado()",
       "source_file": "src/shared/palavras/teclas.ts",
       "source_location": "L20"
+    },
+    {
+      "id": "src_jogos_conhecimento_orderscreen_embaralhardiferente",
+      "label": "embaralharDiferente()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "Rodada",
+      "file_type": "code",
+      "norm_label": "embaralhardiferente()",
+      "source_file": "src/jogos/conhecimento/OrderScreen.tsx",
+      "source_location": "L29"
+    },
+    {
+      "id": "src_jogos_conhecimento_orderscreen_rodada",
+      "label": "Rodada()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "Rodada",
+      "file_type": "code",
+      "norm_label": "rodada()",
+      "source_file": "src/jogos/conhecimento/OrderScreen.tsx",
+      "source_location": "L71"
+    },
+    {
+      "id": "src_jogos_conhecimento_orderscreen_rodada_conferir",
+      "label": "conferir()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "Rodada",
+      "file_type": "code",
+      "norm_label": "conferir()",
+      "source_file": "src/jogos/conhecimento/OrderScreen.tsx",
+      "source_location": "L95"
+    },
+    {
+      "id": "src_jogos_conhecimento_orderscreen_rodada_mover",
+      "label": "mover()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "Rodada",
+      "file_type": "code",
+      "norm_label": "mover()",
+      "source_file": "src/jogos/conhecimento/OrderScreen.tsx",
+      "source_location": "L86"
     },
     {
       "id": "src_shared_data_bancoloader_buscardarede",
@@ -3498,6 +3510,28 @@
       "source_location": "L1"
     },
     {
+      "id": "src_jogos_quiz_contrarelogioscreen",
+      "label": "ContraRelogioScreen.tsx",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "routes.tsx",
+      "file_type": "code",
+      "norm_label": "contrarelogioscreen.tsx",
+      "source_file": "src/jogos/quiz/ContraRelogioScreen.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_jogos_quiz_quizcategoriascreen",
+      "label": "QuizCategoriaScreen.tsx",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "routes.tsx",
+      "file_type": "code",
+      "norm_label": "quizcategoriascreen.tsx",
+      "source_file": "src/jogos/quiz/QuizCategoriaScreen.tsx",
+      "source_location": "L1"
+    },
+    {
       "id": "src_jogos_referencia_referenciascreen",
       "label": "ReferenciaScreen.tsx",
       "_origin": "ast",
@@ -4077,39 +4111,6 @@
       "source_location": "L1"
     },
     {
-      "id": "src_jogos_quiz_alternativas",
-      "label": "Alternativas.tsx",
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "ContraRelogioScreen.tsx",
-      "file_type": "code",
-      "norm_label": "alternativas.tsx",
-      "source_file": "src/jogos/quiz/Alternativas.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_jogos_quiz_contrarelogioscreen",
-      "label": "ContraRelogioScreen.tsx",
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "ContraRelogioScreen.tsx",
-      "file_type": "code",
-      "norm_label": "contrarelogioscreen.tsx",
-      "source_file": "src/jogos/quiz/ContraRelogioScreen.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_jogos_quiz_quizcategoriascreen",
-      "label": "QuizCategoriaScreen.tsx",
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "ContraRelogioScreen.tsx",
-      "file_type": "code",
-      "norm_label": "quizcategoriascreen.tsx",
-      "source_file": "src/jogos/quiz/QuizCategoriaScreen.tsx",
-      "source_location": "L1"
-    },
-    {
       "id": "codex_skills_graphify_references_exports",
       "label": "exports.md",
       "_origin": "ast",
@@ -4361,15 +4362,59 @@
       "source_location": "L1"
     },
     {
-      "id": "src_shared_types_bank_letras",
+      "id": "src_shared_palavras_teclado",
+      "label": "Teclado.tsx",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "DinamicoScreen.tsx",
+      "file_type": "code",
+      "norm_label": "teclado.tsx",
+      "source_file": "src/shared/palavras/Teclado.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_shared_palavras_teclas",
+      "label": "teclas.ts",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "DinamicoScreen.tsx",
+      "file_type": "code",
+      "norm_label": "teclas.ts",
+      "source_file": "src/shared/palavras/teclas.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_shared_palavras_teclas_filas",
+      "label": "FILAS",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "DinamicoScreen.tsx",
+      "file_type": "code",
+      "norm_label": "filas",
+      "source_file": "src/shared/palavras/teclas.ts",
+      "source_location": "L9"
+    },
+    {
+      "id": "src_shared_palavras_teclas_letras",
       "label": "LETRAS",
       "_origin": "ast",
       "community": 2,
       "community_name": "DinamicoScreen.tsx",
       "file_type": "code",
       "norm_label": "letras",
-      "source_file": "src/shared/types/bank.ts",
-      "source_location": "L34"
+      "source_file": "src/shared/palavras/teclas.ts",
+      "source_location": "L15"
+    },
+    {
+      "id": "src_shared_palavras_teclas_posicao",
+      "label": "POSICAO",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "DinamicoScreen.tsx",
+      "file_type": "code",
+      "norm_label": "posicao",
+      "source_file": "src/shared/palavras/teclas.ts",
+      "source_location": "L18"
     },
     {
       "id": "codex_skills_graphify_references_query",
@@ -5093,61 +5138,6 @@
       "source_location": "L1"
     },
     {
-      "id": "src_shared_palavras_teclado",
-      "label": "Teclado.tsx",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "Teclado.tsx",
-      "file_type": "code",
-      "norm_label": "teclado.tsx",
-      "source_file": "src/shared/palavras/Teclado.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_shared_palavras_teclas",
-      "label": "teclas.ts",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "Teclado.tsx",
-      "file_type": "code",
-      "norm_label": "teclas.ts",
-      "source_file": "src/shared/palavras/teclas.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_shared_palavras_teclas_filas",
-      "label": "FILAS",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "Teclado.tsx",
-      "file_type": "code",
-      "norm_label": "filas",
-      "source_file": "src/shared/palavras/teclas.ts",
-      "source_location": "L9"
-    },
-    {
-      "id": "src_shared_palavras_teclas_letras",
-      "label": "LETRAS",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "Teclado.tsx",
-      "file_type": "code",
-      "norm_label": "letras",
-      "source_file": "src/shared/palavras/teclas.ts",
-      "source_location": "L15"
-    },
-    {
-      "id": "src_shared_palavras_teclas_posicao",
-      "label": "POSICAO",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "Teclado.tsx",
-      "file_type": "code",
-      "norm_label": "posicao",
-      "source_file": "src/shared/palavras/teclas.ts",
-      "source_location": "L18"
-    },
-    {
       "id": "scripts_conferir_banco",
       "label": "conferir-banco.ts",
       "_origin": "ast",
@@ -5247,6 +5237,17 @@
       "source_location": "L1"
     },
     {
+      "id": "src_jogos_quiz_alternativas",
+      "label": "Alternativas.tsx",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "normalize.ts",
+      "file_type": "code",
+      "norm_label": "alternativas.tsx",
+      "source_file": "src/jogos/quiz/Alternativas.tsx",
+      "source_location": "L1"
+    },
+    {
       "id": "src_shared_data_bancoloader",
       "label": "bancoLoader.ts",
       "_origin": "ast",
@@ -5300,6 +5301,17 @@
       "norm_label": "knows_types",
       "source_file": "src/shared/types/bank.ts",
       "source_location": "L52"
+    },
+    {
+      "id": "src_shared_types_bank_letras",
+      "label": "LETRAS",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "normalize.ts",
+      "file_type": "code",
+      "norm_label": "letras",
+      "source_file": "src/shared/types/bank.ts",
+      "source_location": "L34"
     },
     {
       "id": "src_shared_validation_normalize",
@@ -5901,7 +5913,7 @@
       "file_type": "code",
       "norm_label": "trechos_teste",
       "source_file": "tests/trechos.test.ts",
-      "source_location": "L17"
+      "source_location": "L19"
     },
     {
       "id": "tsconfig_node",
@@ -6127,6 +6139,18 @@
       "type": "external"
     },
     {
+      "id": "src_jogos_quiz_quiz",
+      "label": "src_jogos_quiz_quiz",
+      "_origin": "semantic",
+      "community": 1,
+      "community_name": "routes.tsx",
+      "external": true,
+      "file_type": "concept",
+      "norm_label": "src_jogos_quiz_quiz",
+      "source_file": "",
+      "type": "external"
+    },
+    {
       "id": "src_jogos_referencia_referencia",
       "label": "src_jogos_referencia_referencia",
       "_origin": "semantic",
@@ -6147,18 +6171,6 @@
       "external": true,
       "file_type": "concept",
       "norm_label": "src_jogos_tabuleiro_tabuleiro",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "src_jogos_quiz_quiz",
-      "label": "src_jogos_quiz_quiz",
-      "_origin": "semantic",
-      "community": 15,
-      "community_name": "ContraRelogioScreen.tsx",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "src_jogos_quiz_quiz",
       "source_file": "",
       "type": "external"
     },
@@ -7954,6 +7966,18 @@
     },
     {
       "source": "src_shared_palavras_poco_extrairpalavras",
+      "target": "src_shared_palavras_poco_letrasdaresposta",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/shared/palavras/poco.ts",
+      "source_location": "L67",
+      "weight": 1.0
+    },
+    {
+      "source": "src_shared_palavras_poco_letrasdaresposta",
       "target": "src_shared_palavras_poco_semacento",
       "relation": "calls",
       "_origin": "ast",
@@ -7961,7 +7985,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/shared/palavras/poco.ts",
-      "source_location": "L58",
+      "source_location": "L47",
       "weight": 1.0
     },
     {
@@ -7985,7 +8009,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/shared/palavras/poco.ts",
-      "source_location": "L71",
+      "source_location": "L80",
       "weight": 1.0
     },
     {
@@ -7997,7 +8021,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/shared/palavras/poco.ts",
-      "source_location": "L73",
+      "source_location": "L82",
       "weight": 1.0
     },
     {
@@ -11789,7 +11813,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "tests/trechos.test.ts",
-      "source_location": "L12",
+      "source_location": "L14",
       "weight": 1.0
     },
     {
@@ -11801,7 +11825,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "tests/trechos.test.ts",
-      "source_location": "L12",
+      "source_location": "L14",
       "weight": 1.0
     },
     {
@@ -11842,7 +11866,7 @@
     },
     {
       "source": "tests_trechos_test",
-      "target": "src_jogos_embaralhado_motorembaralhado_criarpecas",
+      "target": "src_shared_palavras_poco_extrairpalavras",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -11850,6 +11874,30 @@
       "context": "import",
       "source_file": "tests/trechos.test.ts",
       "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_trechos_test",
+      "target": "src_shared_types_bank_pergunta",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tests/trechos.test.ts",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_trechos_test",
+      "target": "src_jogos_embaralhado_motorembaralhado_criarpecas",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tests/trechos.test.ts",
+      "source_location": "L9",
       "weight": 1.0
     },
     {
@@ -11861,7 +11909,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "tests/trechos.test.ts",
-      "source_location": "L7",
+      "source_location": "L9",
       "weight": 1.0
     },
     {
@@ -11873,7 +11921,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "tests/trechos.test.ts",
-      "source_location": "L7",
+      "source_location": "L9",
       "weight": 1.0
     },
     {
@@ -14236,7 +14284,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "tests/trechos.test.ts",
-      "source_location": "L12",
+      "source_location": "L14",
       "weight": 1.0
     },
     {
@@ -14265,7 +14313,7 @@
     },
     {
       "source": "tests_trechos_test",
-      "target": "src_jogos_embaralhado_motorembaralhado",
+      "target": "src_shared_palavras_poco",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -14273,6 +14321,31 @@
       "context": "import",
       "source_file": "tests/trechos.test.ts",
       "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_trechos_test",
+      "target": "src_shared_types_bank",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tests/trechos.test.ts",
+      "source_location": "L8",
+      "type_only": true,
+      "weight": 1.0
+    },
+    {
+      "source": "tests_trechos_test",
+      "target": "src_jogos_embaralhado_motorembaralhado",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tests/trechos.test.ts",
+      "source_location": "L9",
       "weight": 1.0
     },
     {
@@ -17671,13 +17744,24 @@
     },
     {
       "source": "src_shared_palavras_poco",
+      "target": "src_shared_palavras_poco_letrasdaresposta",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/shared/palavras/poco.ts",
+      "source_location": "L42",
+      "weight": 1.0
+    },
+    {
+      "source": "src_shared_palavras_poco",
       "target": "src_shared_palavras_poco_extrairpalavras",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/shared/palavras/poco.ts",
-      "source_location": "L49",
+      "source_location": "L58",
       "weight": 1.0
     },
     {
@@ -17688,7 +17772,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/shared/palavras/poco.ts",
-      "source_location": "L70",
+      "source_location": "L79",
       "weight": 1.0
     },
     {
@@ -18337,7 +18421,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/trechos.test.ts",
-      "source_location": "L17",
+      "source_location": "L19",
       "weight": 1.0
     },
     {
@@ -18900,7 +18984,7 @@
       "confidence_score": 0.85,
       "context": "collection",
       "source_file": "src/jogos/palavras/AnagramaScreen.tsx",
-      "source_location": "L179",
+      "source_location": "L182",
       "weight": 1.0
     },
     {
@@ -18929,5 +19013,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "019d412d448b80dd7907b84f9839e7efd25e62ff"
+  "built_at_commit": "6299fc4bfaa03d238ea2655fa4ce26927774b2bd"
 }

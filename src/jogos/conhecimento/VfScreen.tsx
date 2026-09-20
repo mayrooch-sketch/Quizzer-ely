@@ -1,5 +1,5 @@
 /**
- * Verdadeiro ou falso — 464 itens.
+ * Verdadeiro ou falso — uma afirmação por rodada.
  *
  * O modo mais simples dos seis, e por isso o que define o resto: uma afirmação
  * no alto, duas respostas coladas embaixo, nada mais na tela.

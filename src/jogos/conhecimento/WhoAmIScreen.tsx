@@ -1,5 +1,5 @@
 /**
- * Quem sou eu — 474 itens, sempre 3 pistas.
+ * Quem sou eu — personagens humanos reais, sempre com três pistas.
  *
  * As pistas ainda fechadas **já ocupam o lugar delas**, apagadas. Sem isso,
  * cada pista nova empurraria as alternativas para baixo — e o dedo erraria o

@@ -77,7 +77,7 @@ export const JOGOS: Jogo[] = [
     label: 'Dinâmico competitivo',
     emoji: '⚔️',
     grupo: 'competitivo',
-    descricao: 'Os seis modos de conhecimento, disputados entre times.',
+    descricao: 'Onze modos variados, disputados entre times.',
     fonte: 'knows',
   },
 

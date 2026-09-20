@@ -1,8 +1,8 @@
 /**
- * Marque os corretos — 282 itens.
+ * Marque os corretos — cinco a doze opções por rodada.
  *
- * A exceção da regra "cabe numa tela": 258 itens têm 6 opções e cabem; 24 têm
- * 10 ou 12 e não cabem. Só por causa desses 24 o miolo rola por dentro — com o
+ * A exceção da regra "cabe numa tela": a maioria tem 6 opções e cabe; algumas
+ * têm 10 ou 12. Por causa delas o miolo rola por dentro — com o
  * enunciado e os botões parados.
  *
  * Quantas marcar precisa estar dito. O banco traz `minCorrect`/`maxCorrect`, e

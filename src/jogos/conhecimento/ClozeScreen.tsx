@@ -1,5 +1,5 @@
 /**
- * Complete a frase — 301 itens, sempre 4 alternativas.
+ * Complete a frase — sempre quatro alternativas.
  *
  * A lacuna é sublinhada e larga, não três traços baixos: quando a resposta
  * entra, ela aparece ali dentro, e o olho não precisa sair da frase para

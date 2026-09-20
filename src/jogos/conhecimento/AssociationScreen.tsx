@@ -1,5 +1,5 @@
 /**
- * Associação — 432 itens, sempre 4 pares.
+ * Associação — de dois a quatro pares por rodada.
  *
  * A tela mais apertada dos seis, e a que mais depende de uma decisão de
  * largura: **as colunas não têm o mesmo tamanho**. À esquerda vai um nome
@@ -135,7 +135,7 @@ export function AssociationScreen() {
       detalhe={
         conferido
           ? `${acertos} de ${pares.length} pares certos`
-          : selecaoEsq
+          : selecaoEsq !== null
             ? 'Agora toque na frase que combina'
             : 'Toque num nome, depois na frase dele'
       }

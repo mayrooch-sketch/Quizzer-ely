@@ -4,6 +4,8 @@ import {
   contarPalavras,
 } from '../src/shared/trechos/biblioteca';
 import { normalizeTrechos } from '../src/shared/validation/normalize';
+import { extrairPalavras } from '../src/shared/palavras/poco';
+import type { Pergunta } from '../src/shared/types/bank';
 import {
   criarPecas,
   ordemEstaCorreta,
@@ -136,5 +138,46 @@ describe('Texto embaralhado', () => {
       ordemEstaCorreta([pecas.find((p) => p.posicaoCorreta === null)!, ...corretas], total),
     ).toBe(false);
     expect(ordemEstaCorreta([...corretas].reverse(), total)).toBe(false);
+  });
+});
+
+describe('Poço de palavras', () => {
+  const pergunta = (
+    id: string,
+    resposta: string,
+  ): Pergunta => ({
+    id,
+    categoria: 'Teste',
+    pergunta: `Dica para ${resposta}`,
+    alternativas: { A: resposta, B: 'Outra', C: 'Mais uma', D: 'Última' },
+    correta: 'A',
+    referencia: 'Teste 1:1',
+  });
+
+  it('aceita expressões curtas ocultando somente os separadores', () => {
+    const palavras = extrairPalavras(
+      [
+        pergunta('1', 'Mar Vermelho'),
+        pergunta('2', 'Bem-sucedido'),
+        pergunta('3', "D'Ávila"),
+      ],
+      12,
+    );
+
+    expect(palavras.map((item) => item.palavra)).toEqual([
+      'MARVERMELHO',
+      'BEMSUCEDIDO',
+      'DAVILA',
+    ]);
+    expect(palavras[0].original).toBe('Mar Vermelho');
+  });
+
+  it('continua recusando números e pontuação não representada', () => {
+    expect(
+      extrairPalavras(
+        [pergunta('1', 'Doze 12'), pergunta('2', 'Sim/não')],
+        20,
+      ),
+    ).toHaveLength(0);
   });
 });

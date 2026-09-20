@@ -4,8 +4,8 @@
  * São três bancos independentes, com formas diferentes, e é por isso que eles
  * têm tipos separados em vez de um "item" genérico:
  *
- * - **Quiz** (`banco/quiz`): 1185 perguntas de múltipla escolha A/B/C/D.
- * - **Knows** (`banco/knows`): 2331 itens em seis tipos, cada um com um
+ * - **Quiz** (`banco/quiz`): perguntas de múltipla escolha A/B/C/D.
+ * - **Knows** (`banco/knows`): itens em seis tipos, cada um com um
  *   `payload` de forma própria.
  *
  * O `payload` é o motivo principal de o app ganhar TypeScript. No app antigo
@@ -15,7 +15,7 @@
  * aparecia rodando. Com a união discriminada abaixo, o editor cobra o `type`
  * antes de deixar ler o `payload`.
  *
- * **Campos do banco que não estão aqui, e por quê.** Uma varredura nos 3516
+ * **Campos do banco que não estão aqui, e por quê.** Uma varredura nos
  * registros mostrou quatro campos vazios em 100% deles: `title` nos itens do
  * Knows, `meta.categoria`, `meta.subcategoria` e `meta.id_original`; e, nas
  * perguntas, `obs` e `observacoes`. São sobras da importação que gerou o banco

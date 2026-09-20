@@ -3,8 +3,8 @@
  *
  * Mesma ideia do baralho dos outros jogos — embaralha uma vez e vai tirando de
  * cima —, com uma diferença: as palavras que **acabaram de sair nos outros
- * jogos de palavra** vão para o fim da fila. Os quatro bebem do mesmo poço de
- * 352 palavras, e sem isso era comum sair da forca com uma palavra e cair no
+ * jogos de palavra** vão para o fim da fila. Todos bebem do mesmo poço, e sem
+ * isso era comum sair da forca com uma resposta e cair no
  * anagrama com a mesma.
  *
  * Não é proibição. Se o poço apertar, as recentes voltam a sair — o que não

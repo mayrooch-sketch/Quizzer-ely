@@ -171,7 +171,10 @@ function Rodada({ alvo, placar, onProxima }: PropsRodada) {
       }
       explicacao={
         acertou ? (
-          <Explicacao referencia={alvo.referencia} comentario={alvo.dica} />
+          <Explicacao
+            referencia={alvo.referencia}
+            comentario={`Resposta: ${alvo.original}. ${alvo.dica}`}
+          />
         ) : null
       }
       secundaria={

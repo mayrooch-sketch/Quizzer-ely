@@ -36,15 +36,15 @@
     "semantic_hash": ""
   },
   "src/app/HomeScreen.tsx": {
-    "mtime": 1789774983.031324,
-    "seen": 1789775093.5711393,
-    "ast_hash": "fbd7b3654209c5fc4deb6b3cbcbc2882",
+    "mtime": 1789865342.7120183,
+    "seen": 1789865436.517043,
+    "ast_hash": "4469389958909a3ca838331b5d52eba1",
     "semantic_hash": ""
   },
   "src/app/games.ts": {
-    "mtime": 1789832716.1892948,
-    "seen": 1789832748.0816896,
-    "ast_hash": "51ebb95d6a0f2d5aa8cf83adee06cd8b",
+    "mtime": 1789865342.6950157,
+    "seen": 1789865436.5170476,
+    "ast_hash": "b336e3b3fe900633630aa3af79fb3563",
     "semantic_hash": ""
   },
   "src/app/routes.tsx": {
@@ -78,28 +78,28 @@
     "semantic_hash": "6b05459cdf910dde3336c28b3deb330b"
   },
   "src/jogos/conhecimento/AssociationScreen.tsx": {
-    "mtime": 1787509127.0,
-    "seen": 1789770952.8817246,
-    "ast_hash": "6318315dccb004e4c6c3f9193894a78b",
-    "semantic_hash": "6318315dccb004e4c6c3f9193894a78b"
+    "mtime": 1789865342.632894,
+    "seen": 1789865436.5170674,
+    "ast_hash": "4e8853b3524bed2fe918435387943c4b",
+    "semantic_hash": ""
   },
   "src/jogos/conhecimento/ClozeScreen.tsx": {
-    "mtime": 1787499843.0,
-    "seen": 1789770952.881727,
-    "ast_hash": "46e5f2596c72e4f132c43bcfca0966e9",
-    "semantic_hash": "46e5f2596c72e4f132c43bcfca0966e9"
+    "mtime": 1789865342.6504188,
+    "seen": 1789865436.51707,
+    "ast_hash": "c1f4f452ed4fbc8a8a31535258078128",
+    "semantic_hash": ""
   },
   "src/jogos/conhecimento/OrderScreen.tsx": {
-    "mtime": 1787499854.0,
-    "seen": 1789770952.8817294,
-    "ast_hash": "239d7ea2ec3bbb0e4e4f987940cf0212",
-    "semantic_hash": "239d7ea2ec3bbb0e4e4f987940cf0212"
+    "mtime": 1789865342.6524198,
+    "seen": 1789865436.517073,
+    "ast_hash": "99701cf85e7252cab9c0162ce5c2b42d",
+    "semantic_hash": ""
   },
   "src/jogos/conhecimento/SelectScreen.tsx": {
-    "mtime": 1787499843.0,
-    "seen": 1789770952.8817315,
-    "ast_hash": "43fe541a2c1f63df0e0649295a8ee510",
-    "semantic_hash": "43fe541a2c1f63df0e0649295a8ee510"
+    "mtime": 1789865342.6484182,
+    "seen": 1789865436.5170758,
+    "ast_hash": "40d5c4545e5cb23ae60406bc93538e89",
+    "semantic_hash": ""
   },
   "src/jogos/conhecimento/SemItens.tsx": {
     "mtime": 1787499488.0,
@@ -108,22 +108,22 @@
     "semantic_hash": "e1b2731856510e97ca10fae32df9b3d6"
   },
   "src/jogos/conhecimento/VfScreen.tsx": {
-    "mtime": 1787499843.0,
-    "seen": 1789770952.8817363,
-    "ast_hash": "d669b70610aa20a4d333a42a4cad2dc8",
-    "semantic_hash": "d669b70610aa20a4d333a42a4cad2dc8"
+    "mtime": 1789865342.6444204,
+    "seen": 1789865436.5170817,
+    "ast_hash": "1d5b7a8b76328bec9a1142b9440c3f27",
+    "semantic_hash": ""
   },
   "src/jogos/conhecimento/WhoAmIScreen.tsx": {
-    "mtime": 1787499843.0,
-    "seen": 1789770952.8817384,
-    "ast_hash": "215737a84ad29cec152d91d09ea985a6",
-    "semantic_hash": "215737a84ad29cec152d91d09ea985a6"
+    "mtime": 1789865342.6368968,
+    "seen": 1789865436.5170844,
+    "ast_hash": "99cf48ee701ce1b35bffdbd343e22d6c",
+    "semantic_hash": ""
   },
   "src/jogos/palavras/AnagramaScreen.tsx": {
-    "mtime": 1787535856.0,
-    "seen": 1789770952.8817408,
-    "ast_hash": "d3d9a66bf8adaa95f386247c40133268",
-    "semantic_hash": "d3d9a66bf8adaa95f386247c40133268"
+    "mtime": 1789865378.2809484,
+    "seen": 1789865436.5170949,
+    "ast_hash": "6ecdbe1be453424d5bb205d1aa929f8f",
+    "semantic_hash": ""
   },
   "src/jogos/palavras/CacaPalavrasScreen.tsx": {
     "mtime": 1787508854.0,
@@ -156,10 +156,10 @@
     "semantic_hash": "98911ad8f66607f4652af6e5216e3878"
   },
   "src/jogos/palavras/useFilaDePalavras.ts": {
-    "mtime": 1787512636.0,
-    "seen": 1789770952.8817554,
-    "ast_hash": "dceda3e7fb2f53a143f84e22b0821b74",
-    "semantic_hash": "dceda3e7fb2f53a143f84e22b0821b74"
+    "mtime": 1789865342.6684234,
+    "seen": 1789865436.5171156,
+    "ast_hash": "0eeee727b9a59be79cc13da53df7217e",
+    "semantic_hash": ""
   },
   "src/jogos/quiz/Alternativas.tsx": {
     "mtime": 1787501527.0,
@@ -180,10 +180,10 @@
     "semantic_hash": "694a87c4caef186a6e40a5ccb36df02e"
   },
   "src/jogos/quiz/QuizCategoriaScreen.tsx": {
-    "mtime": 1787501545.0,
-    "seen": 1789770952.8817644,
-    "ast_hash": "15a49a58168339a92a17b32eafdf3d94",
-    "semantic_hash": "15a49a58168339a92a17b32eafdf3d94"
+    "mtime": 1789865445.5271592,
+    "seen": 1789865486.32066,
+    "ast_hash": "5a8acef200c2cd8ea44f47db99f7b4a5",
+    "semantic_hash": ""
   },
   "src/jogos/quiz/regrasDosDados.ts": {
     "mtime": 1787501603.0,
@@ -216,9 +216,9 @@
     "semantic_hash": ""
   },
   "src/shared/jogo/Arena.tsx": {
-    "mtime": 1789773948.7136462,
-    "seen": 1789773965.7054338,
-    "ast_hash": "c505d354dc2965d4827a378b5bde22f6",
+    "mtime": 1789865342.7140179,
+    "seen": 1789865436.5171554,
+    "ast_hash": "c59d132a8cddb3b60fa0b27dd74c3795",
     "semantic_hash": ""
   },
   "src/shared/jogo/Dado.tsx": {
@@ -252,16 +252,16 @@
     "semantic_hash": "f0c88ff846f2dee02cb723664e86f404"
   },
   "src/shared/palavras/memoria.ts": {
-    "mtime": 1787502290.0,
-    "seen": 1789770952.8817916,
-    "ast_hash": "fed46380a38e73dd9778cdf4b98e84a1",
-    "semantic_hash": "fed46380a38e73dd9778cdf4b98e84a1"
+    "mtime": 1789865445.5288856,
+    "seen": 1789865486.3207302,
+    "ast_hash": "d534f9984e8b150e1e63d60ad1b92670",
+    "semantic_hash": ""
   },
   "src/shared/palavras/poco.ts": {
-    "mtime": 1787502308.0,
-    "seen": 1789770952.881795,
-    "ast_hash": "601f0de726a575e4067a639366694d93",
-    "semantic_hash": "601f0de726a575e4067a639366694d93"
+    "mtime": 1789865342.629893,
+    "seen": 1789865436.5171793,
+    "ast_hash": "a2b7800beca7cee1e763c858f5b2de93",
+    "semantic_hash": ""
   },
   "src/shared/palavras/teclas.ts": {
     "mtime": 1787535839.0,
@@ -270,15 +270,15 @@
     "semantic_hash": "6aa0fa469e5e0c560f5ca862075b991a"
   },
   "src/shared/types/bank.ts": {
-    "mtime": 1789774983.0245278,
-    "seen": 1789775093.5712118,
-    "ast_hash": "bdadc100eb64e22819040035c3d006f5",
+    "mtime": 1789865357.886206,
+    "seen": 1789865436.5171921,
+    "ast_hash": "419850c2535b71805b8843a80ab74c24",
     "semantic_hash": ""
   },
   "src/shared/validation/normalize.ts": {
-    "mtime": 1789774983.026713,
-    "seen": 1789775093.5712132,
-    "ast_hash": "1b5ac5dff570f231bb5e12ced05f1a75",
+    "mtime": 1789865357.8917086,
+    "seen": 1789865436.517195,
+    "ast_hash": "b5dc10c6a364c8f634f17542b247ad64",
     "semantic_hash": ""
   },
   "tsconfig.app.json": {
@@ -342,9 +342,9 @@
     "semantic_hash": ""
   },
   "tests/trechos.test.ts": {
-    "mtime": 1789775048.153227,
-    "seen": 1789775093.5712147,
-    "ast_hash": "54c93805d6ffa628047da9a5c0bf6ca3",
+    "mtime": 1789865385.521268,
+    "seen": 1789865436.517198,
+    "ast_hash": "97fe23c613df1bd58d02e9ab05595a37",
     "semantic_hash": ""
   },
   ".codex/skills/graphify/SKILL.md": {

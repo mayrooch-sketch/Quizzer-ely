@@ -70,8 +70,8 @@ function inteiro(value: unknown, padrao: number): number {
 /**
  * Texto sem acento e em minúsculas, para comparar e agrupar.
  *
- * Existe por um problema real do banco: entre as 1229 etiquetas convivem
- * `associacao` (339 itens) e `associação` (88), `fe` (128) e `fé` (79). São o
+ * Existe por um problema real do banco: etiquetas sem acento convivem com
+ * versões acentuadas, como `associacao`/`associação` e `fe`/`fé`. São o
  * mesmo assunto escrito de dois jeitos, e sem isto um filtro por etiqueta
  * esconderia metade dos itens sem avisar.
  */
@@ -127,9 +127,9 @@ export function normalizePergunta(raw: unknown, indice: number): Pergunta | null
 /**
  * O banco de quiz inteiro.
  *
- * O arquivo traz **dois arrays idênticos** — `perguntas` e `questions`, 1185
- * itens cada, byte a byte iguais. É sobra da importação. Ler um só evita
- * processar 296 KB duas vezes; `questions` vem primeiro por ser o que o app
+ * O arquivo traz **dois arrays idênticos** — `perguntas` e `questions`. É
+ * sobra da importação. Ler um só evita processar os dados duas vezes;
+ * `questions` vem primeiro por ser o que o app
  * antigo usava.
  */
 export function normalizeQuiz(raw: unknown): Pergunta[] {

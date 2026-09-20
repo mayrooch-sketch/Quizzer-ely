@@ -129,7 +129,7 @@ export function Arena({
 /**
  * A referência e o comentário, mostrados depois da resposta.
  *
- * Todos os 3516 registros do banco têm os dois preenchidos, então esta caixa
+ * Os registros publicados têm os dois preenchidos, então esta caixa
  * nunca aparece vazia.
  */
 export function Explicacao({

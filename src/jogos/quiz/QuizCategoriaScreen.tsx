@@ -1,5 +1,5 @@
 /**
- * Quiz por categoria — 1185 perguntas em 16 assuntos.
+ * Quiz por categoria — perguntas agrupadas por assunto.
  *
  * São duas telas: escolher o assunto, depois responder. A escolha mostra
  * **quantas perguntas cada assunto tem** — de 12 em "Profecias e visões" a 233

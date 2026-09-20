@@ -1,8 +1,8 @@
 /**
- * Ordem — 378 itens, até 5 passos.
+ * Ordem — de três a seis passos.
  *
- * A tela que define o limite de todas as outras: no pior caso do banco (5
- * passos, 298 caracteres) ela usa 625px dos 667 de um iPhone SE. Sobram 42px.
+ * A tela que define o limite de todas as outras: itens longos usam o miolo
+ * rolável, preservando o enunciado e as ações num iPhone SE.
  * Se alguma coisa crescer, é aqui que estoura primeiro — e é por isso que aqui
  * não há cabeçalho interno nem margem generosa.
  *

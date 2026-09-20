@@ -1,10 +1,10 @@
 /**
- * O poço de palavras — a fonte dos quatro jogos de palavra.
+ * O poço de palavras — a fonte dos jogos que reutilizam respostas do quiz.
  *
  * Anagrama, forca, caça-palavras e cruzadas não têm banco próprio: eles
  * reaproveitam a **resposta correta** das perguntas do quiz, e usam o próprio
  * enunciado como dica. Era assim no app antigo (`extractWordCandidates`), e é
- * uma boa ideia — o banco de 1185 perguntas vira 355 palavras sem ninguém
+ * uma boa ideia — o banco de perguntas vira centenas de alvos sem ninguém
  * precisar digitar uma lista à parte.
  *
  * O que mudou é que ali cada jogo refazia a extração do seu jeito, com
@@ -39,12 +39,21 @@ function semAcento(texto: string): string {
   return chaveDeTexto(texto).toUpperCase();
 }
 
+function letrasDaResposta(texto: string): string | null {
+  const limpa = texto.trim();
+  // Aceita expressões como "Mar Vermelho" e nomes hifenizados, mas continua
+  // recusando números e pontuação que os tabuleiros e teclados não representam.
+  if (!/^[\p{L}]+(?:[ '\u2019-][\p{L}]+)*$/u.test(limpa)) return null;
+  return semAcento(limpa).replace(/[ '\u2019-]/g, '');
+}
+
 /**
  * Extrai as palavras jogáveis de um banco de perguntas.
  *
- * Fica de fora o que não dá partida: resposta com espaço ("Mar Vermelho"),
- * com número ou pontuação, e com menos de três letras. Duas palavras que só
- * diferem no acento contam como uma — no jogo elas são a mesma.
+ * Fica de fora o que não dá partida: resposta com número, pontuação não
+ * linguística ou menos de três letras. Espaços, hífens e apóstrofos são
+ * ocultados durante a mecânica; a grafia original reaparece no resultado.
+ * Duas respostas que viram a mesma sequência de letras contam como uma.
  */
 export function extrairPalavras(
   perguntas: readonly Pergunta[],
@@ -55,8 +64,8 @@ export function extrairPalavras(
 
   for (const p of perguntas) {
     const original = p.alternativas[p.correta].trim();
-    const palavra = semAcento(original);
-    if (!/^[A-Z]{3,}$/.test(palavra)) continue;
+    const palavra = letrasDaResposta(original);
+    if (!palavra || palavra.length < 3) continue;
     if (palavra.length > maxLetras) continue;
     if (vistas.has(palavra)) continue;
     vistas.add(palavra);

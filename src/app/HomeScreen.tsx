@@ -40,7 +40,7 @@ function EstadoDoBanco() {
   /*
    * Com banco na mão a tela não diz nada.
    *
-   * "3516 perguntas carregadas" é a contagem que só interessa a quem escreveu
+   * A contagem de perguntas só interessa a quem escreveu
    * o carregador; quem abre o app quer escolher um jogo. O número aparece só
    * quando falta alguma coisa.
    */
