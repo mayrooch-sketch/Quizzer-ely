@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useTrechos } from '../../app/store';
 import { Arena } from '../../shared/jogo/Arena';
 import { useBaralho, usePlacar, type Placar } from '../../shared/jogo/useBaralho';
@@ -41,25 +41,33 @@ function Rodada({
   const [etapas] = useState(() => criarEtapas(trecho, todos));
   const [indice, setIndice] = useState(0);
   const [feedback, setFeedback] = useState<'quente' | 'frio' | null>(null);
-  const [teveErro, setTeveErro] = useState(false);
+  const [portasErradas, setPortasErradas] = useState<Set<string>>(new Set());
+  const portasErradasRef = useRef(new Set<string>());
+  const etapasPontuadasRef = useRef(new Set<number>());
   const [concluida, setConcluida] = useState(false);
   const etapa = etapas[indice];
+
+  const chaveDaPorta = (opcao: string) => `${indice}\u0000${opcao}`;
 
   function escolher(opcao: string) {
     if (concluida) return;
     if (opcao !== etapa.correta) {
+      const chave = chaveDaPorta(opcao);
+      if (portasErradasRef.current.has(chave)) return;
+      portasErradasRef.current.add(chave);
+      setPortasErradas((atuais) => new Set(atuais).add(chave));
       setFeedback('frio');
-      if (!teveErro) {
-        setTeveErro(true);
-        placar.registrar(false);
-      }
+      placar.registrar(false);
       return;
     }
 
     setFeedback('quente');
+    if (!etapasPontuadasRef.current.has(indice)) {
+      etapasPontuadasRef.current.add(indice);
+      placar.registrar(true);
+    }
     if (indice === etapas.length - 1) {
       setConcluida(true);
-      if (!teveErro) placar.registrar(true);
       return;
     }
     setIndice((atual) => atual + 1);
@@ -109,17 +117,21 @@ function Rodada({
           </div>
         ) : (
           <div className="ref-portas">
-            {etapa.opcoes.map((opcao) => (
-              <button
-                type="button"
-                className="ref-porta"
-                key={opcao}
-                onClick={() => escolher(opcao)}
-              >
-                <span aria-hidden="true">▥</span>
-                <b>{opcao}</b>
-              </button>
-            ))}
+            {etapa.opcoes.map((opcao) => {
+              const errada = portasErradas.has(chaveDaPorta(opcao));
+              return (
+                <button
+                  type="button"
+                  className={errada ? 'ref-porta ref-porta--errada' : 'ref-porta'}
+                  key={opcao}
+                  onClick={() => escolher(opcao)}
+                  disabled={errada}
+                >
+                  <span aria-hidden="true">{errada ? '❄' : '▥'}</span>
+                  <b>{opcao}</b>
+                </button>
+              );
+            })}
           </div>
         )}
       </div>

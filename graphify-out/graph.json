@@ -95,6 +95,19 @@
       "source_location": "L38"
     },
     {
+      "id": "src_jogos_palavras_anagramascreen_propsrodada",
+      "label": "PropsRodada",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "routes.tsx",
+      "file_type": "code",
+      "norm_label": "propsrodada",
+      "source_file": "src/jogos/palavras/AnagramaScreen.tsx",
+      "source_location": "L51"
+    },
+    {
       "id": "src_jogos_palavras_forcascreen_propsrodada",
       "label": "PropsRodada",
       "_callable": true,
@@ -184,19 +197,6 @@
       "norm_label": "knowsitemof",
       "source_file": "src/shared/types/bank.ts",
       "source_location": "L151"
-    },
-    {
-      "id": "src_jogos_palavras_anagramascreen_propsrodada",
-      "label": "PropsRodada",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 14,
-      "community_name": "poco.ts",
-      "file_type": "code",
-      "norm_label": "propsrodada",
-      "source_file": "src/jogos/palavras/AnagramaScreen.tsx",
-      "source_location": "L51"
     },
     {
       "id": "src_jogos_palavras_cruzadasscreen_propstabuleiro",
@@ -3238,7 +3238,7 @@
       "file_type": "code",
       "norm_label": "escolher()",
       "source_file": "src/jogos/referencia/ReferenciaScreen.tsx",
-      "source_location": "L48"
+      "source_location": "L52"
     },
     {
       "id": "src_shared_trechos_biblioteca_contarpalavras",
@@ -8777,7 +8777,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/jogos/referencia/ReferenciaScreen.tsx",
-      "source_location": "L48",
+      "source_location": "L52",
       "weight": 1.0
     },
     {
@@ -8994,6 +8994,30 @@
       "context": "field",
       "source_file": "src/shared/data/bancoLoader.ts",
       "source_location": "L35",
+      "weight": 1.0
+    },
+    {
+      "source": "src_shared_types_bank_banco",
+      "target": "src_shared_trechos_types_trechobiblico",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "field",
+      "source_file": "src/shared/types/bank.ts",
+      "source_location": "L161",
+      "weight": 1.0
+    },
+    {
+      "source": "src_jogos_palavras_anagramascreen_propsrodada",
+      "target": "src_shared_jogo_usebaralho_useplacar",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "generic_arg",
+      "source_file": "src/jogos/palavras/AnagramaScreen.tsx",
+      "source_location": "L53",
       "weight": 1.0
     },
     {
@@ -18989,5 +19013,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "09b8481e80dbac069ac1d6e375146d83566d16ba"
+  "built_at_commit": "d8a048cd587c537f0f78c76354241cdf76fbb397"
 }

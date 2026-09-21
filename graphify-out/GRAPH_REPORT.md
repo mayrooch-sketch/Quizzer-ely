@@ -1,17 +1,17 @@
-# Graph Report - quizzer-ts  (2026-09-19)
+# Graph Report - quizzer-ts  (2026-09-21)
 
 ## Corpus Check
-- 69 files · ~41,841 words
+- 69 files · ~41,887 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 20 file(s) not represented in the graph (top: .css 12, (none) 5, .cmd 2)
 
 ## Summary
-- 527 nodes · 1095 edges · 24 communities (17 shown, 7 thin omitted)
+- 527 nodes · 1097 edges · 24 communities (17 shown, 7 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 15 edges (avg confidence: 0.86)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `09b8481e`
+- Built from commit: `d8a048cd`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -43,7 +43,7 @@
 
 ## God Nodes (most connected - your core abstractions)
 1. `react` - 27 edges
-2. `usePlacar()` - 26 edges
+2. `usePlacar()` - 27 edges
 3. `useBaralho()` - 24 edges
 4. `PalavraDoBanco` - 20 edges
 5. `compilerOptions` - 18 edges
@@ -76,7 +76,7 @@ Nodes (28): CacaPalavrasScreen(), alternarDiagonais(), escolherTamanho(), FONTE_
 
 ### Community 1 - "routes.tsx"
 Cohesion: 0.07
-Nodes (43): react, TELAS, useTrechos(), AssociationScreen(), CORES, embaralharEstavel(), Ligacao, ClozeScreen() (+35 more)
+Nodes (44): react, TELAS, useTrechos(), AssociationScreen(), CORES, embaralharEstavel(), Ligacao, ClozeScreen() (+36 more)
 
 ### Community 2 - "DinamicoScreen.tsx"
 Cohesion: 0.06
@@ -116,7 +116,7 @@ Nodes (24): For /graphify add and --watch, For /graphify query, For the commit h
 
 ### Community 14 - "poco.ts"
 Cohesion: 0.06
-Nodes (47): PropsRodada, CruzadasScreen(), PropsTabuleiro, Tabuleiro(), cabe(), Casa, Cruzada, cruzar() (+39 more)
+Nodes (46): CruzadasScreen(), PropsTabuleiro, Tabuleiro(), cabe(), Casa, Cruzada, cruzar(), Direcao (+38 more)
 
 ### Community 18 - "graphify reference: extra exports and benchmark"
 Cohesion: 0.22
@@ -139,7 +139,7 @@ Cohesion: 0.50
 Nodes (3): For --cluster-only, For --update (incremental re-extraction), graphify reference: incremental update and cluster-only
 
 ## Knowledge Gaps
-- **161 isolated node(s):** `GRUPOS`, `Grupo`, `GRUPO_INFO`, `Jogo`, `CORES` (+156 more)
+- **161 isolated node(s):** `$schema`, `plugins`, `react/rules-of-hooks`, `react/only-export-components`, `name` (+156 more)
   These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 227 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
 - **7 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -147,13 +147,13 @@ Nodes (3): For --cluster-only, For --update (incremental re-extraction), graphif
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `react` connect `routes.tsx` to `CacaPalavrasScreen.tsx`, `DinamicoScreen.tsx`, `package.json`, `games.ts`, `poco.ts`?**
-  _High betweenness centrality (0.112) - this node is a cross-community bridge._
-- **What connects `GRUPOS`, `Grupo`, `GRUPO_INFO` to the rest of the system?**
+  _High betweenness centrality (0.111) - this node is a cross-community bridge._
+- **What connects `$schema`, `plugins`, `react/rules-of-hooks` to the rest of the system?**
   _161 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `CacaPalavrasScreen.tsx` be split into smaller, more focused modules?**
   _Cohesion score 0.11397849462365592 - nodes in this community are weakly interconnected._
 - **Should `routes.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.06970740103270223 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.06862745098039216 - nodes in this community are weakly interconnected._
 - **Should `DinamicoScreen.tsx` be split into smaller, more focused modules?**
   _Cohesion score 0.055299539170506916 - nodes in this community are weakly interconnected._
 - **Should `package.json` be split into smaller, more focused modules?**

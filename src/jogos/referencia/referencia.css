@@ -76,6 +76,15 @@
   transform: rotateY(-3deg);
 }
 
+.ref-porta--errada,
+.ref-porta--errada:hover {
+  border-color: #739bbb;
+  background: linear-gradient(100deg, #72879d, #91a8bd);
+  filter: saturate(0.65);
+  transform: none;
+  opacity: 0.72;
+}
+
 .ref-porta span {
   flex: none;
   font-size: 24px;
