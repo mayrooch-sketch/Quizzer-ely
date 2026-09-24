@@ -10,7 +10,7 @@
  * de conhecimento passaram a usá-la também — lá eles sorteavam solto.
  */
 
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 export interface Baralho<T> {
   /** A carta na mesa. `null` só quando não há nenhuma. */
@@ -18,8 +18,10 @@ export interface Baralho<T> {
   /** Quantas já saíram, contando a atual. */
   posicao: number;
   total: number;
+  rodada: number;
   /** Tira a próxima. No fim do baralho, embaralha de novo e recomeça. */
   proxima: () => void;
+  voltar: () => void;
 }
 
 export function embaralhar<T>(itens: readonly T[]): T[] {
@@ -31,36 +33,47 @@ export function embaralhar<T>(itens: readonly T[]): T[] {
   return copia;
 }
 
-export function useBaralho<T>(itens: readonly T[]): Baralho<T> {
+export function useBaralho<T>(itens: readonly T[], misturar: (itens: readonly T[]) => T[] = embaralhar): Baralho<T> {
   /*
-   * Embaralha quando `itens` troca de referência — e é por isso que quem
-   * chama **precisa** passar um array estável (ver `useItensDoTipo`).
-   *
-   * Com um array novo a cada render, isto reembaralha a cada render, e a carta
-   * na mesa muda debaixo do dedo de quem está respondendo. Foi exatamente esse
-   * o bug encontrado ao testar os seis modos.
+   * Mantém um retrato do banco até o fim do ciclo. Atualizações entram apenas
+   * no próximo embaralhamento, sem trocar a pergunta durante uma resposta.
+   * O número da rodada também reinicia telas quando há apenas uma carta.
    */
-  const ordem = useMemo(() => embaralhar(itens), [itens]);
-  const [indice, setIndice] = useState(0);
+  type Estado = { ordem: T[]; indice: number; rodada: number; anterior?: Estado };
+  const fonte = useRef({ itens, misturar });
+  useEffect(() => { fonte.current = { itens, misturar }; }, [itens, misturar]);
+  const [estado, setEstado] = useState<Estado>(() => ({ ordem: misturar(itens), indice: 0, rodada: 0 }));
+  const { ordem, indice } = estado;
+  if (ordem.length === 0 && itens.length > 0) {
+    setEstado({ ordem: misturar(itens), indice: 0, rodada: estado.rodada });
+  }
 
   const proxima = useCallback(() => {
-    setIndice((i) => (ordem.length === 0 ? 0 : (i + 1) % ordem.length));
-  }, [ordem.length]);
+    setEstado((atual) => {
+      const anterior = { ordem: atual.ordem, indice: atual.indice, rodada: atual.rodada };
+      const rodada = atual.rodada + 1;
+      if (atual.indice + 1 < atual.ordem.length) return { ...atual, indice: atual.indice + 1, rodada, anterior };
+      const nova = fonte.current.misturar(fonte.current.itens);
+      if (nova.length > 1 && nova[0] === atual.ordem[atual.indice]) [nova[0], nova[1]] = [nova[1], nova[0]];
+      return { ordem: nova, indice: 0, rodada, anterior };
+    });
+  }, []);
 
   return {
     atual: ordem[indice] ?? null,
     posicao: ordem.length === 0 ? 0 : indice + 1,
     total: ordem.length,
+    rodada: estado.rodada,
     proxima,
+    voltar: () => setEstado((atual) => atual.anterior ?? atual),
   };
 }
 
 /**
  * O placar de uma partida.
  *
- * Separado do baralho porque nem todo jogo pontua igual — a associação conta
- * pares certos, a ordem conta posições —, mas todos mostram a mesma dupla no
- * mesmo canto da tela.
+ * Separado do baralho: Associação e Ordem contam a rodada inteira;
+ * Referência conta cada porta. Os detalhes de cada regra ficam na tela.
  */
 export interface Placar {
   certas: number;

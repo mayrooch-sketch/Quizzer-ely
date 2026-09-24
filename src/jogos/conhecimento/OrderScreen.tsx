@@ -59,7 +59,7 @@ export function OrderScreen() {
    */
   return (
     <Rodada
-      key={baralho.atual.id}
+      key={baralho.rodada}
       item={baralho.atual}
       placar={placar}
       progresso={{ posicao: baralho.posicao, total: baralho.total }}

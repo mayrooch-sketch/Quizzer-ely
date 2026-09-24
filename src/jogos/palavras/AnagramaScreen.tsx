@@ -41,7 +41,7 @@ export function AnagramaScreen() {
 
   return (
     <Rodada
-      key={fila.palavra.palavra}
+      key={fila.rodada}
       alvo={fila.palavra}
       placar={placar}
       onProxima={fila.proxima}
@@ -100,7 +100,7 @@ function Rodada({ alvo, placar, onProxima }: PropsRodada) {
       const certo = novos.join('') === palavra;
       setErrou(!certo);
       if (!contado) {
-        placar.registrar(certo);
+        if (!certo || ajudas === 0) placar.registrar(certo);
         setContado(true);
       }
     }
@@ -138,7 +138,7 @@ function Rodada({ alvo, placar, onProxima }: PropsRodada) {
     setErrou(false);
 
     if (novos.every((s) => s !== null) && !contado) {
-      placar.registrar(novos.join('') === palavra);
+      if (novos.join('') !== palavra) placar.registrar(false);
       setContado(true);
     }
   }
@@ -164,10 +164,10 @@ function Rodada({ alvo, placar, onProxima }: PropsRodada) {
       }
       detalhe={
         acertou
-          ? '✅ Acertou'
+          ? (ajudas > 0 ? '✅ Concluído com ajuda — sem acerto independente' : '✅ Concluído — vale o primeiro resultado da rodada')
           : errou
             ? 'Não é essa. Apague e tente de novo.'
-            : 'Toque nas letras de cima para embaralhar'
+            : 'O primeiro resultado define o placar. Usar dica não conta como acerto independente. Toque nas letras de cima para embaralhar.'
       }
       explicacao={
         acertou ? (

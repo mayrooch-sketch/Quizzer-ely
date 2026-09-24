@@ -20,6 +20,10 @@ export interface EtapaReferencia {
   opcoes: string[];
 }
 
+export function pontosDaEtapa(erros: number): number {
+  return Math.max(25, 100 - erros * 25);
+}
+
 function embaralhar<T>(itens: readonly T[], aleatorio: () => number): T[] {
   const copia = [...itens];
   for (let i = copia.length - 1; i > 0; i--) {
@@ -71,17 +75,13 @@ function opcoesDeCapitulo(
   aleatorio: () => number,
 ): string[] {
   const correta = separarLocalDaReferencia(atual).capitulo;
-  const candidatos = [
-    ...todos.filter((item) => item.livro === atual.livro),
-    ...todos.filter(
-      (item) => item.secao === atual.secao && item.livro !== atual.livro,
-    ),
-    ...todos.filter((item) => item.divisao === atual.divisao),
-    ...todos,
-  ];
+  const conhecidos = todos.filter((item) => item.livro === atual.livro);
+  const maximo = atual.limitesConfirmados?.capitulosAte ?? Math.max(
+    ...[atual, ...conhecidos].flatMap((item) => separarLocalDaReferencia(item).capitulo.match(/\d+/g)!.map(Number)),
+  );
   return quatroOpcoes(
     correta,
-    candidatos.map((item) => separarLocalDaReferencia(item).capitulo),
+    Array.from({ length: maximo }, (_, i) => String(i + 1)),
     aleatorio,
   );
 }
@@ -92,19 +92,19 @@ function opcoesDeVersiculo(
   aleatorio: () => number,
 ): string[] {
   const localAtual = separarLocalDaReferencia(atual);
-  const candidatos = [
-    ...todos.filter(
-      (item) =>
-        item.livro === atual.livro &&
-        separarLocalDaReferencia(item).capitulo === localAtual.capitulo,
-    ),
-    ...todos.filter((item) => item.livro === atual.livro),
-    ...todos.filter((item) => item.secao === atual.secao),
-    ...todos,
-  ];
+  const limites: Record<string, number> = { ...atual.limitesConfirmados?.versiculosAte };
+  for (const item of [atual, ...todos.filter((t) => t.livro === atual.livro)]) {
+    for (const parte of item.referencia.slice(item.livro.length).trim().split(';')) {
+      const [capitulo, versos] = parte.trim().split(':');
+      if (!versos) continue;
+      limites[capitulo] = Math.max(limites[capitulo] ?? 0, ...versos.match(/\d+/g)!.map(Number));
+    }
+  }
+  const capitulos = localAtual.capitulo.match(/\d+/g)!;
+  const maximo = Math.min(...capitulos.map((capitulo) => limites[capitulo] ?? 1));
   return quatroOpcoes(
     localAtual.versiculo,
-    candidatos.map((item) => separarLocalDaReferencia(item).versiculo),
+    Array.from({ length: maximo }, (_, i) => String(i + 1)),
     aleatorio,
   );
 }

@@ -28,6 +28,7 @@ import {
   type MesaDoMediador,
 } from './ItemDoModo';
 import '../../shared/jogo/mesa.css';
+import { useRelogioModerador } from '../../shared/jogo/useRelogioModerador';
 import './dinamico.css';
 
 type Time = 'A' | 'B';
@@ -77,8 +78,8 @@ export function DinamicoScreen() {
   /* O que o mediador já fez nesta rodada. Zera a cada rolagem. */
   const [pistas, setPistas] = useState(1);
   const [letras, setLetras] = useState<string[]>([]);
-  const [segundos, setSegundos] = useState<number | null>(null);
-  const [rodando, setRodando] = useState(false);
+  const { segundos, setSegundos, rodando, setRodando } = useRelogioModerador();
+  const [ultimoResultado, setUltimoResultado] = useState<{ pontos: Record<Time, number>; vez: Time; restaurar: () => void } | null>(null);
 
   /*
    * A rolagem em curso. Os dados e o item já estão sorteados aqui dentro — o
@@ -111,11 +112,6 @@ export function DinamicoScreen() {
   /* O relógio para sozinho no zero por não agendar o próximo passo. */
   const contando = rodando && (segundos ?? 0) > 0;
 
-  useEffect(() => {
-    if (!contando) return;
-    const id = setTimeout(() => setSegundos((s) => (s ?? 0) - 1), 1000);
-    return () => clearTimeout(id);
-  }, [contando, segundos]);
 
   /* Os dados param, e só então o modo da rodada aparece. */
   useEffect(() => {
@@ -132,7 +128,7 @@ export function DinamicoScreen() {
       setRolagem(null);
     }, DURACAO_ROLAGEM);
     return () => clearTimeout(id);
-  }, [rolagem]);
+  }, [rolagem, setSegundos, setRodando]);
 
   const adversario: Time = vez === 'A' ? 'B' : 'A';
 
@@ -161,6 +157,7 @@ export function DinamicoScreen() {
   }
 
   function rolar() {
+    setUltimoResultado(null);
     const d = rolarDados();
     const sorteado = sortearItem(d.soma);
 
@@ -214,6 +211,10 @@ export function DinamicoScreen() {
 
   /** Aplica o veredito do mediador segundo o modo que caiu. */
   function julgar(acertou: boolean, pontosFixos?: number) {
+    setUltimoResultado({ pontos: { ...pontos }, vez, restaurar: () => {
+      setDados(dados); setItem(item); setAberto(aberto); setPistas(pistas); setLetras(letras);
+      setSegundos(segundos); setRodando(false);
+    } });
     if (!modo) return;
     setPontos((atual) => {
       const meu =
@@ -228,6 +229,14 @@ export function DinamicoScreen() {
 
   return (
     <div className="comp">
+      {ultimoResultado && !dados && !rolando ? (
+        <button type="button" className="btn btn--ghost" onClick={() => {
+          setPontos(ultimoResultado.pontos);
+          setVez(ultimoResultado.vez);
+          ultimoResultado.restaurar();
+          setUltimoResultado(null);
+        }}>Desfazer último resultado (pontos e turno)</button>
+      ) : null}
       <div className="comp__times">
         {(['A', 'B'] as Time[]).map((t) => (
           <button

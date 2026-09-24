@@ -12,9 +12,9 @@
     "semantic_hash": "029f4905006c1fffd96bc863e2d98d3e"
   },
   "package.json": {
-    "mtime": 1789773682.4006102,
-    "seen": 1789773965.7053678,
-    "ast_hash": "1b6315cd951fe75f9d30f9d92528b3a8",
+    "mtime": 1790244208.6669772,
+    "seen": 1790244656.7454786,
+    "ast_hash": "d3f99a5530626793696999e7729d273c",
     "semantic_hash": ""
   },
   "public/sw.js": {
@@ -60,9 +60,9 @@
     "semantic_hash": ""
   },
   "src/jogos/competitivo/DinamicoScreen.tsx": {
-    "mtime": 1790186575.4418342,
-    "seen": 1790187145.0822802,
-    "ast_hash": "036ef34fa4d3941662aae3f1b667429c",
+    "mtime": 1790217223.3060188,
+    "seen": 1790244656.7455301,
+    "ast_hash": "072c5aaf5562bc0dec18600322979606",
     "semantic_hash": ""
   },
   "src/jogos/competitivo/ItemDoModo.tsx": {
@@ -90,9 +90,9 @@
     "semantic_hash": ""
   },
   "src/jogos/conhecimento/OrderScreen.tsx": {
-    "mtime": 1790186698.165583,
-    "seen": 1790187145.082305,
-    "ast_hash": "f7208cc8682479692002342e43f37c2f",
+    "mtime": 1790244159.2353132,
+    "seen": 1790244656.745557,
+    "ast_hash": "6c53cd94aea905755d714575110daf55",
     "semantic_hash": ""
   },
   "src/jogos/conhecimento/SelectScreen.tsx": {
@@ -120,15 +120,15 @@
     "semantic_hash": ""
   },
   "src/jogos/palavras/AnagramaScreen.tsx": {
-    "mtime": 1790186540.7555056,
-    "seen": 1790187145.082336,
-    "ast_hash": "aef4adfff466f1c10c4c8fe5c9ecdd91",
+    "mtime": 1790244192.166535,
+    "seen": 1790244656.7455935,
+    "ast_hash": "d3c39d73f18e7042267a9b435edcfe7a",
     "semantic_hash": ""
   },
   "src/jogos/palavras/CacaPalavrasScreen.tsx": {
-    "mtime": 1790186575.443846,
-    "seen": 1790187145.08234,
-    "ast_hash": "88f56c0c04e54bce56d4f18ad9bbe413",
+    "mtime": 1790244052.408508,
+    "seen": 1790244656.7455983,
+    "ast_hash": "f2dc1e81d8103a7cff5af5e6a1223b43",
     "semantic_hash": ""
   },
   "src/jogos/palavras/CruzadasScreen.tsx": {
@@ -138,10 +138,10 @@
     "semantic_hash": ""
   },
   "src/jogos/palavras/ForcaScreen.tsx": {
-    "mtime": 1787535815.0,
-    "seen": 1789770952.8817484,
-    "ast_hash": "483a2c513416d8a16cd091e0cc61b5a0",
-    "semantic_hash": "483a2c513416d8a16cd091e0cc61b5a0"
+    "mtime": 1790244192.2053206,
+    "seen": 1790244656.7456071,
+    "ast_hash": "fa6aaa724580f96a108ac73620aa7ab7",
+    "semantic_hash": ""
   },
   "src/jogos/palavras/gerarCaca.ts": {
     "mtime": 1787502621.0,
@@ -156,9 +156,9 @@
     "semantic_hash": "98911ad8f66607f4652af6e5216e3878"
   },
   "src/jogos/palavras/useFilaDePalavras.ts": {
-    "mtime": 1789865342.6684234,
-    "seen": 1789865436.5171156,
-    "ast_hash": "0eeee727b9a59be79cc13da53df7217e",
+    "mtime": 1790244192.117867,
+    "seen": 1790244656.7456279,
+    "ast_hash": "737c7a3041e5cb4bd6a1d3c14064a53a",
     "semantic_hash": ""
   },
   "src/jogos/quiz/Alternativas.tsx": {
@@ -168,9 +168,9 @@
     "semantic_hash": "961b72f7e7f044188cfe127789b12bef"
   },
   "src/jogos/quiz/CompetitivoScreen.tsx": {
-    "mtime": 1790186575.4342978,
-    "seen": 1790187145.082378,
-    "ast_hash": "b7df5acf20bbd1ccb20ac30baef3b527",
+    "mtime": 1790217223.2634866,
+    "seen": 1790244656.745637,
+    "ast_hash": "25bc20b02f2bf0fc234262e8f2d5597e",
     "semantic_hash": ""
   },
   "src/jogos/quiz/ContraRelogioScreen.tsx": {
@@ -234,9 +234,9 @@
     "semantic_hash": "b02b0d230674b7bcba7fd6a14755a085"
   },
   "src/shared/jogo/useBaralho.ts": {
-    "mtime": 1790186834.3584375,
-    "seen": 1790187145.0824354,
-    "ast_hash": "3c128224de717609dd9d99dda1d22c36",
+    "mtime": 1790244354.4015214,
+    "seen": 1790244656.7457032,
+    "ast_hash": "85920c2f5387cf0f634a90ad5f640b09",
     "semantic_hash": ""
   },
   "src/shared/jogo/useItensDoTipo.ts": {
@@ -276,9 +276,9 @@
     "semantic_hash": ""
   },
   "src/shared/validation/normalize.ts": {
-    "mtime": 1789865357.8917086,
-    "seen": 1789865436.517195,
-    "ast_hash": "b5dc10c6a364c8f634f17542b247ad64",
+    "mtime": 1790244093.2523806,
+    "seen": 1790244656.7457633,
+    "ast_hash": "c8a5e9160ed286b2e1f58fa3a879d08f",
     "semantic_hash": ""
   },
   "tsconfig.app.json": {
@@ -306,9 +306,9 @@
     "semantic_hash": "a3968db16fb089ccddf9df6cdea2514d"
   },
   "src/jogos/embaralhado/EmbaralhadoScreen.tsx": {
-    "mtime": 1789774983.0374725,
-    "seen": 1789775093.571165,
-    "ast_hash": "ff761af5f8eb73d112fdb4368e89d584",
+    "mtime": 1790244159.2008333,
+    "seen": 1790244656.7455835,
+    "ast_hash": "48963566a30b508b3fad6c7b3864831c",
     "semantic_hash": ""
   },
   "src/jogos/embaralhado/motorEmbaralhado.ts": {
@@ -318,15 +318,15 @@
     "semantic_hash": ""
   },
   "src/jogos/referencia/ReferenciaScreen.tsx": {
-    "mtime": 1790215795.0723095,
-    "seen": 1790216013.3885794,
-    "ast_hash": "967e5ef48f97be4ef36337a9eafe4ec7",
+    "mtime": 1790244480.0672598,
+    "seen": 1790244656.7456565,
+    "ast_hash": "a27b6461643715c7fb9323a9251f1b4c",
     "semantic_hash": ""
   },
   "src/jogos/referencia/motorReferencia.ts": {
-    "mtime": 1789774773.6430254,
-    "seen": 1789774803.8924553,
-    "ast_hash": "ebd85281b63eaa3330057fc80728d19f",
+    "mtime": 1790244389.4896655,
+    "seen": 1790244656.745661,
+    "ast_hash": "22014c7e023dba489e70d7313a8716fb",
     "semantic_hash": ""
   },
   "src/shared/trechos/biblioteca.ts": {
@@ -336,15 +336,15 @@
     "semantic_hash": ""
   },
   "src/shared/trechos/types.ts": {
-    "mtime": 1789773302.302374,
-    "seen": 1789773965.7054496,
-    "ast_hash": "5be97c88e1d371ff182b7edca47b0c6b",
+    "mtime": 1790244093.2484944,
+    "seen": 1790244656.7457426,
+    "ast_hash": "59ac79eda1af5b74bc11e69636b186b9",
     "semantic_hash": ""
   },
   "tests/trechos.test.ts": {
-    "mtime": 1790186606.1037798,
-    "seen": 1790187145.0824878,
-    "ast_hash": "f0fe2ad55377f1e36e356ddc9d11743d",
+    "mtime": 1790244432.4546964,
+    "seen": 1790244656.7457762,
+    "ast_hash": "c070439dab4d3b835b460e78570727b0",
     "semantic_hash": ""
   },
   ".codex/skills/graphify/SKILL.md": {
@@ -462,9 +462,33 @@
     "semantic_hash": ""
   },
   "AUDITORIA-JOGOS.md": {
-    "mtime": 1790216001.2366717,
-    "seen": 1790216013.3887012,
-    "ast_hash": "a34c9d19b79257e65e424b01b77f7a09",
+    "mtime": 1790244597.175054,
+    "seen": 1790244656.7458339,
+    "ast_hash": "0d1205e3ecc2bb021e3c1f2e84fed491",
+    "semantic_hash": ""
+  },
+  "scripts/preparar-limites.mjs": {
+    "mtime": 1790244597.1703975,
+    "seen": 1790244656.745498,
+    "ast_hash": "213a6610749bda8023680e8f76eb8586",
+    "semantic_hash": ""
+  },
+  "src/shared/jogo/useRelogioModerador.ts": {
+    "mtime": 1790217223.2092304,
+    "seen": 1790244656.7457123,
+    "ast_hash": "3fc02aacc4b232aa0ba52eeeab2ea7df",
+    "semantic_hash": ""
+  },
+  "tests/caca-consulta.test.tsx": {
+    "mtime": 1790244432.4546964,
+    "seen": 1790244656.7457697,
+    "ast_hash": "e9b54a5ef334954362928ba8ef4ae4f6",
+    "semantic_hash": ""
+  },
+  "tests/jogabilidade.test.tsx": {
+    "mtime": 1790244389.493745,
+    "seen": 1790244656.745773,
+    "ast_hash": "49f2efcf8ab166b039300cf22bdbc4d3",
     "semantic_hash": ""
   }
 }

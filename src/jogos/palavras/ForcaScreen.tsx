@@ -34,7 +34,7 @@ export function ForcaScreen() {
 
   return (
     <Rodada
-      key={fila.palavra.palavra}
+      key={fila.rodada}
       alvo={fila.palavra}
       placar={placar}
       onProxima={fila.proxima}

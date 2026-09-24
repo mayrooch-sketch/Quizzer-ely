@@ -29,6 +29,7 @@ export interface TrechoBruto {
 }
 
 export interface TrechoBiblico extends TrechoBruto {
+  limitesConfirmados?: { capitulosAte: number; versiculosAte: Record<string, number> };
   livro: string;
   divisao: DivisaoBiblica;
   secao: SecaoBiblica;

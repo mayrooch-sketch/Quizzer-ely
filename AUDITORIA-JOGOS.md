@@ -31,7 +31,7 @@ O placar compartilhado agora anuncia acertos e erros. Explicações longas têm 
 
 Em 23/09/2026, o Firebase estava na versão 3 e o conteúdo de quiz, knows e trechos era idêntico ao JSON local da pasta anterior, comparado após ordenar as chaves dos objetos. O banco contém 408 itens de Quem sou eu, com 258 rótulos de resposta diferentes — isso não representa necessariamente 258 pessoas distintas, pois existem variantes de nomes. Nenhum texto bíblico ou pergunta foi alterado nesta revisão.
 
-## Melhorias que ainda merecem uma próxima etapa
+## Pendências identificadas em 23/09 (situação anterior à implementação abaixo)
 
 - **Referência:** o placar atual continua sendo acertos/erros, sem um placar numérico decrescente. Definir a fórmula de pontos por erro e por etapa antes de introduzir esse segundo indicador. Os distratores numéricos também devem respeitar os limites do livro/capítulo; hoje vêm de referências de outros trechos.
 - **Quiz competitivo:** na soma 9, a tela ainda usa uma pergunta comum e deixa o mediador improvisar as pistas de Quem sou eu. Integrar os itens específicos desse jogo daria consistência à rodada.
@@ -59,3 +59,17 @@ Revisão adicional em 23/09/2026: 18 telas de jogos nas resoluções 320×568, 6
 - Menu inicial: cartões compactos em linha nas telas mais estreitas. Painéis de palavras limitados em largura no desktop e contraste dos textos secundários reforçado.
 
 Menu modal conferido no desktop e menu inicial conferido em 320px. Análise estática e compilação de produção passaram. Sem alteração no banco de perguntas nesta revisão.
+
+## Implementação de regras e consulta — 24/09/2026
+
+- Competitivos continuam sendo painéis do moderador: nenhuma penalização automática ao terminar o tempo. Cronômetros usam horário final, com pausa e retomada conservando o tempo restante.
+- Desfazer último resultado restaura os dois placares, o turno e o desafio julgado, incluindo dados, pistas e resposta revelada. O relógio volta pausado. A opção permanece disponível até a próxima rolagem.
+- Soma 9 do Quiz competitivo usa personagens e pistas do banco, reveladas gradualmente. Acertos valem 3, 2 ou 1 conforme as pistas exibidas; erro mantém os 3 pontos para o adversário.
+- Referência: cada etapa vale 100 pontos, menos 25 por porta errada, mínimo 25. O valor disponível aparece antes da escolha, e é somado ao acertar. Os contadores continuam registrando portas. Rever caminho mantém bloqueios e não duplica pontos.
+- Alternativas numéricas usam limites conservadores, comprovados pelas referências cadastradas do próprio livro/capítulo. Não são a contagem completa de capítulos/versículos de todos os livros. Quando o banco comprova menos de quatro alternativas, o app oferece menos opções, em vez de inventar números. Referências compostas continuam aceitas.
+- JSON da pasta anterior atualizado para versão 4 com `banco.trechos.limitesConfirmados`. Perguntas, frases e respostas preservadas. O script `scripts/preparar-limites.mjs` emite o patch desses metadados a partir do banco anterior, sem gravar arquivos. O JSON externo não pertence ao repositório do app e precisa ser enviado manualmente ao Firebase. Nenhum upload foi feito.
+- Baralho compartilhado e fila de palavras preservam o banco durante o ciclo e reembaralham ao terminá-lo; atualizações são aplicadas no ciclo seguinte. Rodadas de um item também reinicializam o desafio.
+- Anagrama identifica conclusão com ajuda e não concede acerto independente após usar dicas. Primeiro resultado continua definindo o placar; a regra também ficou explícita no Embaralhado.
+- Caça-palavras: tocar uma palavra consulta a pergunta e a referência disponível, inclusive antes de encontrá-la. Tocar novamente fecha a consulta. Consultar não encontra a palavra, não revela sua posição e não altera o contador. Botões acessíveis por teclado e lista preservada com rolagem no celular.
+
+Verificação: testes de componentes e hooks para desfazer nos dois competitivos, pistas da soma 9, suspensão/pausa/reinício do relógio, atualização e ciclo do baralho, conclusão assistida, pontuação sem duplicação, limites numéricos e consulta com/sem referência no Caça-palavras. Conferência visual da consulta em 375×667. As recomendações históricas acima sobre esses pontos estão resolvidas; permanecem a revisão editorial de personagens, seleção da grade por teclado e tempo configurável da Memória.

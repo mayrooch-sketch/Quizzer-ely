@@ -30,6 +30,7 @@ import {
   type Caca,
 } from './gerarCaca';
 import './palavras.css';
+import { Explicacao } from '../../shared/jogo/Arena';
 
 const CHAVE_TAM = 'quizzer.caca.tamanho';
 const CHAVE_DIAG = 'quizzer.caca.diagonais';
@@ -151,6 +152,7 @@ function Tabuleiro({ tam, alvo, diagonais, poco, opcoes, onNova }: PropsTabuleir
   const [ancora, setAncora] = useState<number | null>(null);
   const [traco, setTraco] = useState<number[]>([]);
   const [erro, setErro] = useState<number[]>([]);
+  const [consultada, setConsultada] = useState<PalavraDoBanco | null>(null);
 
   /*
    * O gesto em curso mora numa ref, não em estado.
@@ -324,12 +326,22 @@ function Tabuleiro({ tam, alvo, diagonais, poco, opcoes, onNova }: PropsTabuleir
               ? 'caca__palavra caca__palavra--revelada'
               : 'caca__palavra';
           return (
-            <span key={p.palavra} className={classe}>
+            <button type="button" key={p.palavra} className={classe}
+              aria-pressed={consultada?.palavra === p.palavra}
+              aria-controls="caca-pergunta"
+              onClick={() => setConsultada((atual) => atual?.palavra === p.palavra ? null : p)}>
               {p.palavra}
-            </span>
+            </button>
           );
         })}
       </div>
+
+      <section id="caca-pergunta" aria-live="polite">
+        {consultada ? <>
+          <strong>{consultada.original}</strong>
+          <Explicacao comentario={consultada.dica} referencia={consultada.referencia} />
+        </> : <p className="screen-hint">Toque em uma palavra da lista para consultar a pergunta e a referência.</p>}
+      </section>
 
       <div className="caca__acoes">
         {!completo && !revelado ? (

@@ -11,7 +11,8 @@
  * pode é o app parecer ter meia dúzia de palavras.
  */
 
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useEffect } from 'react';
+import { useBaralho } from '../../shared/jogo/useBaralho';
 import { marcarUsadas, priorizarNovas } from '../../shared/palavras/memoria';
 import { usePocoDePalavras, type PalavraDoBanco } from '../../shared/palavras/poco';
 
@@ -29,6 +30,7 @@ export interface FilaDePalavras {
   /** Quantas já saíram, contando a atual. */
   posicao: number;
   total: number;
+  rodada: number;
   proxima: () => void;
 }
 
@@ -40,28 +42,24 @@ export function useFilaDePalavras(maxLetras: number): FilaDePalavras {
    * trocaria a palavra debaixo do dedo de quem está jogando — foi exatamente
    * esse o bug dos seis modos de conhecimento.
    */
-  const ordem = useMemo(() => {
-    const { novas, repetidas } = priorizarNovas(poco);
+  const baralho = useBaralho(poco, (itens) => {
+    const { novas, repetidas } = priorizarNovas(itens);
     return [...embaralhar(novas), ...embaralhar(repetidas)];
-  }, [poco]);
-
-  const [indice, setIndice] = useState(0);
-  const palavra = ordem[indice] ?? null;
+  });
+  const palavra = baralho.atual;
 
   /* A palavra da vez sai da fila dos outros jogos enquanto estiver na tela. */
   useEffect(() => {
     if (palavra) marcarUsadas([palavra.palavra]);
   }, [palavra]);
 
-  const proxima = useCallback(() => {
-    setIndice((i) => (ordem.length === 0 ? 0 : (i + 1) % ordem.length));
-  }, [ordem.length]);
 
   return {
     palavra,
-    posicao: ordem.length === 0 ? 0 : indice + 1,
-    total: ordem.length,
-    proxima,
+    posicao: baralho.posicao,
+    total: baralho.total,
+    rodada: baralho.rodada,
+    proxima: baralho.proxima,
   };
 }
 

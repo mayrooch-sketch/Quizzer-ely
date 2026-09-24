@@ -342,7 +342,17 @@ function normalizeTrecho(raw: unknown, indice: number): TrechoBiblico | null {
 export function normalizeTrechos(raw: unknown): TrechoBiblico[] {
   if (!isRecord(raw)) return [];
   const lista = Array.isArray(raw.items) ? raw.items : [];
-  return lista
+  const trechos = lista
     .map((item, indice) => normalizeTrecho(item, indice))
     .filter((item): item is TrechoBiblico => item !== null);
+  for (const trecho of trechos) {
+    const limite = isRecord(raw.limitesConfirmados) ? raw.limitesConfirmados[trecho.livro] : null;
+    if (!isRecord(limite) || !isRecord(limite.versiculosAte)) continue;
+    const capitulosAte = Number(limite.capitulosAte);
+    if (!Number.isInteger(capitulosAte) || capitulosAte < 1 || capitulosAte > 200) continue;
+    const versiculosAte = Object.fromEntries(Object.entries(limite.versiculosAte)
+      .filter(([capitulo, n]) => /^\d+$/.test(capitulo) && Number(capitulo) >= 1 && Number(capitulo) <= capitulosAte && Number.isInteger(n) && Number(n) > 0 && Number(n) <= 200));
+    trecho.limitesConfirmados = { capitulosAte, versiculosAte: versiculosAte as Record<string, number> };
+  }
+  return trechos;
 }

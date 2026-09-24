@@ -16,11 +16,13 @@
 import { useEffect, useState } from 'react';
 import { useBaralho } from '../../shared/jogo/useBaralho';
 import { usePerguntas } from '../../app/store';
+import { useItensDoTipo } from '../../shared/jogo/useItensDoTipo';
 import { LETRAS } from '../../shared/types/bank';
 import { Dado } from '../../shared/jogo/Dado';
 import { semMovimento } from '../../shared/jogo/movimento';
 import { PISTAS_DO_NOVE, REGRAS, rolarDados } from './regrasDosDados';
 import '../../shared/jogo/mesa.css';
+import { useRelogioModerador } from '../../shared/jogo/useRelogioModerador';
 
 type Time = 'A' | 'B';
 
@@ -30,12 +32,14 @@ const DURACAO_ROLAGEM = 700;
 export function CompetitivoScreen() {
   const perguntas = usePerguntas();
   const baralho = useBaralho(perguntas);
+  const personagens = useBaralho(useItensDoTipo('whoami'));
+  const [pistas, setPistas] = useState(1);
 
   const [pontos, setPontos] = useState<Record<Time, number>>({ A: 0, B: 0 });
   const [vez, setVez] = useState<Time>('A');
   const [dados, setDados] = useState<{ a: number; b: number; soma: number } | null>(null);
-  const [segundos, setSegundos] = useState<number | null>(null);
-  const [rodando, setRodando] = useState(false);
+  const { segundos, setSegundos, rodando, setRodando } = useRelogioModerador();
+  const [ultimoResultado, setUltimoResultado] = useState<{ pontos: Record<Time, number>; vez: Time; restaurar: () => void } | null>(null);
   const [mostrarResposta, setMostrarResposta] = useState(false);
   const [dadosBonus, setDadosBonus] = useState<ReturnType<typeof rolarDados> | null>(null);
 
@@ -57,11 +61,6 @@ export function CompetitivoScreen() {
    */
   const contando = rodando && (segundos ?? 0) > 0;
 
-  useEffect(() => {
-    if (!contando) return;
-    const id = setTimeout(() => setSegundos((s) => (s ?? 0) - 1), 1000);
-    return () => clearTimeout(id);
-  }, [contando, segundos]);
 
   /* Os dados param, e só então a regra da rodada aparece. */
   useEffect(() => {
@@ -75,7 +74,7 @@ export function CompetitivoScreen() {
       setRolagem(null);
     }, DURACAO_ROLAGEM);
     return () => clearTimeout(id);
-  }, [rolagem]);
+  }, [rolagem, setSegundos, setRodando]);
 
   if (perguntas.length === 0) {
     return <p className="aviso">Nenhuma pergunta disponível ainda.</p>;
@@ -85,6 +84,8 @@ export function CompetitivoScreen() {
   const adversario: Time = vez === 'A' ? 'B' : 'A';
 
   function rolar() {
+    setUltimoResultado(null);
+    setPistas(1);
     const d = rolarDados();
     setDadosBonus(null);
 
@@ -103,6 +104,11 @@ export function CompetitivoScreen() {
 
   /** Aplica o veredito do mediador segundo a regra que caiu. */
   function julgar(acertou: boolean, pontosFixos?: number) {
+    setUltimoResultado({ pontos: { ...pontos }, vez, restaurar: () => {
+      setDados(dados); setDadosBonus(dadosBonus); setSegundos(segundos); setRodando(false);
+      setMostrarResposta(mostrarResposta); setPistas(pistas); baralho.voltar();
+      if (dados?.soma === 9) personagens.voltar();
+    } });
     if (!regra) return;
     setPontos((atual) => {
       const meu =
@@ -123,6 +129,7 @@ export function CompetitivoScreen() {
     setRodando(false);
     setMostrarResposta(false);
     baralho.proxima();
+    if (dados?.soma === 9) personagens.proxima();
   }
 
   /* Dado 8: a pergunta é aberta, então as alternativas ficam escondidas. */
@@ -130,6 +137,14 @@ export function CompetitivoScreen() {
 
   return (
     <div className="comp">
+      {ultimoResultado && !dados && !rolando ? (
+        <button type="button" className="btn btn--ghost" onClick={() => {
+          setPontos(ultimoResultado.pontos);
+          setVez(ultimoResultado.vez);
+          ultimoResultado.restaurar();
+          setUltimoResultado(null);
+        }}>Desfazer último resultado (pontos e turno)</button>
+      ) : null}
       <div className="comp__times">
         {(['A', 'B'] as Time[]).map((t) => (
           <button
@@ -209,7 +224,16 @@ export function CompetitivoScreen() {
             </div>
           ) : null}
 
-          {pergunta ? (
+          {dados.soma === 9 ? (
+            <div className="comp__pergunta">
+              {personagens.atual ? <>
+                {personagens.atual.payload.hints.slice(0, pistas).map((pista, i) => <p key={i}>{i + 1}ª pista: {pista}</p>)}
+                <button type="button" className="btn btn--ghost" disabled={pistas >= personagens.atual.payload.hints.length} onClick={() => setPistas((n) => n + 1)}>Revelar próxima pista</button>
+                <button type="button" className="btn btn--ghost" onClick={() => setMostrarResposta(true)}>Mostrar resposta ao moderador</button>
+                {mostrarResposta ? <p>{personagens.atual.payload.answer} · {personagens.atual.reference}</p> : null}
+              </> : <p>Sem personagens disponíveis. Passe a vez sem pontuar.</p>}
+            </div>
+          ) : pergunta ? (
             <div className="comp__pergunta">
               <p className="comp__enunciado">{pergunta.pergunta}</p>
               {esconderAlternativas ? (
@@ -265,6 +289,7 @@ export function CompetitivoScreen() {
                     type="button"
                     className="btn"
                     onClick={() => julgar(true, p.pontos)}
+                    disabled={!personagens.atual || p.pontos !== Math.max(1, 4 - pistas)}
                   >
                     {p.label}
                   </button>

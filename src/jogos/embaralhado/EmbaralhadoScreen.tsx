@@ -20,7 +20,7 @@ export function EmbaralhadoScreen() {
 
   return (
     <Rodada
-      key={baralho.atual.id}
+      key={baralho.rodada}
       trecho={baralho.atual}
       todos={trechos}
       placar={placar}
@@ -83,7 +83,7 @@ function Rodada({
       progresso={progresso}
       placar={placar}
       enunciado="Coloque as palavras na ordem certa e descubra a referência."
-      detalhe="Há quatro palavras de outros textos misturadas."
+      detalhe="Há quatro palavras intrusas. O primeiro resultado define o placar; corrigir depois de errar conclui o desafio, sem acrescentar acerto."
       explicacao={
         concluida ? (
           <div className="embaralhado__resultado">

@@ -7,16 +7,14 @@
  * ------------------------------------------------------------------ */
 
 /*
- * Três zonas, a mesma regra da arena: contador e opções parados em cima, a
- * grade fixa no meio, ações presas embaixo. Só a lista de palavras rola —
- * e só quando são dez.
+ * A página rola inteira para preservar a lista e a pergunta consultada,
+ * sem encolher os botões quando a grade ocupa a altura do celular.
  */
 .caca {
   display: flex;
   flex-direction: column;
   gap: var(--sp-8);
-  flex: 1;
-  min-height: 0;
+  flex: none;
 }
 
 .caca__topo {
@@ -127,10 +125,7 @@
 }
 
 .caca__lista {
-  flex: 1;
-  min-height: 0;
-  overflow-y: auto;
-  overscroll-behavior: contain;
+  flex: none;
   display: flex;
   flex-wrap: wrap;
   align-content: flex-start;
@@ -139,12 +134,20 @@
 }
 
 .caca__palavra {
+  cursor: pointer;
+  color: var(--ink);
+  min-height: var(--tap-min);
   padding: var(--sp-4) var(--sp-8);
   border: 1px solid var(--border);
   border-radius: var(--r-pill);
   background: var(--surf-card);
   font-size: var(--fs-sm);
   font-weight: 600;
+}
+
+.caca__palavra[aria-pressed='true'] {
+  outline: 2px solid var(--c-primary);
+  outline-offset: 1px;
 }
 
 .caca__palavra--achada {

@@ -3,22 +3,25 @@ import { useTrechos } from '../../app/store';
 import { Arena } from '../../shared/jogo/Arena';
 import { useBaralho, usePlacar, type Placar } from '../../shared/jogo/useBaralho';
 import type { TrechoBiblico } from '../../shared/trechos/types';
-import { criarEtapas } from './motorReferencia';
+import { criarEtapas, pontosDaEtapa } from './motorReferencia';
 import './referencia.css';
 
 export function ReferenciaScreen() {
   const trechos = useTrechos();
   const baralho = useBaralho(trechos);
   const placar = usePlacar();
+  const [pontos, setPontos] = useState(0);
 
   if (!baralho.atual) return <p>Nenhum trecho disponível.</p>;
 
   return (
     <Rodada
-      key={baralho.atual.id}
+      key={baralho.rodada}
       trecho={baralho.atual}
       todos={trechos}
       placar={placar}
+      pontos={pontos}
+      somarPontos={(valor) => setPontos((total) => total + valor)}
       progresso={{ posicao: baralho.posicao, total: baralho.total }}
       aoSeguir={baralho.proxima}
     />
@@ -29,12 +32,16 @@ function Rodada({
   trecho,
   todos,
   placar,
+  pontos,
+  somarPontos,
   progresso,
   aoSeguir,
 }: {
   trecho: TrechoBiblico;
   todos: readonly TrechoBiblico[];
   placar: Placar;
+  pontos: number;
+  somarPontos: (valor: number) => void;
   progresso: { posicao: number; total: number };
   aoSeguir: () => void;
 }) {
@@ -44,8 +51,10 @@ function Rodada({
   const [portasErradas, setPortasErradas] = useState<Set<string>>(new Set());
   const portasErradasRef = useRef(new Set<string>());
   const etapasPontuadasRef = useRef(new Set<number>());
+  const [etapasPontuadas, setEtapasPontuadas] = useState(new Set<number>());
   const [concluida, setConcluida] = useState(false);
   const etapa = etapas[indice];
+  const errosDaEtapa = [...portasErradas].filter((porta) => porta.startsWith(`${indice}\u0000`)).length;
 
   const chaveDaPorta = (opcao: string) => `${indice}\u0000${opcao}`;
 
@@ -64,7 +73,10 @@ function Rodada({
     setFeedback('quente');
     if (!etapasPontuadasRef.current.has(indice)) {
       etapasPontuadasRef.current.add(indice);
+      setEtapasPontuadas(new Set(etapasPontuadasRef.current));
       placar.registrar(true);
+      const erros = [...portasErradasRef.current].filter((porta) => porta.startsWith(`${indice}\u0000`)).length;
+      somarPontos(pontosDaEtapa(erros));
     }
     if (indice === etapas.length - 1) {
       setConcluida(true);
@@ -80,8 +92,8 @@ function Rodada({
       enunciado={<q className="ref-trecho">{trecho.trecho}</q>}
       detalhe={
         concluida
-          ? 'Referência encontrada!'
-          : `Caminho ${indice + 1} de ${etapas.length}: ${etapa.pergunta}`
+          ? `Referência encontrada! Total: ${pontos} pontos.`
+          : `Caminho ${indice + 1} de ${etapas.length}: ${etapa.pergunta} · ${pontos} pontos`
       }
       explicacao={
         concluida ? (
@@ -92,7 +104,7 @@ function Rodada({
         concluida
           ? undefined
           : {
-              label: 'Recomeçar',
+              label: 'Rever caminho',
               onClick: () => {
                 setIndice(0);
                 setFeedback(null);
@@ -104,6 +116,11 @@ function Rodada({
       }
     >
       <div className="ref-corredor">
+        {!concluida ? <p role="status">{etapasPontuadas.has(indice) ? 'Etapa já pontuada' : `Esta etapa vale ${pontosDaEtapa(errosDaEtapa)} pontos`}</p> : null}
+        <details>
+          <summary>Regras de pontuação</summary>
+          <p>Cada etapa começa valendo 100 pontos. Cada porta errada desconta 25, até o mínimo de 25. Os pontos são somados ao acertar. Rever caminho mantém erros e bloqueios, sem pontuar novamente. Os contadores registram cada porta.</p>
+        </details>
         {feedback ? (
           <span className={`temperatura temperatura--${feedback}`} role="status">
             {feedback === 'quente' ? '🔥 Quente' : '❄️ Frio'}

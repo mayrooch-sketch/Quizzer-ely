@@ -14,6 +14,7 @@ import {
 import {
   criarEtapas,
   separarLocalDaReferencia,
+  pontosDaEtapa,
 } from '../src/jogos/referencia/motorReferencia';
 
 const TRECHOS_TESTE = normalizeTrechos({
@@ -81,7 +82,22 @@ describe('biblioteca compartilhada', () => {
 });
 
 describe('Encontre a referência', () => {
-  it('termina com capítulo e versículo separados, ambos com quatro opções', () => {
+  it('reduz 25 pontos por erro sem ultrapassar o piso', () => {
+    expect([0, 1, 2, 3, 4, 50].map(pontosDaEtapa)).toEqual([100, 75, 50, 25, 25, 25]);
+  });
+
+  it('respeita os limites do JSON e não mistura capítulos de outros livros', () => {
+    const [trecho] = normalizeTrechos({
+      limitesConfirmados: { Mateus: { capitulosAte: 6, versiculosAte: { '6': 10 } } },
+      items: [{ id: 'm', trecho: 'Texto de teste', referencia: 'Mateus 6:10', temas: [] }],
+    });
+    const etapas = criarEtapas(trecho, [...TRECHOS_TESTE, trecho]);
+    expect(trecho.limitesConfirmados?.capitulosAte).toBe(6);
+    expect(etapas.at(-2)!.opcoes.every((op) => Number(op) >= 1 && Number(op) <= 6)).toBe(true);
+    // Referências de outro capítulo não ampliam o limite dos versículos do 6.
+    expect(etapas.at(-1)!.opcoes.every((op) => Number(op) >= 1 && Number(op) <= 10)).toBe(true);
+  });
+  it('termina com capítulo e versículo separados, sem inventar opções além do banco', () => {
     for (const trecho of TRECHOS_TESTE) {
       const etapas = criarEtapas(trecho, TRECHOS_TESTE, () => 0.37);
       for (const etapa of etapas) {
@@ -89,9 +105,9 @@ describe('Encontre a referência', () => {
         expect(new Set(etapa.opcoes).size).toBe(etapa.opcoes.length);
       }
       expect(etapas.at(-2)?.tipo).toBe('capitulo');
-      expect(etapas.at(-2)?.opcoes).toHaveLength(4);
+      expect(etapas.at(-2)!.opcoes.length).toBeLessThanOrEqual(4);
       expect(etapas.at(-1)?.tipo).toBe('versiculo');
-      expect(etapas.at(-1)?.opcoes).toHaveLength(4);
+      expect(etapas.at(-1)!.opcoes.length).toBeLessThanOrEqual(4);
     }
   });
 
