@@ -116,7 +116,7 @@ function Rodada({
             <strong>Você encontrou!</strong>
           </div>
         ) : (
-          <div className="ref-portas">
+          <div className="ref-portas" data-etapa={etapa.tipo}>
             {etapa.opcoes.map((opcao) => {
               const errada = portasErradas.has(chaveDaPorta(opcao));
               return (

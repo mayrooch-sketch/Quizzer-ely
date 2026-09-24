@@ -45,3 +45,17 @@ Em 23/09/2026, o Firebase estava na versão 3 e o conteúdo de quiz, knows e tre
 ## Verificação automatizada
 
 Testes de regras dos trechos e do Anagrama, análise estática e compilação de produção. Os testes acrescentados cobrem palavras repetidas visualmente idênticas, rejeição de peça duplicada e conservação das letras ao pedir dica.
+
+## Revisão de layout
+
+Revisão adicional em 23/09/2026: 18 telas de jogos nas resoluções 320×568, 667×375 e 1280×800 (54 carregamentos), com amostragem do conteúdo sorteado. Nenhum estouro horizontal ou área principal com altura zero foi detectado após os ajustes. Isso não substitui a revisão de todos os textos do banco.
+
+- Cruzadas: altura mínima para impedir que a grade desapareça em telas baixas.
+- Bingo: cartela preservada e texto maior; contraste reforçado nas casas completadas e nas respostas da Memória.
+- Telas horizontais: rolagem vertical para manter opções e controles utilizáveis, em vez de comprimir a partida.
+- Competitivos: regra em largura inteira abaixo dos dados no celular; conteúdo interno não é esmagado.
+- Embaralhado: peças com altura mínima de toque de 44px.
+- Referência: capítulos e versículos em duas colunas no celular, mantendo as etapas textuais em uma coluna.
+- Menu inicial: cartões compactos em linha nas telas mais estreitas. Painéis de palavras limitados em largura no desktop e contraste dos textos secundários reforçado.
+
+Menu modal conferido no desktop e menu inicial conferido em 320px. Análise estática e compilação de produção passaram. Sem alteração no banco de perguntas nesta revisão.

@@ -373,7 +373,7 @@
   flex-direction: column;
   gap: var(--sp-8);
   flex: 1;
-  min-height: 0;
+  min-height: 520px;
 }
 
 .cw__barra,
@@ -445,7 +445,7 @@
  */
 .cw__caixa {
   flex: 1;
-  min-height: 0;
+  min-height: 220px;
   container-type: size;
   display: flex;
   justify-content: center;
@@ -568,6 +568,9 @@
 }
 
 .folha__painel {
+  width: 100%;
+  max-width: 720px;
+  align-self: center;
   position: relative;
   display: flex;
   flex-direction: column;

@@ -318,9 +318,9 @@
     "semantic_hash": ""
   },
   "src/jogos/referencia/ReferenciaScreen.tsx": {
-    "mtime": 1790186465.764012,
-    "seen": 1790187145.0823953,
-    "ast_hash": "3117dc954191aca53b57e5e0c90b468b",
+    "mtime": 1790215795.0723095,
+    "seen": 1790216013.3885794,
+    "ast_hash": "967e5ef48f97be4ef36337a9eafe4ec7",
     "semantic_hash": ""
   },
   "src/jogos/referencia/motorReferencia.ts": {
@@ -462,9 +462,9 @@
     "semantic_hash": ""
   },
   "AUDITORIA-JOGOS.md": {
-    "mtime": 1790187073.3401468,
-    "seen": 1790187145.082555,
-    "ast_hash": "c899a507dc86d7caec2c7cf95d58b7c5",
+    "mtime": 1790216001.2366717,
+    "seen": 1790216013.3887012,
+    "ast_hash": "a34c9d19b79257e65e424b01b77f7a09",
     "semantic_hash": ""
   }
 }

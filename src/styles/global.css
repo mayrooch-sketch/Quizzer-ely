@@ -72,6 +72,7 @@ button:disabled {
 }
 
 .topbar {
+  flex-shrink: 0;
   position: sticky;
   top: 0;
   z-index: var(--z-header);
@@ -348,4 +349,22 @@ button:disabled {
   color: var(--ink2);
   font-size: var(--fs-xs);
   line-height: 1.35;
+}
+
+/* Uma linha por jogo aproveita melhor a largura dos celulares estreitos. */
+@media (max-width: 359px) {
+  .tile {
+    display: grid;
+    grid-template-columns: 30px minmax(0, 1fr);
+    column-gap: var(--sp-8);
+    min-height: 80px;
+  }
+  .tile__emoji { grid-row: 1 / 3; align-self: center; }
+  .tile__desc { grid-column: 2; }
+}
+
+/* Em telas baixas, a partida rola sem esmagar opções e controles. */
+@media (max-height: 500px) {
+  .main > .arena { flex: none; min-height: 420px; }
+  .main > .comp { flex: none; height: 520px; }
 }

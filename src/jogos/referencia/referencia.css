@@ -121,4 +121,8 @@
   .ref-portas {
     grid-template-columns: 1fr;
   }
+  .ref-portas[data-etapa='capitulo'],
+  .ref-portas[data-etapa='versiculo'] {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
