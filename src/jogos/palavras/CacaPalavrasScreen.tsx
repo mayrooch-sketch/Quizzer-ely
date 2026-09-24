@@ -60,7 +60,10 @@ function gravar(chave: string, valor: string): void {
 
 export function CacaPalavrasScreen() {
   const poco = usePocoDePalavras(12);
-  const [tam, setTam] = useState(() => Number(ler(CHAVE_TAM, '10')) || 10);
+  const [tam, setTam] = useState(() => {
+    const salvo = Number(ler(CHAVE_TAM, '10'));
+    return TAMANHOS.some((t) => t.tam === salvo) ? salvo : 10;
+  });
   const [diagonais, setDiagonais] = useState(() => ler(CHAVE_DIAG, '0') === '1');
   const [rodada, setRodada] = useState(0);
 
@@ -299,7 +302,11 @@ function Tabuleiro({ tam, alvo, diagonais, poco, opcoes, onNova }: PropsTabuleir
         onPointerDown={aoDescer}
         onPointerMove={aoMover}
         onPointerUp={aoSubir}
-        onPointerCancel={aoSubir}
+        onPointerCancel={() => {
+          gesto.current = null;
+          setTraco([]);
+          setAncora(null);
+        }}
       >
         {grade.letras.map((letra, i) => (
           <div key={i} data-i={i} className={classeDaCelula(i)}>

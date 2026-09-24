@@ -37,6 +37,7 @@ export function CompetitivoScreen() {
   const [segundos, setSegundos] = useState<number | null>(null);
   const [rodando, setRodando] = useState(false);
   const [mostrarResposta, setMostrarResposta] = useState(false);
+  const [dadosBonus, setDadosBonus] = useState<ReturnType<typeof rolarDados> | null>(null);
 
   /*
    * A rolagem em curso. O resultado já está sorteado aqui dentro — o que falta
@@ -85,6 +86,7 @@ export function CompetitivoScreen() {
 
   function rolar() {
     const d = rolarDados();
+    setDadosBonus(null);
 
     // Sem animação, o resultado entra na hora.
     if (semMovimento()) {
@@ -165,6 +167,7 @@ export function CompetitivoScreen() {
             <button
               type="button"
               className="btn btn--ghost"
+              disabled={segundos === 0}
               onClick={() => setRodando((r) => !r)}
             >
               {contando ? 'Pausar' : 'Iniciar'}
@@ -177,7 +180,7 @@ export function CompetitivoScreen() {
                 setRodando(false);
               }}
             >
-              Zerar
+              Reiniciar
             </button>
           </div>
 
@@ -195,6 +198,16 @@ export function CompetitivoScreen() {
               <p className="comp__regra-pontos">{regra!.pontuacao}</p>
             </div>
           </div>
+
+          {dados.soma === 12 ? (
+            <div className="comp__regra">
+              {dadosBonus ? <p role="status">Segunda rolagem: {dadosBonus.a} + {dadosBonus.b}. O acerto vale {dadosBonus.soma} pontos.</p> : (
+                <button type="button" className="btn" onClick={() => setDadosBonus(rolarDados())}>
+                  Rolar os dados dos pontos
+                </button>
+              )}
+            </div>
+          ) : null}
 
           {pergunta ? (
             <div className="comp__pergunta">
@@ -269,9 +282,10 @@ export function CompetitivoScreen() {
                 <button
                   type="button"
                   className="btn"
-                  onClick={() => julgar(true, dados.a + dados.b)}
+                  disabled={!dadosBonus}
+                  onClick={() => dadosBonus && julgar(true, dadosBonus.soma)}
                 >
-                  Acertou +{dados.a + dados.b}
+                  {dadosBonus ? `Acertou +${dadosBonus.soma}` : 'Role os pontos'}
                 </button>
                 <button
                   type="button"

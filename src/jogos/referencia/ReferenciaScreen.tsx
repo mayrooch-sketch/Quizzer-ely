@@ -70,7 +70,7 @@ function Rodada({
       setConcluida(true);
       return;
     }
-    setIndice((atual) => atual + 1);
+    setIndice(indice + 1);
   }
 
   return (

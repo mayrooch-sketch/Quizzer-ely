@@ -22,7 +22,7 @@ export interface Baralho<T> {
   proxima: () => void;
 }
 
-function embaralhar<T>(itens: readonly T[]): T[] {
+export function embaralhar<T>(itens: readonly T[]): T[] {
   const copia = [...itens];
   for (let i = copia.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -66,6 +66,7 @@ export interface Placar {
   certas: number;
   erradas: number;
   registrar: (acertou: boolean) => void;
+  zerar: () => void;
 }
 
 export function usePlacar(): Placar {
@@ -77,5 +78,10 @@ export function usePlacar(): Placar {
     else setErradas((n) => n + 1);
   }, []);
 
-  return { certas, erradas, registrar };
+  const zerar = useCallback(() => {
+    setCertas(0);
+    setErradas(0);
+  }, []);
+
+  return { certas, erradas, registrar, zerar };
 }

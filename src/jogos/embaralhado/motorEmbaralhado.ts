@@ -78,5 +78,9 @@ export function ordemEstaCorreta(
 ): boolean {
   if (selecionadas.length !== totalCorretas) return false;
   if (selecionadas.some((peca) => peca.posicaoCorreta === null)) return false;
-  return selecionadas.every((peca, indice) => peca.posicaoCorreta === indice);
+  if (new Set(selecionadas.map((peca) => peca.id)).size !== totalCorretas) return false;
+  const esperadas = [...selecionadas].sort(
+    (a, b) => a.posicaoCorreta! - b.posicaoCorreta!,
+  );
+  return selecionadas.every((peca, indice) => peca.texto === esperadas[indice].texto);
 }

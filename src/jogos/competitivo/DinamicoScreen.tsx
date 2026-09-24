@@ -271,6 +271,7 @@ export function DinamicoScreen() {
             <button
               type="button"
               className="btn btn--ghost"
+              disabled={segundos === 0}
               onClick={() => setRodando((r) => !r)}
             >
               {contando ? 'Pausar' : 'Iniciar'}
@@ -283,7 +284,7 @@ export function DinamicoScreen() {
                 setRodando(false);
               }}
             >
-              Zerar
+              Reiniciar
             </button>
           </div>
 

@@ -26,6 +26,7 @@ import type { PalavraDoBanco } from '../../shared/palavras/poco';
 import { ordemDeTeclado } from '../../shared/palavras/teclas';
 import { embaralharLetras, useFilaDePalavras } from './useFilaDePalavras';
 import './palavras.css';
+import { revelarNoAnagrama } from './ajudaAnagrama';
 
 /** Dez letras já é uma palavra longa de tocar; acima disso vira digitação. */
 const MAX_LETRAS = 10;
@@ -128,10 +129,9 @@ function Rodada({ alvo, placar, onProxima }: PropsRodada) {
     }
 
     // Das seguintes: uma letra no lugar certo, que fica travada.
-    const i = slots.findIndex((s, k) => s !== palavra[k] && !revelados.includes(k));
-    if (i < 0) return;
-    const novos = [...slots];
-    novos[i] = palavra[i];
+    const ajuda = revelarNoAnagrama(palavra, slots, revelados);
+    if (!ajuda) return;
+    const { slots: novos, indice: i } = ajuda;
     setSlots(novos);
     setRevelados((r) => [...r, i]);
     setAjudas((a) => a + 1);
@@ -222,7 +222,7 @@ function Rodada({ alvo, placar, onProxima }: PropsRodada) {
                 (restam.get(l) ?? 0) <= 0 ? 'ana__tecla ana__tecla--gasta' : 'ana__tecla'
               }
               onClick={() => digitar(l)}
-              disabled={acertou}
+              disabled={acertou || (restam.get(l) ?? 0) <= 0}
             >
               {l}
             </button>

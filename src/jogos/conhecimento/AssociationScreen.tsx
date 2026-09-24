@@ -50,6 +50,7 @@ export function AssociationScreen() {
   const [ligacoes, setLigacoes] = useState<Ligacao[]>([]);
   const [selecaoEsq, setSelecaoEsq] = useState<number | null>(null);
   const [conferido, setConferido] = useState(false);
+  const [mostrarPares, setMostrarPares] = useState(false);
 
   if (!baralho.atual) return <SemItens />;
 
@@ -106,6 +107,7 @@ export function AssociationScreen() {
     setLigacoes([]);
     setSelecaoEsq(null);
     setConferido(false);
+    setMostrarPares(false);
     baralho.proxima();
   }
 
@@ -134,7 +136,7 @@ export function AssociationScreen() {
       enunciado={item.payload.prompt}
       detalhe={
         conferido
-          ? `${acertos} de ${pares.length} pares certos`
+          ? `${mostrarPares ? 'Pares corretos. Sua tentativa: ' : ''}${acertos} de ${pares.length} pares certos`
           : selecaoEsq !== null
             ? 'Agora toque na frase que combina'
             : 'Toque num nome, depois na frase dele'
@@ -146,7 +148,7 @@ export function AssociationScreen() {
       }
       secundaria={
         conferido
-          ? { label: 'Pular', onClick: seguir, disabled: true }
+          ? { label: mostrarPares ? 'Suas ligações' : 'Ver pares corretos', onClick: () => setMostrarPares((atual) => !atual) }
           : {
               label: 'Desfazer',
               onClick: () => setLigacoes((ls) => ls.slice(0, -1)),
@@ -159,7 +161,11 @@ export function AssociationScreen() {
           : { label: 'Conferir', onClick: conferir, disabled: !completo }
       }
     >
-      <div className="assoc">
+      {mostrarPares ? (
+        <ul className="assoc__respostas">
+          {pares.map((par, i) => <li key={i}><b>{par.left}</b> — {par.right}</li>)}
+        </ul>
+      ) : <div className="assoc">
         <div className="assoc__col assoc__col--esq">
           {pares.map((p, i) => {
             const l = ligadoEsq(i);
@@ -196,7 +202,7 @@ export function AssociationScreen() {
             );
           })}
         </div>
-      </div>
+      </div>}
     </Arena>
   );
 }

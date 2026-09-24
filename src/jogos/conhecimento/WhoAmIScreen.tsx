@@ -10,9 +10,9 @@
  * registrado em lugar nenhum.
  */
 
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { Arena, Explicacao } from '../../shared/jogo/Arena';
-import { useBaralho, usePlacar } from '../../shared/jogo/useBaralho';
+import { embaralhar, useBaralho, usePlacar } from '../../shared/jogo/useBaralho';
 import { useItensDoTipo } from '../../shared/jogo/useItensDoTipo';
 import { SemItens } from './SemItens';
 import './conhecimento.css';
@@ -21,6 +21,7 @@ export function WhoAmIScreen() {
   const itens = useItensDoTipo('whoami');
 
   const baralho = useBaralho(itens);
+  const opcoes = useMemo(() => embaralhar(baralho.atual?.payload.choices ?? []), [baralho.atual]);
   const placar = usePlacar();
   const [abertas, setAbertas] = useState(1);
   const [escolha, setEscolha] = useState<string | null>(null);
@@ -89,7 +90,7 @@ export function WhoAmIScreen() {
       </div>
 
       <div className="opcoes-grade">
-        {item.payload.choices.map((op) => (
+        {opcoes.map((op) => (
           <button
             key={op}
             type="button"

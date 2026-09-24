@@ -18,7 +18,7 @@
  * área e leva a grade junto. É o mesmo da forca, em QWERTY (ver `Teclado`).
  */
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { usePocoDePalavras } from '../../shared/palavras/poco';
 import { marcarUsadas } from '../../shared/palavras/memoria';
 import { Teclado } from '../../shared/palavras/Teclado';
@@ -259,7 +259,14 @@ function Tabuleiro({ poco, onNova }: PropsTabuleiro) {
               className={classeDaCasa(i, casa)}
               onClick={() => tocarCasa(i)}
               role={casa.letra ? 'button' : undefined}
-              tabIndex={casa.letra ? -1 : undefined}
+              tabIndex={casa.letra ? 0 : undefined}
+              aria-label={casa.letra ? `Linha ${Math.floor(i / cruzada.colunas) + 1}, coluna ${i % cruzada.colunas + 1}: ${valores[i] ?? 'vazia'}` : undefined}
+              onKeyDown={(event) => {
+                if (casa.letra && (event.key === 'Enter' || event.key === ' ')) {
+                  event.preventDefault();
+                  tocarCasa(i);
+                }
+              }}
             >
               {casa.numero ? <b className="cw__num">{casa.numero}</b> : null}
               {casa.letra ? <span>{valores[i] ?? ''}</span> : null}
@@ -388,8 +395,15 @@ function Folha({
   onFechar: () => void;
   children: React.ReactNode;
 }) {
+  const dialogRef = useRef<HTMLDialogElement>(null);
+  useEffect(() => {
+    const dialog = dialogRef.current;
+    dialog?.showModal();
+    return () => dialog?.close();
+  }, []);
+
   return (
-    <div className="folha" role="dialog" aria-modal="true" aria-label={titulo}>
+    <dialog ref={dialogRef} className="folha" aria-label={titulo} onCancel={onFechar}>
       <button
         type="button"
         className="folha__fundo"
@@ -405,6 +419,6 @@ function Folha({
         </div>
         <div className="folha__corpo">{children}</div>
       </div>
-    </div>
+    </dialog>
   );
 }

@@ -12,9 +12,9 @@
  * corrigir no meio da escolha atrapalharia quem ainda está montando a resposta.
  */
 
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { Arena, Explicacao } from '../../shared/jogo/Arena';
-import { useBaralho, usePlacar } from '../../shared/jogo/useBaralho';
+import { embaralhar, useBaralho, usePlacar } from '../../shared/jogo/useBaralho';
 import { useItensDoTipo } from '../../shared/jogo/useItensDoTipo';
 import { SemItens } from './SemItens';
 
@@ -27,6 +27,7 @@ export function SelectScreen() {
   const itens = useItensDoTipo('select');
 
   const baralho = useBaralho(itens);
+  const options = useMemo(() => embaralhar(baralho.atual?.payload.options ?? []), [baralho.atual]);
   const placar = usePlacar();
   const [marcadas, setMarcadas] = useState<Set<string>>(new Set());
   const [conferido, setConferido] = useState(false);
@@ -34,7 +35,7 @@ export function SelectScreen() {
   if (!baralho.atual) return <SemItens />;
 
   const item = baralho.atual;
-  const { options, minCorrect, maxCorrect } = item.payload;
+  const { minCorrect, maxCorrect } = item.payload;
 
   function alternar(texto: string) {
     if (conferido) return;

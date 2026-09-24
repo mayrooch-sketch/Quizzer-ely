@@ -152,19 +152,18 @@
 .ordem__setas {
   flex: none;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 }
 
 /*
  * Desenho pequeno, alvo grande.
  *
- * As duas setas somam 44px de altura tocável — o mínimo para o polegar —
- * mesmo com o triângulo desenhado em 10px. É o mesmo truque de área de toque
- * ampliada que o app antigo já usava nos botões de placar.
+ * Cada seta tem 44px de altura e fica ao lado da outra, evitando os antigos
+ * alvos de apenas 22px empilhados no mesmo espaço.
  */
 .ordem__setas button {
-  width: 34px;
-  height: 22px;
+  width: 36px;
+  height: 44px;
   display: grid;
   place-items: center;
   padding: 0;
@@ -189,6 +188,14 @@
   border-color: var(--c-ok);
   background: color-mix(in srgb, var(--c-ok) 12%, transparent);
 }
+
+.assoc__respostas {
+  margin: 0;
+  padding-left: 20px;
+  font-size: var(--fs-sm);
+}
+
+.assoc__respostas li + li { margin-top: var(--sp-8); }
 
 .ordem__item--certa .ordem__n {
   color: var(--c-ok-text);

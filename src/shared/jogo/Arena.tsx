@@ -94,9 +94,9 @@ export function Arena({
 
       <div className="arena__acoes">
         {placar ? (
-          <span className="arena__placar" aria-label="Placar">
-            <b className="ok">{placar.certas}</b>
-            <b className="no">{placar.erradas}</b>
+          <span className="arena__placar" role="status" aria-label={`${placar.certas} ${placar.certas === 1 ? 'acerto' : 'acertos'} e ${placar.erradas} ${placar.erradas === 1 ? 'erro' : 'erros'}`}>
+            <b className="ok" aria-hidden="true">{placar.certas}</b>
+            <b className="no" aria-hidden="true">{placar.erradas}</b>
           </span>
         ) : null}
 

@@ -107,6 +107,16 @@ describe('Encontre a referência', () => {
 });
 
 describe('Texto embaralhado', () => {
+  it('aceita a troca entre peças visualmente iguais e recusa peça duplicada', () => {
+    const corretas = tokenizar('Por causa do aumento do que é contra a lei.').map((texto, i) => ({
+      id: `p${i}`, texto, posicaoCorreta: i, origemId: 'teste',
+    }));
+    const trocadas = [...corretas];
+    [trocadas[2], trocadas[4]] = [trocadas[4], trocadas[2]];
+    expect(ordemEstaCorreta(trocadas, corretas.length)).toBe(true);
+    trocadas[4] = trocadas[2];
+    expect(ordemEstaCorreta(trocadas, corretas.length)).toBe(false);
+  });
   it('oculta caixa e pontuação ao criar as peças', () => {
     expect(tokenizar('Uma frase, Bem-sucedida!')).toEqual([
       'uma',

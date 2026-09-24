@@ -82,6 +82,7 @@ function Rodada({
   const certa = item.payload.items;
   const [ordem, setOrdem] = useState(() => embaralharDiferente(certa));
   const [conferido, setConferido] = useState(false);
+  const [mostrarOrdem, setMostrarOrdem] = useState(false);
 
   function mover(de: number, para: number) {
     if (conferido || para < 0 || para >= ordem.length) return;
@@ -105,7 +106,7 @@ function Rodada({
       placar={placar}
       enunciado={item.payload.prompt}
       detalhe={
-        conferido ? `${acertos} de ${certa.length} posições certas` : undefined
+        conferido ? `${mostrarOrdem ? 'Ordem correta. Sua tentativa: ' : ''}${acertos} de ${certa.length} posições certas` : undefined
       }
       explicacao={
         conferido ? (
@@ -114,7 +115,7 @@ function Rodada({
       }
       secundaria={
         conferido
-          ? { label: 'Pular', onClick: aoSeguir, disabled: true }
+          ? { label: mostrarOrdem ? 'Sua ordem' : 'Ver ordem correta', onClick: () => setMostrarOrdem((atual) => !atual) }
           : {
               label: 'Recomeçar',
               onClick: () => setOrdem(embaralharDiferente(certa)),
@@ -127,10 +128,10 @@ function Rodada({
       }
     >
       <ol className="ordem">
-        {ordem.map((texto, i) => {
+        {(mostrarOrdem ? certa : ordem).map((texto, i) => {
           const estado = !conferido
             ? ''
-            : texto === certa[i]
+            : mostrarOrdem || texto === certa[i]
               ? ' ordem__item--certa'
               : ' ordem__item--errada';
           return (

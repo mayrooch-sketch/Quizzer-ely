@@ -45,12 +45,17 @@ type Fase = 'parado' | 'jogando' | 'fim';
 export function ContraRelogioScreen() {
   const perguntas = usePerguntas();
   const baralho = useBaralho(perguntas);
+  const proximaPergunta = baralho.proxima;
   const placar = usePlacar();
 
   const [fase, setFase] = useState<Fase>('parado');
   const [segundos, setSegundos] = useState(SEGUNDOS);
   const [escolha, setEscolha] = useState<Letra | null>(null);
   const [recorde, setRecorde] = useState(lerRecorde);
+  const [novoRecorde, setNovoRecorde] = useState(false);
+  const [tempoJogado, setTempoJogado] = useState(0);
+  const inicioRef = useRef(0);
+  const limiteRef = useRef(0);
 
   /*
    * O placar só é lido no fim, e é guardado numa ref para que o relógio não
@@ -67,11 +72,15 @@ export function ContraRelogioScreen() {
   }, [placar.certas]);
 
   const encerrar = useCallback(() => {
+    if (limiteRef.current === 0) return;
+    setTempoJogado(Math.min(SEGUNDOS, Math.ceil((Date.now() - inicioRef.current) / 1000)));
+    limiteRef.current = 0;
     setFase('fim');
     setSegundos(0);
     if (certasRef.current > lerRecorde()) {
       gravarRecorde(certasRef.current);
       setRecorde(certasRef.current);
+      setNovoRecorde(true);
     }
   }, []);
 
@@ -83,15 +92,10 @@ export function ContraRelogioScreen() {
   useEffect(() => {
     if (fase !== 'jogando') return;
     const id = setInterval(() => {
-      setSegundos((s) => {
-        if (s <= 1) {
-          clearInterval(id);
-          encerrar();
-          return 0;
-        }
-        return s - 1;
-      });
-    }, 1000);
+      const restantes = Math.max(0, Math.ceil((limiteRef.current - Date.now()) / 1000));
+      setSegundos(restantes);
+      if (restantes === 0) encerrar();
+    }, 100);
     return () => clearInterval(id);
   }, [fase, encerrar]);
 
@@ -100,16 +104,22 @@ export function ContraRelogioScreen() {
     if (escolha === null || fase !== 'jogando') return;
     const id = setTimeout(() => {
       setEscolha(null);
-      baralho.proxima();
+      proximaPergunta();
     }, PAUSA_FEEDBACK);
     return () => clearTimeout(id);
-  }, [escolha, fase, baralho]);
+  }, [escolha, fase, proximaPergunta]);
 
   if (perguntas.length === 0) {
     return <p className="aviso">Nenhuma pergunta disponível ainda.</p>;
   }
 
   function comecar() {
+    placar.zerar();
+    certasRef.current = 0;
+    setNovoRecorde(false);
+    if (fase === 'fim') baralho.proxima();
+    inicioRef.current = Date.now();
+    limiteRef.current = inicioRef.current + SEGUNDOS * 1000;
     setSegundos(SEGUNDOS);
     setEscolha(null);
     setFase('jogando');
@@ -121,7 +131,7 @@ export function ContraRelogioScreen() {
         <p className="cr-relogio">{SEGUNDOS}s</p>
         <p>Quantas você acerta antes do tempo acabar?</p>
         {recorde > 0 ? (
-          <p className="cr-recorde">Seu recorde: {recorde} acertos</p>
+          <p className="cr-recorde">Seu recorde: {recorde} {recorde === 1 ? 'acerto' : 'acertos'}</p>
         ) : null}
         <button type="button" className="btn" onClick={comecar}>
           Começar
@@ -131,15 +141,14 @@ export function ContraRelogioScreen() {
   }
 
   if (fase === 'fim') {
-    const bateu = placar.certas > 0 && placar.certas >= recorde;
     return (
       <div className="cr-abertura">
         <p className="cr-relogio">{placar.certas}</p>
-        <p>{placar.certas === 1 ? 'acerto' : 'acertos'} em {SEGUNDOS} segundos</p>
-        {bateu ? (
+        <p>{placar.certas === 1 ? 'acerto' : 'acertos'} em {tempoJogado} segundos</p>
+        {novoRecorde ? (
           <p className="cr-recorde cr-recorde--novo">🔥 Novo recorde!</p>
         ) : (
-          <p className="cr-recorde">Seu recorde: {recorde} acertos</p>
+          <p className="cr-recorde">Seu recorde: {recorde} {recorde === 1 ? 'acerto' : 'acertos'}</p>
         )}
         <button type="button" className="btn" onClick={comecar}>
           Jogar de novo
@@ -171,7 +180,12 @@ export function ContraRelogioScreen() {
         escolha={escolha}
         onEscolher={(letra) => {
           if (escolha !== null) return;
+          if (Date.now() >= limiteRef.current) {
+            encerrar();
+            return;
+          }
           setEscolha(letra);
+          if (letra === pergunta.correta) certasRef.current += 1;
           placar.registrar(letra === pergunta.correta);
         }}
       />

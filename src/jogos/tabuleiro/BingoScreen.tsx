@@ -213,7 +213,7 @@ function Cartela({ poco, onNova }: { poco: PalavraDoBanco[]; onNova: () => void 
                       : 'bingo__casa'
             }
             onClick={() => tocar(i)}
-            disabled={acabou || marcadas.includes(i) || perdidas.includes(i)}
+            disabled={acabou || acertou !== null || errada !== null || marcadas.includes(i) || perdidas.includes(i)}
           >
             {p.original}
           </button>
@@ -237,7 +237,7 @@ function Cartela({ poco, onNova }: { poco: PalavraDoBanco[]; onNova: () => void 
             Nova cartela
           </button>
         ) : (
-          <button type="button" className="btn btn--ghost" onClick={passar}>
+          <button type="button" className="btn btn--ghost" onClick={passar} disabled={acertou !== null || errada !== null}>
             ⏭ Não está na cartela
           </button>
         )}

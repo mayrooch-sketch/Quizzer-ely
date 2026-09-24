@@ -101,6 +101,8 @@
 
 .arena__explicacao {
   flex: none;
+  max-height: 25dvh;
+  overflow-y: auto;
   padding: var(--sp-8) var(--sp-12);
   border-left: 3px solid var(--c-grupo);
   border-radius: 0 var(--r-sm) var(--r-sm) 0;
@@ -272,11 +274,12 @@
 /* Alternativas curtas, lado a lado — usado onde o texto é sempre curto. */
 .opcoes-grade {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: var(--sp-8);
 }
 
 .opcoes-grade .opcao {
+  overflow-wrap: anywhere;
   justify-content: center;
   text-align: center;
 }

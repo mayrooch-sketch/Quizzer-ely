@@ -21,7 +21,7 @@ import { marcarUsadas } from '../../shared/palavras/memoria';
 import './tabuleiro.css';
 
 const PARES = 6;
-const PAUSA_DESVIRAR = 900;
+const PAUSA_DESVIRAR = 3000;
 const CHAVE_RECORDE = 'quizzer.memoria.recorde';
 
 interface Carta {
@@ -195,23 +195,31 @@ function Mesa({
               }
               onClick={() => virar(i)}
               aria-label={aberta ? c.texto : 'Carta virada'}
+              aria-pressed={aberta}
             >
               <span className="mem__gira">
-                <span className="mem__face mem__verso">🃏</span>
+                <span className="mem__face mem__verso" aria-hidden="true">🃏</span>
                 <span
+                  aria-hidden={!aberta}
                   className={
                     c.tipo === 'pergunta'
                       ? 'mem__face mem__frente mem__frente--pergunta'
                       : 'mem__face mem__frente mem__frente--resposta'
                   }
                 >
-                  {c.texto}
+                  {aberta ? c.texto : null}
                 </span>
               </span>
             </button>
           );
         })}
       </div>
+
+      <p className="mem__leitura" aria-live="polite" tabIndex={0}>
+        {viradas.length > 0
+          ? viradas.map((i) => cartas[i].texto).join(' • ')
+          : completo ? 'Todos os pares encontrados.' : 'Vire duas cartas para ligar uma pergunta à resposta.'}
+      </p>
 
       <div className="mem__acoes">
         <button
