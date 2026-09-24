@@ -26,6 +26,7 @@ import type { PalavraDoBanco } from '../../shared/palavras/poco';
 import { Teclado } from '../../shared/palavras/Teclado';
 import type { ModoDinamico } from './modosDoDinamico';
 import './dinamico.css';
+import { Favoritar } from '../../shared/estudo/Favoritar';
 
 export const MAX_ERROS_FORCA = 6;
 
@@ -55,6 +56,10 @@ interface Props {
 }
 
 export function ItemDoModo({ modo, item, mesa }: Props) {
+  return <><Favoritar jogo="dinamico-competitivo" item={item.fonte === 'knows' ? item.item : item.fonte === 'palavra' ? item.palavra : item.fonte === 'pergunta' ? item.pergunta : null} /><ConteudoDoModo modo={modo} item={item} mesa={mesa} /></>;
+}
+
+function ConteudoDoModo({ modo, item, mesa }: Props) {
   if (item.fonte === 'nenhuma') {
     return <p className="din__vazio">Sem item nesta rodada.</p>;
   }

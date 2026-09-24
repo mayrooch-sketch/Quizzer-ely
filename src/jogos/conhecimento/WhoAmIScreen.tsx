@@ -16,14 +16,18 @@ import { embaralhar, useBaralho, usePlacar } from '../../shared/jogo/useBaralho'
 import { useItensDoTipo } from '../../shared/jogo/useItensDoTipo';
 import { SemItens } from './SemItens';
 import './conhecimento.css';
+import { useSessao } from '../../shared/estudo/contexto';
+import { reduzirOpcoes } from '../../shared/estudo/dificuldade';
 
 export function WhoAmIScreen() {
+  const sessao = useSessao();
+  const nivel = sessao?.nivel ?? 'normal';
   const itens = useItensDoTipo('whoami');
 
   const baralho = useBaralho(itens);
-  const opcoes = useMemo(() => embaralhar(baralho.atual?.payload.choices ?? []), [baralho.atual]);
+  const opcoes = useMemo(() => reduzirOpcoes(embaralhar(baralho.atual?.payload.choices ?? []), baralho.atual?.payload.answer ?? '', nivel), [baralho.atual, nivel]);
   const placar = usePlacar();
-  const [abertas, setAbertas] = useState(1);
+  const [abertas, setAbertas] = useState(nivel === 'facil' ? 2 : 1);
   const [escolha, setEscolha] = useState<string | null>(null);
   const [pistasGastas, setPistasGastas] = useState(0);
 
@@ -33,18 +37,18 @@ export function WhoAmIScreen() {
   const pistas = item.payload.hints;
   const respondido = escolha !== null;
   const acertou = escolha === item.payload.answer;
-  const temMaisPistas = abertas < pistas.length;
+  const temMaisPistas = nivel !== 'dificil' && abertas < pistas.length;
 
   function responder(valor: string) {
     if (respondido) return;
     setEscolha(valor);
-    placar.registrar(valor === item.payload.answer);
+    placar.registrar(valor === item.payload.answer, item, abertas > (nivel === 'facil' ? 2 : 1));
     if (valor === item.payload.answer) setPistasGastas((n) => n + abertas);
   }
 
   function seguir() {
     setEscolha(null);
-    setAbertas(1);
+    setAbertas(nivel === 'facil' ? 2 : 1);
     baralho.proxima();
   }
 
@@ -73,7 +77,7 @@ export function WhoAmIScreen() {
       }
       secundaria={
         temMaisPistas && !respondido
-          ? { label: 'Mais uma pista', onClick: () => setAbertas((n) => n + 1) }
+          ? { label: 'Mais uma pista', onClick: () => { sessao?.ajudar(); setAbertas((n) => n + 1); } }
           : { label: 'Pular', onClick: seguir, disabled: respondido }
       }
       primaria={{ label: 'Próxima', onClick: seguir, disabled: !respondido }}

@@ -31,6 +31,7 @@ import {
 } from './gerarCaca';
 import './palavras.css';
 import { Explicacao } from '../../shared/jogo/Arena';
+import { useConteudoAtual, useSessao } from '../../shared/estudo/contexto';
 
 const CHAVE_TAM = 'quizzer.caca.tamanho';
 const CHAVE_DIAG = 'quizzer.caca.diagonais';
@@ -143,6 +144,7 @@ interface PropsTabuleiro {
 }
 
 function Tabuleiro({ tam, alvo, diagonais, poco, opcoes, onNova }: PropsTabuleiro) {
+  const sessao = useSessao();
   const [caca] = useState<Caca | null>(() =>
     gerarCaca({ tam, alvo, poco, diagonais }),
   );
@@ -153,6 +155,7 @@ function Tabuleiro({ tam, alvo, diagonais, poco, opcoes, onNova }: PropsTabuleir
   const [traco, setTraco] = useState<number[]>([]);
   const [erro, setErro] = useState<number[]>([]);
   const [consultada, setConsultada] = useState<PalavraDoBanco | null>(null);
+  useConteudoAtual(consultada);
 
   /*
    * O gesto em curso mora numa ref, não em estado.
@@ -207,6 +210,7 @@ function Tabuleiro({ tam, alvo, diagonais, poco, opcoes, onNova }: PropsTabuleir
     if (achou) {
       if (!achadas.includes(achou.palavra)) {
         setAchadas((a) => [...a, achou.palavra]);
+        sessao?.registrar(true, achou, revelado);
       }
     } else {
       setErro(caminho);
@@ -348,7 +352,7 @@ function Tabuleiro({ tam, alvo, diagonais, poco, opcoes, onNova }: PropsTabuleir
           <button
             type="button"
             className="btn btn--ghost"
-            onClick={() => setRevelado(true)}
+            onClick={() => { sessao?.ajudar(); setRevelado(true); }}
           >
             Mostrar onde estão
           </button>

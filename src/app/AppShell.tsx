@@ -53,7 +53,7 @@ export function AppShell() {
             ‹
           </button>
         )}
-        <h1 className="topbar__title">{jogo?.label ?? 'Quizzer'}</h1>
+        <h1 className="topbar__title">{jogo?.label ?? (location.pathname === '/estudo' ? 'Meus erros e favoritos' : location.pathname === '/amigos' ? 'Entre amigos' : 'Quizzer')}</h1>
       </header>
 
       <main className="main">

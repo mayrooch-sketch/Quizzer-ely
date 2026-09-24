@@ -5,6 +5,8 @@ import { useBaralho, usePlacar, type Placar } from '../../shared/jogo/useBaralho
 import type { TrechoBiblico } from '../../shared/trechos/types';
 import { criarEtapas, pontosDaEtapa } from './motorReferencia';
 import './referencia.css';
+import { useSessao } from '../../shared/estudo/contexto';
+import { reduzirOpcoes } from '../../shared/estudo/dificuldade';
 
 export function ReferenciaScreen() {
   const trechos = useTrechos();
@@ -45,7 +47,8 @@ function Rodada({
   progresso: { posicao: number; total: number };
   aoSeguir: () => void;
 }) {
-  const [etapas] = useState(() => criarEtapas(trecho, todos));
+  const sessao = useSessao();
+  const [etapas] = useState(() => criarEtapas(trecho, todos).map((etapa) => ({ ...etapa, opcoes: reduzirOpcoes(etapa.opcoes, etapa.correta, sessao?.nivel ?? 'normal') })));
   const [indice, setIndice] = useState(0);
   const [feedback, setFeedback] = useState<'quente' | 'frio' | null>(null);
   const [portasErradas, setPortasErradas] = useState<Set<string>>(new Set());

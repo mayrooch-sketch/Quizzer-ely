@@ -23,6 +23,7 @@ import { semMovimento } from '../../shared/jogo/movimento';
 import { PISTAS_DO_NOVE, REGRAS, rolarDados } from './regrasDosDados';
 import '../../shared/jogo/mesa.css';
 import { useRelogioModerador } from '../../shared/jogo/useRelogioModerador';
+import { Favoritar } from '../../shared/estudo/Favoritar';
 
 type Time = 'A' | 'B';
 
@@ -200,6 +201,7 @@ export function CompetitivoScreen() {
           </div>
 
           <div className="comp__meio">
+          <Favoritar jogo="quiz-competitivo" item={dados.soma === 9 ? personagens.atual : pergunta} />
           <div className="comp__regra">
             <div className="comp__dados">
               <Dado valor={dados.a} />

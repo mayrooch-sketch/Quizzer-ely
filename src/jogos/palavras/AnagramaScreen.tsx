@@ -27,6 +27,7 @@ import { ordemDeTeclado } from '../../shared/palavras/teclas';
 import { embaralharLetras, useFilaDePalavras } from './useFilaDePalavras';
 import './palavras.css';
 import { revelarNoAnagrama } from './ajudaAnagrama';
+import { useSessao } from '../../shared/estudo/contexto';
 
 /** Dez letras já é uma palavra longa de tocar; acima disso vira digitação. */
 const MAX_LETRAS = 10;
@@ -56,6 +57,7 @@ interface PropsRodada {
 }
 
 function Rodada({ alvo, placar, onProxima }: PropsRodada) {
+  const sessao = useSessao();
   const palavra = alvo.palavra;
 
   const [monte, setMonte] = useState(() => embaralharLetras(palavra));
@@ -101,6 +103,7 @@ function Rodada({ alvo, placar, onProxima }: PropsRodada) {
       setErrou(!certo);
       if (!contado) {
         if (!certo || ajudas === 0) placar.registrar(certo);
+        else sessao?.registrar(true, alvo, true);
         setContado(true);
       }
     }
@@ -121,6 +124,8 @@ function Rodada({ alvo, placar, onProxima }: PropsRodada) {
 
   function pedirAjuda() {
     if (acertou) return;
+    if (sessao?.nivel === 'dificil') return;
+    sessao?.ajudar();
 
     // Primeira ajuda: a pergunta de onde a palavra saiu.
     if (ajudas === 0) {
@@ -139,6 +144,7 @@ function Rodada({ alvo, placar, onProxima }: PropsRodada) {
 
     if (novos.every((s) => s !== null) && !contado) {
       if (novos.join('') !== palavra) placar.registrar(false);
+      else sessao?.registrar(true, alvo, true);
       setContado(true);
     }
   }
@@ -183,7 +189,7 @@ function Rodada({ alvo, placar, onProxima }: PropsRodada) {
           : {
               label: ajudas === 0 ? '💡 Dica' : '🔠 Uma letra',
               onClick: pedirAjuda,
-              disabled: ajudas > 0 && !podeRevelarMais,
+              disabled: sessao?.nivel === 'dificil' || (ajudas > 0 && !podeRevelarMais),
             }
       }
       primaria={{

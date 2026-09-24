@@ -19,12 +19,14 @@ import { useEffect, useState } from 'react';
 import { usePocoDePalavras, type PalavraDoBanco } from '../../shared/palavras/poco';
 import { marcarUsadas } from '../../shared/palavras/memoria';
 import './tabuleiro.css';
+import { useSessao } from '../../shared/estudo/contexto';
 
 const PARES = 6;
 const PAUSA_DESVIRAR = 3000;
 const CHAVE_RECORDE = 'quizzer.memoria.recorde';
 
 interface Carta {
+  conteudo: PalavraDoBanco;
   id: string;
   par: number;
   tipo: 'pergunta' | 'resposta';
@@ -62,8 +64,8 @@ function montarCartas(poco: readonly PalavraDoBanco[]): Carta[] {
   marcarUsadas(escolhidas.map((p) => p.palavra));
 
   const cartas = escolhidas.flatMap((p, i) => [
-    { id: `p${i}`, par: i, tipo: 'pergunta' as const, texto: p.dica },
-    { id: `r${i}`, par: i, tipo: 'resposta' as const, texto: p.original },
+    { id: `p${i}`, par: i, tipo: 'pergunta' as const, texto: p.dica, conteudo: p },
+    { id: `r${i}`, par: i, tipo: 'resposta' as const, texto: p.original, conteudo: p },
   ]);
 
   return embaralhar(cartas);
@@ -88,6 +90,7 @@ function Mesa({
   onNova: () => void;
 }) {
   const [cartas] = useState<Carta[]>(() => montarCartas(poco));
+  const sessao = useSessao();
   const [viradas, setViradas] = useState<number[]>([]);
   const [achados, setAchados] = useState<number[]>([]);
   const [tentativas, setTentativas] = useState(0);
@@ -112,6 +115,7 @@ function Mesa({
   function virar(i: number) {
     if (viradas.length >= 2) return;
     if (viradas.includes(i) || achados.includes(cartas[i].par)) return;
+    sessao?.atual(cartas[i].conteudo);
 
     if (viradas.length === 0) {
       setViradas([i]);
@@ -121,6 +125,7 @@ function Mesa({
     const primeira = viradas[0];
     const tentativa = tentativas + 1;
     setTentativas(tentativa);
+    sessao?.registrar(cartas[primeira].par === cartas[i].par, cartas[primeira].conteudo);
 
     if (cartas[primeira].par !== cartas[i].par) {
       setViradas([primeira, i]);

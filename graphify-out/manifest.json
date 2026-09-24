@@ -30,15 +30,15 @@
     "semantic_hash": "fae7c97cd04a5746338c3ee24f2e1133"
   },
   "src/app/AppShell.tsx": {
-    "mtime": 1789773948.7081754,
-    "seen": 1789773965.7053742,
-    "ast_hash": "237e71df3618010f7c7dc0f302e135f7",
+    "mtime": 1790247153.2005057,
+    "seen": 1790247829.672683,
+    "ast_hash": "5466c8ab5965a10f32a2dacd26e100fa",
     "semantic_hash": ""
   },
   "src/app/HomeScreen.tsx": {
-    "mtime": 1789865342.7120183,
-    "seen": 1789865436.517043,
-    "ast_hash": "4469389958909a3ca838331b5d52eba1",
+    "mtime": 1790246624.5499527,
+    "seen": 1790247829.6726873,
+    "ast_hash": "2096fc3393c694cae474d72c1a57b3b3",
     "semantic_hash": ""
   },
   "src/app/games.ts": {
@@ -48,9 +48,9 @@
     "semantic_hash": ""
   },
   "src/app/routes.tsx": {
-    "mtime": 1789773948.7107196,
-    "seen": 1789773965.705379,
-    "ast_hash": "b075cefd0211e4729af5bbef5d4555cb",
+    "mtime": 1790246791.5293758,
+    "seen": 1790247829.6726944,
+    "ast_hash": "084cd4cb9e412c1ad9bafd70427dbc15",
     "semantic_hash": ""
   },
   "src/app/store.ts": {
@@ -66,10 +66,10 @@
     "semantic_hash": ""
   },
   "src/jogos/competitivo/ItemDoModo.tsx": {
-    "mtime": 1787572828.0,
-    "seen": 1789770952.8817196,
-    "ast_hash": "26406605ede6583ef71dc18933755e9f",
-    "semantic_hash": "26406605ede6583ef71dc18933755e9f"
+    "mtime": 1790246845.7364838,
+    "seen": 1790247829.6727095,
+    "ast_hash": "4bab0839fdd1857833cd72278c1d7a19",
+    "semantic_hash": ""
   },
   "src/jogos/competitivo/modosDoDinamico.ts": {
     "mtime": 1787536204.0,
@@ -84,9 +84,9 @@
     "semantic_hash": ""
   },
   "src/jogos/conhecimento/ClozeScreen.tsx": {
-    "mtime": 1790186834.3651278,
-    "seen": 1790187145.082301,
-    "ast_hash": "477eaaa04d75bd2ca03782538194322a",
+    "mtime": 1790246924.645571,
+    "seen": 1790247829.67272,
+    "ast_hash": "89fc7f2e8854ec54b55bd421a195a842",
     "semantic_hash": ""
   },
   "src/jogos/conhecimento/OrderScreen.tsx": {
@@ -114,27 +114,27 @@
     "semantic_hash": ""
   },
   "src/jogos/conhecimento/WhoAmIScreen.tsx": {
-    "mtime": 1790186834.3617077,
-    "seen": 1790187145.0823221,
-    "ast_hash": "b4e3ff4f8228547385c0189234c38add",
+    "mtime": 1790246924.6018555,
+    "seen": 1790247829.6727371,
+    "ast_hash": "9fc6f3a681ae1ad893f5a3608513bf67",
     "semantic_hash": ""
   },
   "src/jogos/palavras/AnagramaScreen.tsx": {
-    "mtime": 1790244192.166535,
-    "seen": 1790244656.7455935,
-    "ast_hash": "d3c39d73f18e7042267a9b435edcfe7a",
+    "mtime": 1790246924.8463705,
+    "seen": 1790247829.6727479,
+    "ast_hash": "2e68e234f8a9e1b287563544c8047b14",
     "semantic_hash": ""
   },
   "src/jogos/palavras/CacaPalavrasScreen.tsx": {
-    "mtime": 1790244052.408508,
-    "seen": 1790244656.7455983,
-    "ast_hash": "f2dc1e81d8103a7cff5af5e6a1223b43",
+    "mtime": 1790246924.9053004,
+    "seen": 1790247829.672751,
+    "ast_hash": "b1fe5faf7fb07b074a3cacb6a2635841",
     "semantic_hash": ""
   },
   "src/jogos/palavras/CruzadasScreen.tsx": {
-    "mtime": 1790186626.1929624,
-    "seen": 1790187145.082344,
-    "ast_hash": "9a4f1bd31137d5f3a5f6ca619007feb3",
+    "mtime": 1790246925.0541894,
+    "seen": 1790247829.6727536,
+    "ast_hash": "136ec22466ec6302510928276d5e1699",
     "semantic_hash": ""
   },
   "src/jogos/palavras/ForcaScreen.tsx": {
@@ -162,15 +162,15 @@
     "semantic_hash": ""
   },
   "src/jogos/quiz/Alternativas.tsx": {
-    "mtime": 1787501527.0,
-    "seen": 1789770952.8817577,
-    "ast_hash": "961b72f7e7f044188cfe127789b12bef",
-    "semantic_hash": "961b72f7e7f044188cfe127789b12bef"
+    "mtime": 1790246924.5605588,
+    "seen": 1790247829.672775,
+    "ast_hash": "a853a275c932c9ca072bec1cc55af617",
+    "semantic_hash": ""
   },
   "src/jogos/quiz/CompetitivoScreen.tsx": {
-    "mtime": 1790217223.2634866,
-    "seen": 1790244656.745637,
-    "ast_hash": "25bc20b02f2bf0fc234262e8f2d5597e",
+    "mtime": 1790246845.7449484,
+    "seen": 1790247829.672778,
+    "ast_hash": "696a21c3c02e9201d23bbc27c762c39c",
     "semantic_hash": ""
   },
   "src/jogos/quiz/ContraRelogioScreen.tsx": {
@@ -192,15 +192,15 @@
     "semantic_hash": "9f6a378590730eb0826b35b0c09dafb6"
   },
   "src/jogos/tabuleiro/BingoScreen.tsx": {
-    "mtime": 1790186540.761665,
-    "seen": 1790187145.082404,
-    "ast_hash": "32a672e1847a643f01d4e74ab426eb04",
+    "mtime": 1790246925.0087595,
+    "seen": 1790247829.672798,
+    "ast_hash": "82db37c6623cabc8f902d71a4185b2ae",
     "semantic_hash": ""
   },
   "src/jogos/tabuleiro/MemoriaScreen.tsx": {
-    "mtime": 1790186698.165583,
-    "seen": 1790187145.0824082,
-    "ast_hash": "2d1e7a13e9e3f609b881aa66b0a1a573",
+    "mtime": 1790246924.9542274,
+    "seen": 1790247829.6728008,
+    "ast_hash": "a606d6bad7446eb501e5d068ad7c1817",
     "semantic_hash": ""
   },
   "src/main.tsx": {
@@ -234,9 +234,9 @@
     "semantic_hash": "b02b0d230674b7bcba7fd6a14755a085"
   },
   "src/shared/jogo/useBaralho.ts": {
-    "mtime": 1790244354.4015214,
-    "seen": 1790244656.7457032,
-    "ast_hash": "85920c2f5387cf0f634a90ad5f640b09",
+    "mtime": 1790246924.5095847,
+    "seen": 1790247829.6728475,
+    "ast_hash": "1cbf27d36b462cca6194c26fc6aa6e62",
     "semantic_hash": ""
   },
   "src/shared/jogo/useItensDoTipo.ts": {
@@ -318,9 +318,9 @@
     "semantic_hash": ""
   },
   "src/jogos/referencia/ReferenciaScreen.tsx": {
-    "mtime": 1790244480.0672598,
-    "seen": 1790244656.7456565,
-    "ast_hash": "a27b6461643715c7fb9323a9251f1b4c",
+    "mtime": 1790246924.6914763,
+    "seen": 1790247829.6727915,
+    "ast_hash": "9908c9ab797e9696a4369803d8fe6da3",
     "semantic_hash": ""
   },
   "src/jogos/referencia/motorReferencia.ts": {
@@ -489,6 +489,66 @@
     "mtime": 1790244389.493745,
     "seen": 1790244656.745773,
     "ast_hash": "49f2efcf8ab166b039300cf22bdbc4d3",
+    "semantic_hash": ""
+  },
+  "src/jogos/competitivo/AmigosScreen.tsx": {
+    "mtime": 1790247797.7206686,
+    "seen": 1790247829.6727018,
+    "ast_hash": "297577c14026ca8ab7c0821cbc70da60",
+    "semantic_hash": ""
+  },
+  "src/shared/estudo/Favoritar.tsx": {
+    "mtime": 1790246845.7364838,
+    "seen": 1790247829.6728113,
+    "ast_hash": "a3dcbfd1c73a41112e380864087c5d58",
+    "semantic_hash": ""
+  },
+  "src/shared/estudo/Sessao.tsx": {
+    "mtime": 1790247284.3449347,
+    "seen": 1790247829.6728141,
+    "ast_hash": "2c7d3dbc1f31bbb95c9e4703b3e8b565",
+    "semantic_hash": ""
+  },
+  "src/shared/estudo/TelasEstudo.tsx": {
+    "mtime": 1790247284.3501046,
+    "seen": 1790247829.672817,
+    "ast_hash": "a900d52b669112141ef63c6b906539d8",
+    "semantic_hash": ""
+  },
+  "src/shared/estudo/contexto.ts": {
+    "mtime": 1790246924.4297836,
+    "seen": 1790247829.672822,
+    "ast_hash": "54ee78753cd94c0369b94d8724663db8",
+    "semantic_hash": ""
+  },
+  "src/shared/estudo/dificuldade.ts": {
+    "mtime": 1790246685.1177573,
+    "seen": 1790247829.6728249,
+    "ast_hash": "98e26de686e828f5d28ed6a59f265c34",
+    "semantic_hash": ""
+  },
+  "src/shared/estudo/modelo.ts": {
+    "mtime": 1790247284.3501046,
+    "seen": 1790247829.6728277,
+    "ast_hash": "72b16f93190630e1addc071be5c5a2b9",
+    "semantic_hash": ""
+  },
+  "src/shared/estudo/store.ts": {
+    "mtime": 1790246562.1552868,
+    "seen": 1790247829.67283,
+    "ast_hash": "6bd69d8c49726983ec593e41787b9d6f",
+    "semantic_hash": ""
+  },
+  "tests/estudo.test.tsx": {
+    "mtime": 1790247797.731231,
+    "seen": 1790247829.672908,
+    "ast_hash": "eb302ee876ac5dad4faa11ba5dcc1677",
+    "semantic_hash": ""
+  },
+  "PLANO-ESTUDO.md": {
+    "mtime": 1790247797.7356126,
+    "seen": 1790247829.6729927,
+    "ast_hash": "0417c00321e2fcb62b73fbdee5968aea",
     "semantic_hash": ""
   }
 }

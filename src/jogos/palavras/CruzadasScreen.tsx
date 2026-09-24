@@ -24,6 +24,7 @@ import { marcarUsadas } from '../../shared/palavras/memoria';
 import { Teclado } from '../../shared/palavras/Teclado';
 import { gerarCruzadas, type Cruzada, type EntradaCruzada } from './gerarCruzadas';
 import './palavras.css';
+import { useConteudoAtual, useSessao } from '../../shared/estudo/contexto';
 
 export function CruzadasScreen() {
   const poco = usePocoDePalavras(10);
@@ -42,6 +43,8 @@ interface PropsTabuleiro {
 }
 
 function Tabuleiro({ poco, onNova }: PropsTabuleiro) {
+  const sessao = useSessao();
+  const julgadas = useRef(new Set<string>());
   const [cruzada] = useState<Cruzada | null>(() => {
     const c = gerarCruzadas({ poco });
     if (c) marcarUsadas(c.entradas.map((e) => e.palavra));
@@ -56,6 +59,7 @@ function Tabuleiro({ poco, onNova }: PropsTabuleiro) {
   const [folha, setFolha] = useState<'dicas' | 'mais' | null>(null);
   const [ativa, setAtiva] = useState(0);
   const [passo, setPasso] = useState(0);
+  useConteudoAtual(cruzada?.entradas[ativa]);
 
   if (!cruzada) {
     return (
@@ -166,6 +170,7 @@ function Tabuleiro({ poco, onNova }: PropsTabuleiro) {
 
   /** Revela a casa da vez — ou a primeira vazia da palavra, se esta já tem letra. */
   function revelarLetra() {
+    sessao?.ajudar();
     const alvo = valores[casaAtiva] === undefined
       ? casaAtiva
       : (entrada.casas.find((c) => valores[c] === undefined) ?? casaAtiva);
@@ -177,6 +182,7 @@ function Tabuleiro({ poco, onNova }: PropsTabuleiro) {
   }
 
   function revelarTudo() {
+    sessao?.ajudar();
     const todas: Record<number, string> = {};
     cruzada!.casas.forEach((c, i) => {
       if (c.letra) todas[i] = c.letra;
@@ -288,7 +294,14 @@ function Tabuleiro({ poco, onNova }: PropsTabuleiro) {
         <button
           type="button"
           className="btn"
-          onClick={() => setConferido(true)}
+          onClick={() => {
+            setConferido(true);
+            for (const e of cruzada.entradas) {
+              if (julgadas.current.has(e.palavra) || !e.casas.every((c) => valores[c] !== undefined)) continue;
+              julgadas.current.add(e.palavra);
+              sessao?.registrar(e.casas.every((c) => valores[c] === cruzada.casas[c].letra), e, e.casas.some((c) => dadas.includes(c)));
+            }
+          }}
           disabled={preenchidas === 0 && Object.keys(valores).length === 0}
         >
           Conferir

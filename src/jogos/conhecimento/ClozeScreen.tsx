@@ -15,6 +15,8 @@ import { embaralhar, useBaralho, usePlacar } from '../../shared/jogo/useBaralho'
 import { useItensDoTipo } from '../../shared/jogo/useItensDoTipo';
 import { SemItens } from './SemItens';
 import './conhecimento.css';
+import { useSessao } from '../../shared/estudo/contexto';
+import { reduzirOpcoes } from '../../shared/estudo/dificuldade';
 
 /** A frase com a lacuna preenchida pelo que foi escolhido, ou vazia. */
 function Frase({ sentence, escolha }: { sentence: string; escolha: string | null }) {
@@ -41,10 +43,11 @@ function Frase({ sentence, escolha }: { sentence: string; escolha: string | null
 }
 
 export function ClozeScreen() {
+  const nivel = useSessao()?.nivel ?? 'normal';
   const itens = useItensDoTipo('cloze');
 
   const baralho = useBaralho(itens);
-  const opcoes = useMemo(() => embaralhar(baralho.atual?.payload.choices ?? []), [baralho.atual]);
+  const opcoes = useMemo(() => reduzirOpcoes(embaralhar(baralho.atual?.payload.choices ?? []), baralho.atual?.payload.answer ?? '', nivel), [baralho.atual, nivel]);
   const placar = usePlacar();
   const [escolha, setEscolha] = useState<string | null>(null);
 

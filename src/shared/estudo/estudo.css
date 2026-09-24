@@ -1,0 +1,14 @@
+.estudo { width: 100%; max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; padding-bottom: 16px; }
+.estudo h2, .estudo p { margin: 0; }
+.estudo label { display: flex; flex-direction: column; gap: 8px; }
+.estudo select, .estudo input, .estudo textarea { font: inherit; padding: 10px; border: 1px solid var(--border); border-radius: 8px; color: var(--ink); background: var(--surf-card); max-width: 100%; }
+.estudo input, .estudo select { min-height: 44px; }
+.estudo textarea { width: 100%; resize: vertical; }
+.estudo-texto { white-space: pre-wrap; overflow-wrap: anywhere; }
+.sessao-barra { flex: none; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 8px; }
+.sessao-barra .btn { min-height: 44px; padding: 8px; font-size: var(--fs-xs); }
+.estudo article { padding: 12px; background: var(--surf-card); border-radius: 8px; }
+.estudo .modos-amigos { display: flex; flex-direction: column; gap: 8px; }
+.estudo .modos-amigos label { flex-direction: row; align-items: center; }
+.copia-favoritos { flex: none; }
+.sessao-barra ~ .arena { min-height: 440px; }

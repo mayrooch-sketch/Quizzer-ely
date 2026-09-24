@@ -21,6 +21,7 @@ import { useEffect, useState } from 'react';
 import { usePocoDePalavras, type PalavraDoBanco } from '../../shared/palavras/poco';
 import { marcarUsadas } from '../../shared/palavras/memoria';
 import './tabuleiro.css';
+import { useConteudoAtual, useSessao } from '../../shared/estudo/contexto';
 
 const CASAS = 16;
 const LADO = 4;
@@ -38,6 +39,7 @@ const LINHAS: number[][] = [
 ];
 
 interface Chamada {
+  conteudo: PalavraDoBanco;
   /** Índice da casa na cartela, ou -1 quando a pergunta não está lá. */
   casa: number;
   pergunta: string;
@@ -85,10 +87,10 @@ function montarPartida(poco: readonly PalavraDoBanco[]): Partida {
   const cartela = escolhidas.slice(0, CASAS);
   marcarUsadas(cartela.map((p) => p.palavra));
 
-  const reais: Chamada[] = cartela.map((p, i) => ({ casa: i, pergunta: p.dica }));
+  const reais: Chamada[] = cartela.map((p, i) => ({ casa: i, pergunta: p.dica, conteudo: p }));
   const falsas: Chamada[] = escolhidas
     .slice(CASAS)
-    .map((p) => ({ casa: -1, pergunta: p.dica }));
+    .map((p) => ({ casa: -1, pergunta: p.dica, conteudo: p }));
 
   return { cartela, chamadas: espalhar(reais, falsas) };
 }
@@ -105,6 +107,7 @@ export function BingoScreen() {
 }
 
 function Cartela({ poco, onNova }: { poco: PalavraDoBanco[]; onNova: () => void }) {
+  const sessao = useSessao();
   const [partida] = useState<Partida>(() => montarPartida(poco));
   const [vez, setVez] = useState(0);
   const [marcadas, setMarcadas] = useState<number[]>([]);
@@ -115,6 +118,7 @@ function Cartela({ poco, onNova }: { poco: PalavraDoBanco[]; onNova: () => void 
   const [perdidas, setPerdidas] = useState<number[]>([]);
 
   const chamada = partida.chamadas[vez] ?? null;
+  useConteudoAtual(chamada?.conteudo);
   const linhaFeita = LINHAS.find((l) => l.every((c) => marcadas.includes(c))) ?? null;
   const perdeu = erros >= MAX_ERROS;
   const semChamadas = chamada === null;
@@ -147,6 +151,7 @@ function Cartela({ poco, onNova }: { poco: PalavraDoBanco[]; onNova: () => void 
   function tocar(i: number) {
     if (acabou || acertou !== null || errada !== null) return;
     if (marcadas.includes(i) || perdidas.includes(i) || !chamada) return;
+    sessao?.registrar(chamada.casa === i, chamada.conteudo);
 
     if (chamada.casa === i) {
       setMarcadas((m) => [...m, i]);
@@ -165,6 +170,7 @@ function Cartela({ poco, onNova }: { poco: PalavraDoBanco[]; onNova: () => void 
 
   function passar() {
     if (acabou || acertou !== null || errada !== null) return;
+    if (chamada) sessao?.registrar(chamada.casa < 0, chamada.conteudo);
 
     // Dizer "não está na cartela" quando estava também custa a resposta.
     if (chamada && chamada.casa >= 0) {

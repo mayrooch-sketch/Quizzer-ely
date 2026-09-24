@@ -11,6 +11,7 @@
  */
 
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { useConteudoAtual, useSessao } from '../estudo/contexto';
 
 export interface Baralho<T> {
   /** A carta na mesa. `null` só quando não há nenhuma. */
@@ -44,6 +45,7 @@ export function useBaralho<T>(itens: readonly T[], misturar: (itens: readonly T[
   useEffect(() => { fonte.current = { itens, misturar }; }, [itens, misturar]);
   const [estado, setEstado] = useState<Estado>(() => ({ ordem: misturar(itens), indice: 0, rodada: 0 }));
   const { ordem, indice } = estado;
+  useConteudoAtual(ordem[indice] ?? null);
   if (ordem.length === 0 && itens.length > 0) {
     setEstado({ ordem: misturar(itens), indice: 0, rodada: estado.rodada });
   }
@@ -78,18 +80,20 @@ export function useBaralho<T>(itens: readonly T[], misturar: (itens: readonly T[
 export interface Placar {
   certas: number;
   erradas: number;
-  registrar: (acertou: boolean) => void;
+  registrar: (acertou: boolean, item?: unknown, ajuda?: boolean) => void;
   zerar: () => void;
 }
 
 export function usePlacar(): Placar {
+  const sessao = useSessao();
   const [certas, setCertas] = useState(0);
   const [erradas, setErradas] = useState(0);
 
-  const registrar = useCallback((acertou: boolean) => {
+  const registrar = useCallback((acertou: boolean, item?: unknown, ajuda = false) => {
+    sessao?.registrar(acertou, item, ajuda);
     if (acertou) setCertas((n) => n + 1);
     else setErradas((n) => n + 1);
-  }, []);
+  }, [sessao]);
 
   const zerar = useCallback(() => {
     setCertas(0);

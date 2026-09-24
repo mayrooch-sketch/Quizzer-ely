@@ -55,6 +55,10 @@ export function HomeScreen() {
   return (
     <>
       <EstadoDoBanco />
+      <div className="sessao-barra">
+        <Link className="btn" to="/estudo">Meus erros e favoritos</Link>
+        <Link className="btn btn--ghost" to="/amigos">Partida entre amigos</Link>
+      </div>
 
       {JOGOS_POR_GRUPO.map(({ grupo, titulo, emoji, jogos }) => (
         <section className="card" key={grupo} data-grupo={grupo}>

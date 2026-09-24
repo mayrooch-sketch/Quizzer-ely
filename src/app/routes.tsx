@@ -34,6 +34,9 @@ import { MemoriaScreen } from '../jogos/tabuleiro/MemoriaScreen';
 import { BingoScreen } from '../jogos/tabuleiro/BingoScreen';
 import { ReferenciaScreen } from '../jogos/referencia/ReferenciaScreen';
 import { EmbaralhadoScreen } from '../jogos/embaralhado/EmbaralhadoScreen';
+import { Sessao } from '../shared/estudo/Sessao';
+import { TelasEstudo } from '../shared/estudo/TelasEstudo';
+import { AmigosScreen } from '../jogos/competitivo/AmigosScreen';
 
 /** Jogo → tela. Um por `JogoId`, sem falta. */
 const TELAS: Record<JogoId, React.ReactElement> = {
@@ -66,10 +69,12 @@ export const router = createBrowserRouter([
     element: <AppShell />,
     children: [
       { index: true, element: <HomeScreen /> },
+      { path: 'estudo', element: <TelasEstudo /> },
+      { path: 'amigos', element: <AmigosScreen /> },
 
       ...JOGOS.map((jogo) => ({
         path: `jogo/${jogo.id}`,
-        element: TELAS[jogo.id],
+        element: jogo.id.includes('competitivo') ? TELAS[jogo.id] : <Sessao key={jogo.id} jogo={jogo.id}>{TELAS[jogo.id]}</Sessao>,
       })),
 
       { path: '*', element: <Navigate to="/" replace /> },
