@@ -18,7 +18,7 @@
 import type { ReactNode } from 'react';
 import './arena.css';
 
-export interface AcaoArena {
+interface AcaoArena {
   label: string;
   onClick: () => void;
   disabled?: boolean;

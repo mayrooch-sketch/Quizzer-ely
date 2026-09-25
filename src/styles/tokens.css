@@ -77,7 +77,6 @@
 
   /* Sombras */
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.06);
-  --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.09), 0 8px 20px rgba(0, 0, 0, 0.1);
   --shadow-lg: 0 4px 8px rgba(0, 0, 0, 0.11), 0 16px 32px rgba(0, 0, 0, 0.12);
 
   /* Tipografia */
@@ -86,7 +85,6 @@
   --fs-sm: 0.82rem;
   --fs-md: 1rem;
   --fs-lg: 1.12rem;
-  --fs-xxl: 1.65rem;
   --lh: 1.6;
 
   /* Espaçamento */
@@ -95,7 +93,6 @@
   --sp-12: 12px;
   --sp-16: 16px;
   --sp-24: 24px;
-  --sp-32: 32px;
 
   /* Cantos */
   --r-sm: 8px;
@@ -114,12 +111,8 @@
 
   /* Escala de z-index — fonte única. Números soltos no CSS são proibidos:
      é assim que um modal acaba atrás da barra que devia cobrir. */
-  --z-content: 0;
   --z-header: 20;
-  --z-actionbar: 30;
-  --z-overlay: 1000;
   --z-modal: 1010;
-  --z-toast: 1100;
 }
 
 /* Quem pede menos movimento no sistema recebe menos movimento aqui. */

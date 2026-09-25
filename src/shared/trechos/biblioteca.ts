@@ -137,7 +137,7 @@ const ALIASES: Readonly<Record<string, string>> = {
 };
 
 /** Encontra o livro sem depender do tamanho do nome ou de abreviações. */
-export function livroDaReferencia(referencia: string): LivroBiblico {
+function livroDaReferencia(referencia: string): LivroBiblico {
   const nomes = [...LIVROS_BIBLICOS]
     .sort((a, b) => b.nome.length - a.nome.length)
     .map((livro) => livro.nome);

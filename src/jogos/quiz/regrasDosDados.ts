@@ -120,7 +120,7 @@ export const REGRAS: Record<number, RegraDado> = {
     botoes: ['Acertou', 'Errou'],
     lancamento: {
       // O quanto vale depende da pista, então a tela oferece os três botões.
-      aplicar: (atual, acertou) => (acertou ? atual : atual),
+      aplicar: (atual) => atual,
       aoAdversario: (acertou) => (acertou ? 0 : 3),
     },
   },

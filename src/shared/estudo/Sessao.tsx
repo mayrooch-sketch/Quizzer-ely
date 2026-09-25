@@ -16,9 +16,11 @@ export function Sessao({ jogo, children }: { jogo: string; children: ReactNode }
   const [salvo, setSalvo] = useState('');
   const [copiarAberto, setCopiarAberto] = useState(false);
   const aviso = useEstudo((s) => s.aviso);
+  // Estável para não repetir a seleção do conteúdo ao atualizar o resumo.
+  const atual = useMemo(() => (item: unknown) => setConteudo(conteudoDe(item)), []);
   const contexto = useMemo<Contexto>(() => ({
     nivel,
-    atual: (item) => setConteudo(conteudoDe(item)),
+    atual,
     registrar: (acertou, item, ajuda = false) => {
       const c = conteudoDe(item) ?? conteudo;
       if (!c) return;
@@ -28,10 +30,7 @@ export function Sessao({ jogo, children }: { jogo: string; children: ReactNode }
       if (!acertou || (!ajuda && jogo !== 'encontre-referencia')) useEstudo.getState().resultado(entrada, acertou);
     },
     ajudar: () => setAjudas((n) => n + 1),
-  }), [nivel, jogo, conteudo]);
-  // A função de seleção não deve mudar quando os resultados mudam.
-  const atual = useMemo(() => (item: unknown) => setConteudo(conteudoDe(item)), []);
-  const valor = { ...contexto, atual };
+  }), [nivel, jogo, conteudo, atual]);
   const erros = [...new Map(resultados.filter((r) => !r.acertou).map((r) => [chave(r.item), r.item])).values()];
   const assuntos = [...new Set(erros.map((i) => i.assunto))];
   const certas = resultados.filter((r) => r.acertou && !r.ajuda).length;
@@ -65,7 +64,7 @@ export function Sessao({ jogo, children }: { jogo: string; children: ReactNode }
     <button className="btn btn--ghost" onClick={() => { setResultados([]); setAjudas(0); setConteudo(null); setFase('inicio'); }}>Nova partida</button>
     <Link to="/estudo">Meus erros e favoritos</Link>
   </section>;
-  return <ContextoSessao.Provider value={valor}>
+  return <ContextoSessao.Provider value={contexto}>
     <div className="sessao-barra">
       <button className="btn btn--ghost" onClick={() => setFase('resumo')}>Finalizar partida</button>
       <button className="btn btn--ghost" disabled={!conteudo} onClick={() => {

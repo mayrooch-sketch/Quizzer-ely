@@ -1,0 +1,5 @@
+{
+  "$schema": "https://unpkg.com/knip/schema.json",
+  "entry": ["public/sw.js", "scripts/conferir-banco.ts", "scripts/preparar-limites.mjs"],
+  "project": ["src/**/*.{ts,tsx}", "tests/**/*.{ts,tsx}", "scripts/**/*.{ts,mjs}"]
+}

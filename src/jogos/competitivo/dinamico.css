@@ -105,10 +105,6 @@
   font-weight: 600;
 }
 
-.din__escondido {
-  color: var(--ink3);
-}
-
 .din__pistas {
   margin: 0;
   padding-left: var(--sp-24);

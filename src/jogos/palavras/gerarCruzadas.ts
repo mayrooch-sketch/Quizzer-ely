@@ -24,7 +24,7 @@ import type { PalavraDoBanco } from '../../shared/palavras/poco';
 
 const LADO = 10;
 
-export type Direcao = 'h' | 'v';
+type Direcao = 'h' | 'v';
 
 export interface EntradaCruzada extends PalavraDoBanco {
   /** Coluna e linha da primeira letra, já recortadas. */
@@ -37,7 +37,7 @@ export interface EntradaCruzada extends PalavraDoBanco {
   casas: number[];
 }
 
-export interface Casa {
+interface Casa {
   /** A letra certa. `null` é casa preta. */
   letra: string | null;
   /** Número da casa, ou 0 quando não começa palavra nenhuma. */

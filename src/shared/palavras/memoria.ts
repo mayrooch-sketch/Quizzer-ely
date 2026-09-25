@@ -26,7 +26,7 @@ export function marcarUsadas(palavras: readonly string[]): void {
   if (recentes.length > LEMBRAR) recentes.splice(0, recentes.length - LEMBRAR);
 }
 
-export function foiUsadaAgoraPouco(palavra: string): boolean {
+function foiUsadaAgoraPouco(palavra: string): boolean {
   return recentes.includes(palavra);
 }
 
@@ -46,9 +46,4 @@ export function priorizarNovas<T extends { palavra: string }>(
     else novas.push(item);
   }
   return { novas, repetidas };
-}
-
-/** Só para os testes e para a tela de diagnóstico. */
-export function esquecerTudo(): void {
-  recentes.length = 0;
 }

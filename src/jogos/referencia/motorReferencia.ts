@@ -5,7 +5,7 @@ import {
 } from '../../shared/trechos/biblioteca';
 import type { TrechoBiblico } from '../../shared/trechos/types';
 
-export type TipoEtapa =
+type TipoEtapa =
   | 'divisao'
   | 'secao'
   | 'grupo'

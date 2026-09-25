@@ -12,7 +12,7 @@ export const FILAS: string[][] = [
   [...'ZXCVBNM'],
 ];
 
-export const LETRAS = FILAS.flat();
+const LETRAS = FILAS.flat();
 
 /** Onde a letra fica no teclado. Serve para ordenar um punhado delas. */
 const POSICAO = new Map(LETRAS.map((l, i) => [l, i]));

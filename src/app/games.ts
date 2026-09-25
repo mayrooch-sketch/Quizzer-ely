@@ -11,16 +11,16 @@
  * usa o app, e não há motivo para reinventá-los.
  */
 
-export const GRUPOS = [
+const GRUPOS = [
   'competitivo',
   'palavras',
   'conhecimento',
   'tabuleiro',
 ] as const;
 
-export type Grupo = (typeof GRUPOS)[number];
+type Grupo = (typeof GRUPOS)[number];
 
-export const GRUPO_INFO: Record<Grupo, { titulo: string; emoji: string }> = {
+const GRUPO_INFO: Record<Grupo, { titulo: string; emoji: string }> = {
   competitivo: { titulo: 'Competitivo', emoji: '🏆' },
   palavras: { titulo: 'Jogos de palavras', emoji: '🔤' },
   conhecimento: { titulo: 'Conhecimento', emoji: '📖' },
@@ -59,8 +59,6 @@ export interface Jogo {
    * explicação é o que permite aprender abrindo, sem manual.
    */
   descricao: string;
-  /** De qual banco o jogo se alimenta. Governa o aviso de banco vazio. */
-  fonte: 'quiz' | 'knows' | 'palavras' | 'trechos';
 }
 
 export const JOGOS: Jogo[] = [
@@ -70,7 +68,6 @@ export const JOGOS: Jogo[] = [
     emoji: '🏁',
     grupo: 'competitivo',
     descricao: 'Dois times, dados e cronômetro. Quem responde mais, ganha.',
-    fonte: 'quiz',
   },
   {
     id: 'dinamico-competitivo',
@@ -78,7 +75,6 @@ export const JOGOS: Jogo[] = [
     emoji: '⚔️',
     grupo: 'competitivo',
     descricao: 'Onze modos variados, disputados entre times.',
-    fonte: 'knows',
   },
 
   {
@@ -87,7 +83,6 @@ export const JOGOS: Jogo[] = [
     emoji: '📚',
     grupo: 'palavras',
     descricao: 'Escolha um assunto e responda no seu ritmo.',
-    fonte: 'quiz',
   },
   {
     id: 'contra-relogio',
@@ -95,7 +90,6 @@ export const JOGOS: Jogo[] = [
     emoji: '⏱️',
     grupo: 'palavras',
     descricao: 'Quantas você acerta antes do tempo acabar?',
-    fonte: 'quiz',
   },
   {
     id: 'anagrama',
@@ -103,7 +97,6 @@ export const JOGOS: Jogo[] = [
     emoji: '🔀',
     grupo: 'palavras',
     descricao: 'As letras estão embaralhadas. Remonte a palavra.',
-    fonte: 'palavras',
   },
   {
     id: 'forca',
@@ -111,7 +104,6 @@ export const JOGOS: Jogo[] = [
     emoji: '🪢',
     grupo: 'palavras',
     descricao: 'Descubra a palavra letra por letra, com seis chances.',
-    fonte: 'palavras',
   },
   {
     id: 'caca-palavras',
@@ -119,7 +111,6 @@ export const JOGOS: Jogo[] = [
     emoji: '🔎',
     grupo: 'palavras',
     descricao: 'Ache as palavras escondidas na grade.',
-    fonte: 'palavras',
   },
   {
     id: 'cruzadas',
@@ -127,7 +118,6 @@ export const JOGOS: Jogo[] = [
     emoji: '🧩',
     grupo: 'palavras',
     descricao: 'Preencha a grade usando as dicas.',
-    fonte: 'palavras',
   },
 
   {
@@ -136,7 +126,6 @@ export const JOGOS: Jogo[] = [
     emoji: '⚖️',
     grupo: 'conhecimento',
     descricao: 'Uma afirmação por vez. Está certa ou errada?',
-    fonte: 'knows',
   },
   {
     id: 'select',
@@ -144,7 +133,6 @@ export const JOGOS: Jogo[] = [
     emoji: '☑️',
     grupo: 'conhecimento',
     descricao: 'Mais de uma resposta certa na mesma lista.',
-    fonte: 'knows',
   },
   {
     id: 'cloze',
@@ -152,7 +140,6 @@ export const JOGOS: Jogo[] = [
     emoji: '✏️',
     grupo: 'conhecimento',
     descricao: 'Falta uma palavra. Escolha qual.',
-    fonte: 'knows',
   },
   {
     id: 'association',
@@ -160,7 +147,6 @@ export const JOGOS: Jogo[] = [
     emoji: '🔗',
     grupo: 'conhecimento',
     descricao: 'Ligue cada item da esquerda ao par dele.',
-    fonte: 'knows',
   },
   {
     id: 'whoami',
@@ -168,7 +154,6 @@ export const JOGOS: Jogo[] = [
     emoji: '🕵️',
     grupo: 'conhecimento',
     descricao: 'Pistas que levam a um nome — quanto menos usar, melhor.',
-    fonte: 'knows',
   },
   {
     id: 'order',
@@ -176,7 +161,6 @@ export const JOGOS: Jogo[] = [
     emoji: '🔢',
     grupo: 'conhecimento',
     descricao: 'Coloque os acontecimentos na sequência certa.',
-    fonte: 'knows',
   },
   {
     id: 'encontre-referencia',
@@ -184,7 +168,6 @@ export const JOGOS: Jogo[] = [
     emoji: '🚪',
     grupo: 'conhecimento',
     descricao: 'Siga as pistas até encontrar de onde vem o trecho.',
-    fonte: 'trechos',
   },
   {
     id: 'texto-embaralhado',
@@ -192,7 +175,6 @@ export const JOGOS: Jogo[] = [
     emoji: '🧱',
     grupo: 'conhecimento',
     descricao: 'Organize as palavras e descubra a referência.',
-    fonte: 'trechos',
   },
 
   {
@@ -201,7 +183,6 @@ export const JOGOS: Jogo[] = [
     emoji: '🃏',
     grupo: 'tabuleiro',
     descricao: 'Vire as cartas e ache os pares.',
-    fonte: 'knows',
   },
   {
     id: 'bingo',
@@ -209,7 +190,6 @@ export const JOGOS: Jogo[] = [
     emoji: '🎱',
     grupo: 'tabuleiro',
     descricao: 'Marque na cartela o que for cantado.',
-    fonte: 'quiz',
   },
 ];
 

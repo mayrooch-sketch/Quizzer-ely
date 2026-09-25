@@ -96,7 +96,7 @@ export function chaveDeTexto(value: string): string {
  * quando `correta` não aponta para uma delas — nos três casos não há pergunta
  * jogável, e mostrá-la seria oferecer uma rodada impossível de acertar.
  */
-export function normalizePergunta(raw: unknown, indice: number): Pergunta | null {
+function normalizePergunta(raw: unknown, indice: number): Pergunta | null {
   if (!isRecord(raw)) return null;
 
   const enunciado = texto(raw.pergunta);
@@ -257,7 +257,7 @@ function payloadOrder(p: Record<string, unknown>): PayloadOrder | null {
 }
 
 /** Um item do Knows, ou `null` se não der para jogar. */
-export function normalizeKnowsItem(
+function normalizeKnowsItem(
   raw: unknown,
   indice: number,
 ): KnowsItem | null {

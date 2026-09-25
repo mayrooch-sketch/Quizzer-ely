@@ -60,15 +60,6 @@ export const KNOWS_TYPES = [
 
 export type KnowsType = (typeof KNOWS_TYPES)[number];
 
-export const KNOWS_LABEL: Record<KnowsType, string> = {
-  vf: 'Verdadeiro ou falso',
-  select: 'Marque os certos',
-  cloze: 'Complete a frase',
-  association: 'Associação',
-  whoami: 'Quem sou eu',
-  order: 'Coloque em ordem',
-};
-
 /** O que todo item traz, seja qual for o tipo. */
 interface KnowsBase {
   id: string;

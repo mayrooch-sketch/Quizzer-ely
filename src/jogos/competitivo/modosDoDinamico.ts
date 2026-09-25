@@ -22,7 +22,7 @@ import type { Lancamento } from '../quiz/regrasDosDados';
  * múltipla escolha mostradas sem as alternativas; e `nenhuma` é o passa-a-vez,
  * que não tem item nenhum.
  */
-export type FonteDoModo = 'knows' | 'palavra' | 'pergunta' | 'nenhuma';
+type FonteDoModo = 'knows' | 'palavra' | 'pergunta' | 'nenhuma';
 
 export interface ModoDinamico {
   soma: number;
