@@ -6,12 +6,12 @@
 - Unclassified: 21 file(s) not represented in the graph (top: .css 13, (none) 5, .cmd 2)
 
 ## Summary
-- 623 nodes · 1429 edges · 30 communities (23 shown, 7 thin omitted)
+- 623 nodes · 1418 edges · 36 communities (28 shown, 8 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 18 edges (avg confidence: 0.86)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `e6662f17`
+- Built from commit: `ea75270c`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -31,10 +31,14 @@
 - sw.js
 - What You Must Do When Invoked
 - Auditoria do Quizzer — 26/09/2026
-- Rodada
+- ContraRelogioScreen.tsx
+- Teclado.tsx
+- poco.ts
 - graphify reference: extra exports and benchmark
 - estudo.test.tsx
-- PalavraDoBanco
+- gerarCruzadas.ts
+- MemoriaScreen.tsx
+- Tabuleiro
 - Revisão dos jogos — 23/09/2026
 - graphify reference: query, path, explain
 - graphify reference: add a URL and watch a folder
@@ -45,19 +49,21 @@
 - AGENTS.md
 - extraction-spec.md
 - knip.json
+- BingoScreen.tsx
 - Estudo e partidas — plano de implementação
+- PalavraDoBanco
 
 ## God Nodes (most connected - your core abstractions)
 1. `react` - 34 edges
-2. `usePlacar()` - 28 edges
-3. `useBaralho()` - 27 edges
+2. `useBaralho()` - 27 edges
+3. `usePlacar()` - 27 edges
 4. `PalavraDoBanco` - 23 edges
 5. `usePocoDePalavras()` - 18 edges
 6. `compilerOptions` - 18 edges
 7. `useSessao()` - 16 edges
 8. `useItensDoTipo()` - 16 edges
 9. `compilerOptions` - 15 edges
-10. `useAppStore` - 14 edges
+10. `usePerguntas()` - 14 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `Interpreter guard for subcommands` --references--> `add()`  [INFERRED]
@@ -74,7 +80,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (30 total, 7 thin omitted)
+## Communities (36 total, 8 thin omitted)
 
 ### Community 0 - "gerarCaca.ts"
 Cohesion: 0.16
@@ -82,11 +88,11 @@ Nodes (19): Tabuleiro(), aoDescer(), aoMover(), aoSubir(), celulaDoPonto(), conc
 
 ### Community 1 - "routes.tsx"
 Cohesion: 0.06
-Nodes (51): react, TELAS, useTrechos(), AssociationScreen(), CORES, embaralharEstavel(), Ligacao, ClozeScreen() (+43 more)
+Nodes (46): react, TELAS, useTrechos(), AssociationScreen(), CORES, embaralharEstavel(), Ligacao, ClozeScreen() (+38 more)
 
 ### Community 2 - "DinamicoScreen.tsx"
 Cohesion: 0.07
-Nodes (49): usePerguntas(), AmigosScreen(), Desafio, RodadaAmigos(), src_jogos_competitivo_dinamico, DinamicoScreen(), julgar(), proximaRodada() (+41 more)
+Nodes (43): Desafio, RodadaAmigos(), src_jogos_competitivo_dinamico, DinamicoScreen(), julgar(), proximaRodada(), rolar(), sortearItem() (+35 more)
 
 ### Community 3 - "package.json"
 Cohesion: 0.05
@@ -97,8 +103,8 @@ Cohesion: 0.08
 Nodes (24): Interpreter guard for subcommands, ref_node_crypto, ref_node_fs, ref_node_path, achados, add(), args, campos() (+16 more)
 
 ### Community 5 - "normalize.ts"
-Cohesion: 0.08
-Nodes (57): @testing-library/react, vitest, amostra, categorias, knows, knowsBruto, perguntas, porTipo (+49 more)
+Cohesion: 0.09
+Nodes (54): @testing-library/react, vitest, amostra, categorias, knows, knowsBruto, perguntas, porTipo (+46 more)
 
 ### Community 6 - "games.ts"
 Cohesion: 0.11
@@ -128,9 +134,17 @@ Nodes (23): For /graphify add and --watch, For /graphify query, For the commit h
 Cohesion: 0.20
 Nodes (9): Alterações no app, Arquivos de código alterados, Auditoria do Quizzer — 26/09/2026, Compatibilidade final por jogo, Correções no JSON, Duplicatas e revisão manual, Escopo e limite da entrega, Validações preventivas (+1 more)
 
-### Community 16 - "Rodada"
-Cohesion: 0.16
-Nodes (9): revelarNoAnagrama(), Rodada(), pedirAjuda(), Props, Teclado(), FILAS, LETRAS, ordemDeTeclado() (+1 more)
+### Community 15 - "ContraRelogioScreen.tsx"
+Cohesion: 0.18
+Nodes (12): usePerguntas(), Alternativas(), Props, ContraRelogioScreen(), Fase, gravarRecorde(), lerRecorde(), src_jogos_quiz_quiz (+4 more)
+
+### Community 16 - "Teclado.tsx"
+Cohesion: 0.33
+Nodes (5): Props, Teclado(), FILAS, LETRAS, POSICAO
+
+### Community 17 - "poco.ts"
+Cohesion: 0.21
+Nodes (9): AmigosScreen(), CruzadasScreen(), PropsTabuleiro, Cruzada, EntradaCruzada, BingoScreen(), extrairPalavras(), usePocoDePalavras() (+1 more)
 
 ### Community 18 - "graphify reference: extra exports and benchmark"
 Cohesion: 0.22
@@ -140,9 +154,13 @@ Nodes (8): graphify reference: extra exports and benchmark, Step 6b - Wiki (only
 Cohesion: 0.19
 Nodes (21): react-router-dom, Contexto, ContextoSessao, src_shared_estudo_estudo, Favoritar(), chave(), Conteudo, conteudoDe() (+13 more)
 
-### Community 20 - "PalavraDoBanco"
-Cohesion: 0.06
-Nodes (39): PropsTabuleiro, CruzadasScreen(), PropsTabuleiro, Tabuleiro(), cabe(), Casa, Cruzada, cruzar() (+31 more)
+### Community 20 - "gerarCruzadas.ts"
+Cohesion: 0.25
+Nodes (12): cabe(), Casa, cruzar(), Direcao, embaralhar(), escrever(), gerarCruzadas(), Grade (+4 more)
+
+### Community 21 - "MemoriaScreen.tsx"
+Cohesion: 0.29
+Nodes (9): Carta, embaralhar(), gravarRecorde(), lerRecorde(), MemoriaScreen(), Mesa(), virar(), montarCartas() (+1 more)
 
 ### Community 23 - "Revisão dos jogos — 23/09/2026"
 Cohesion: 0.25
@@ -168,24 +186,32 @@ Nodes (3): For --cluster-only, For --update (incremental re-extraction), graphif
 Cohesion: 0.50
 Nodes (3): entry, project, $schema
 
+### Community 33 - "BingoScreen.tsx"
+Cohesion: 0.36
+Nodes (6): Cartela(), embaralhar(), espalhar(), LINHAS, montarPartida(), marcarUsadas()
+
+### Community 35 - "PalavraDoBanco"
+Cohesion: 0.25
+Nodes (8): PropsRodada, PropsTabuleiro, OpcoesCruzada, Posta, FilaDePalavras, Chamada, Partida, PalavraDoBanco
+
 ## Knowledge Gaps
-- **197 isolated node(s):** `$schema`, `plugins`, `react/rules-of-hooks`, `react/only-export-components`, `$schema` (+192 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 268 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **7 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **201 isolated node(s):** `Escopo e limite da entrega`, `Alterações no app`, `Correções no JSON`, `Compatibilidade final por jogo`, `Duplicatas e revisão manual` (+196 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 272 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **8 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `react` connect `routes.tsx` to `DinamicoScreen.tsx`, `package.json`, `normalize.ts`, `games.ts`, `EmbaralhadoScreen.tsx`, `estudo.test.tsx`, `PalavraDoBanco`?**
+- **Why does `react` connect `routes.tsx` to `BingoScreen.tsx`, `DinamicoScreen.tsx`, `package.json`, `games.ts`, `EmbaralhadoScreen.tsx`, `ContraRelogioScreen.tsx`, `poco.ts`, `estudo.test.tsx`, `MemoriaScreen.tsx`?**
   _High betweenness centrality (0.085) - this node is a cross-community bridge._
 - **Why does `Interpreter guard for subcommands` connect `auditar-banco.mjs` to `What You Must Do When Invoked`?**
   _High betweenness centrality (0.061) - this node is a cross-community bridge._
-- **What connects `$schema`, `plugins`, `react/rules-of-hooks` to the rest of the system?**
-  _197 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **What connects `Escopo e limite da entrega`, `Alterações no app`, `Correções no JSON` to the rest of the system?**
+  _201 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `routes.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.06206140350877193 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.06441947565543071 - nodes in this community are weakly interconnected._
 - **Should `DinamicoScreen.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.06538461538461539 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.06704260651629072 - nodes in this community are weakly interconnected._
 - **Should `package.json` be split into smaller, more focused modules?**
   _Cohesion score 0.047619047619047616 - nodes in this community are weakly interconnected._
 - **Should `auditar-banco.mjs` be split into smaller, more focused modules?**

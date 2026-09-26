@@ -14,10 +14,14 @@
   "12": "sw.js",
   "13": "What You Must Do When Invoked",
   "14": "Auditoria do Quizzer — 26/09/2026",
-  "16": "Rodada",
+  "15": "ContraRelogioScreen.tsx",
+  "16": "Teclado.tsx",
+  "17": "poco.ts",
   "18": "graphify reference: extra exports and benchmark",
   "19": "estudo.test.tsx",
-  "20": "PalavraDoBanco",
+  "20": "gerarCruzadas.ts",
+  "21": "MemoriaScreen.tsx",
+  "22": "Tabuleiro",
   "23": "Revisão dos jogos — 23/09/2026",
   "24": "graphify reference: query, path, explain",
   "25": "graphify reference: add a URL and watch a folder",
@@ -28,5 +32,7 @@
   "30": "AGENTS.md",
   "31": "extraction-spec.md",
   "32": "knip.json",
-  "34": "Estudo e partidas — plano de implementação"
+  "33": "BingoScreen.tsx",
+  "34": "Estudo e partidas — plano de implementação",
+  "35": "PalavraDoBanco"
 }
