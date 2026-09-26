@@ -1,0 +1,1382 @@
+{
+  "backup": "../quizzer-ely-default-rtdb-export.backup-auditoria-20260926.json",
+  "versaoAntes": 4,
+  "versaoDepois": 5,
+  "total": 80,
+  "alteracoes": [
+    {
+      "tipo": "quiz",
+      "id": "q_083",
+      "campos": {
+        "A": {
+          "antes": "Para Jope",
+          "depois": "Jope"
+        },
+        "B": {
+          "antes": "Para Sidom",
+          "depois": "Sidom"
+        },
+        "C": {
+          "antes": "Para Nínive",
+          "depois": "Nínive"
+        },
+        "D": {
+          "antes": "Para Társis",
+          "depois": "Társis"
+        },
+        "pergunta": {
+          "antes": "Para onde Jonas tentou fugir ao receber a ordem divina?",
+          "depois": "Qual era o destino da fuga de Jonas ao receber a ordem divina?"
+        }
+      }
+    },
+    {
+      "tipo": "quiz",
+      "id": "q_122",
+      "campos": {
+        "D": {
+          "antes": "Para o deserto",
+          "depois": "Deserto"
+        },
+        "pergunta": {
+          "antes": "Para onde Elias foi depois de deixar seu ajudante em Berseba?",
+          "depois": "Qual foi o destino de Elias depois de deixar seu ajudante em Berseba?"
+        }
+      }
+    },
+    {
+      "tipo": "quiz",
+      "id": "q_125",
+      "campos": {
+        "A": {
+          "antes": "De Jerusalém",
+          "depois": "Jerusalém"
+        },
+        "B": {
+          "antes": "Do Egito",
+          "depois": "Egito"
+        },
+        "C": {
+          "antes": "De Belém",
+          "depois": "Belém"
+        },
+        "D": {
+          "antes": "De Nazaré",
+          "depois": "Nazaré"
+        },
+        "pergunta": {
+          "antes": "De onde José e Maria partiram para se registrar no recenseamento?",
+          "depois": "Qual era a cidade de partida de José e Maria para o recenseamento?"
+        }
+      }
+    },
+    {
+      "tipo": "quiz",
+      "id": "q_126",
+      "campos": {
+        "A": {
+          "antes": "De Berseba",
+          "depois": "Berseba"
+        },
+        "B": {
+          "antes": "De Siquém",
+          "depois": "Siquém"
+        },
+        "C": {
+          "antes": "De Dotã",
+          "depois": "Dotã"
+        },
+        "D": {
+          "antes": "De Hebrom",
+          "depois": "Hebrom"
+        },
+        "pergunta": {
+          "antes": "De onde José foi levado depois de seus irmãos o venderem?",
+          "depois": "Qual foi o lugar de onde José foi levado depois de seus irmãos o venderem?"
+        }
+      }
+    },
+    {
+      "tipo": "quiz",
+      "id": "q_128",
+      "campos": {
+        "A": {
+          "antes": "De Corinto",
+          "depois": "Corinto"
+        },
+        "B": {
+          "antes": "De Cesareia",
+          "depois": "Cesareia"
+        },
+        "C": {
+          "antes": "De Antioquia",
+          "depois": "Antioquia"
+        },
+        "D": {
+          "antes": "De Jerusalém",
+          "depois": "Jerusalém"
+        },
+        "pergunta": {
+          "antes": "De qual cidade Paulo partiu quando foi enviado como prisioneiro a Roma?",
+          "depois": "Qual foi a cidade de partida de Paulo na viagem como prisioneiro a Roma?"
+        }
+      }
+    },
+    {
+      "tipo": "quiz",
+      "id": "q_143",
+      "campos": {
+        "A": {
+          "antes": "Para Filipos",
+          "depois": "Filipos"
+        },
+        "B": {
+          "antes": "Para Éfeso",
+          "depois": "Éfeso"
+        },
+        "C": {
+          "antes": "Para Roma",
+          "depois": "Roma"
+        },
+        "D": {
+          "antes": "Para Atenas",
+          "depois": "Atenas"
+        },
+        "pergunta": {
+          "antes": "Para qual cidade Paulo estava viajando quando foi enviado como prisioneiro?",
+          "depois": "Qual era a cidade de destino de Paulo na viagem como prisioneiro?"
+        }
+      }
+    },
+    {
+      "tipo": "quiz",
+      "id": "q_150",
+      "campos": {
+        "A": {
+          "antes": "Para Hebrom",
+          "depois": "Hebrom"
+        },
+        "B": {
+          "antes": "Para Gate",
+          "depois": "Gate"
+        },
+        "C": {
+          "antes": "Para Berseba",
+          "depois": "Berseba"
+        },
+        "D": {
+          "antes": "Para Maanaim",
+          "depois": "Maanaim"
+        },
+        "pergunta": {
+          "antes": "Para onde Davi fugiu depois de sair de Nobe?",
+          "depois": "Qual foi o destino da fuga de Davi depois de sair de Nobe?"
+        }
+      }
+    },
+    {
+      "tipo": "quiz",
+      "id": "q_153",
+      "campos": {
+        "A": {
+          "antes": "De Gilgal",
+          "depois": "Gilgal"
+        },
+        "B": {
+          "antes": "De Jezreel",
+          "depois": "Jezreel"
+        },
+        "C": {
+          "antes": "De Samaria",
+          "depois": "Samaria"
+        },
+        "D": {
+          "antes": "De Betel",
+          "depois": "Betel"
+        },
+        "pergunta": {
+          "antes": "De que cidade Elias fugiu após a ameaça de morte de Jezabel?",
+          "depois": "Qual era a cidade de onde Elias fugiu após a ameaça de morte de Jezabel?"
+        }
+      }
+    },
+    {
+      "tipo": "quiz",
+      "id": "q_155",
+      "campos": {
+        "A": {
+          "antes": "De Hebrom",
+          "depois": "Hebrom"
+        },
+        "B": {
+          "antes": "De Berseba",
+          "depois": "Berseba"
+        },
+        "C": {
+          "antes": "De Siquém",
+          "depois": "Siquém"
+        },
+        "D": {
+          "antes": "De Betel",
+          "depois": "Betel"
+        },
+        "pergunta": {
+          "antes": "De onde Jacó partiu quando foi para Padã-Arã em busca de uma esposa?",
+          "depois": "Qual era o lugar de partida de Jacó na viagem a Padã-Arã em busca de uma esposa?"
+        }
+      }
+    },
+    {
+      "tipo": "quiz",
+      "id": "q_167",
+      "campos": {
+        "A": {
+          "antes": "Para Harã",
+          "depois": "Harã"
+        },
+        "B": {
+          "antes": "Para o Egito",
+          "depois": "Egito"
+        },
+        "C": {
+          "antes": "Para Padã-Arã",
+          "depois": "Padã-Arã"
+        },
+        "D": {
+          "antes": "Para Canaã",
+          "depois": "Canaã"
+        },
+        "pergunta": {
+          "antes": "Para onde José foi levado pelos mercadores ismaelitas?",
+          "depois": "Qual foi o destino de José ao ser levado pelos mercadores ismaelitas?"
+        }
+      }
+    },
+    {
+      "tipo": "quiz",
+      "id": "q_170",
+      "campos": {
+        "A": {
+          "antes": "Para Gate",
+          "depois": "Gate"
+        },
+        "B": {
+          "antes": "Para Nobe",
+          "depois": "Nobe"
+        },
+        "C": {
+          "antes": "Para Ramá",
+          "depois": "Ramá"
+        },
+        "D": {
+          "antes": "Para Hebrom",
+          "depois": "Hebrom"
+        },
+        "pergunta": {
+          "antes": "Para onde Davi fugiu imediatamente após escapar de Gibeá?",
+          "depois": "Qual foi o destino da fuga de Davi imediatamente após escapar de Gibeá?"
+        }
+      }
+    },
+    {
+      "tipo": "quiz",
+      "id": "q_173",
+      "campos": {
+        "A": {
+          "antes": "Para o Sinai",
+          "depois": "Sinai"
+        },
+        "B": {
+          "antes": "Para Sucote",
+          "depois": "Sucote"
+        },
+        "C": {
+          "antes": "Para Etã",
+          "depois": "Etã"
+        },
+        "D": {
+          "antes": "Para o mar Vermelho",
+          "depois": "Mar Vermelho"
+        },
+        "pergunta": {
+          "antes": "Para onde os israelitas viajaram depois de sair de Ramessés?",
+          "depois": "Qual foi o destino dos israelitas logo depois de saírem de Ramessés?"
+        }
+      }
+    },
+    {
+      "tipo": "quiz",
+      "id": "q_181",
+      "campos": {
+        "A": {
+          "antes": "De Hebrom",
+          "depois": "Hebrom"
+        },
+        "B": {
+          "antes": "De Dotã",
+          "depois": "Dotã"
+        },
+        "C": {
+          "antes": "De Canaã",
+          "depois": "Canaã"
+        },
+        "D": {
+          "antes": "De Berseba",
+          "depois": "Berseba"
+        },
+        "pergunta": {
+          "antes": "De que terra José foi levado antes de chegar ao Egito?",
+          "depois": "Qual era a terra de origem de José antes de ele ser levado ao Egito?"
+        }
+      }
+    },
+    {
+      "tipo": "quiz",
+      "id": "q_281",
+      "campos": {
+        "A": {
+          "antes": "Por profetas apenas",
+          "depois": "Profetas apenas"
+        },
+        "B": {
+          "antes": "Por anjos",
+          "depois": "Anjos"
+        },
+        "C": {
+          "antes": "Por Deus",
+          "depois": "Deus"
+        },
+        "D": {
+          "antes": "Por homens fiéis",
+          "depois": "Homens fiéis"
+        },
+        "pergunta": {
+          "antes": "Segundo 2 Timóteo 3:16, toda a Escritura é inspirada por quem?",
+          "depois": "Segundo 2 Timóteo 3:16, quem inspirou toda a Escritura?"
+        }
+      }
+    },
+    {
+      "tipo": "quiz",
+      "id": "q_284",
+      "campos": {
+        "A": {
+          "antes": "A bacia de cobre",
+          "depois": "Bacia de cobre"
+        },
+        "B": {
+          "antes": "O altar de cobre",
+          "depois": "Altar de cobre"
+        },
+        "C": {
+          "antes": "A arca",
+          "depois": "Arca"
+        },
+        "D": {
+          "antes": "A mesa",
+          "depois": "Mesa"
+        },
+        "pergunta": {
+          "antes": "Segundo Êxodo 26:35, que móvel ficava no lado norte do tabernáculo?",
+          "depois": "Qual móvel ficava no lado norte do tabernáculo, segundo Êxodo 26:35?"
+        }
+      }
+    },
+    {
+      "tipo": "quiz",
+      "id": "q_285",
+      "campos": {
+        "A": {
+          "antes": "A mesa",
+          "depois": "Mesa"
+        },
+        "B": {
+          "antes": "O altar de incenso",
+          "depois": "Altar de incenso"
+        },
+        "C": {
+          "antes": "O candelabro",
+          "depois": "Candelabro"
+        },
+        "D": {
+          "antes": "A arca",
+          "depois": "Arca"
+        },
+        "pergunta": {
+          "antes": "Segundo Êxodo 26:35, que objeto ficava no lado sul do tabernáculo?",
+          "depois": "Qual objeto ficava no lado sul do tabernáculo, segundo Êxodo 26:35?"
+        }
+      }
+    },
+    {
+      "tipo": "quiz",
+      "id": "q_314",
+      "campos": {
+        "B": {
+          "antes": "A viúva de Sarefá",
+          "depois": "Viúva de Sarefá"
+        },
+        "C": {
+          "antes": "A sunamita",
+          "depois": "Sunamita"
+        },
+        "pergunta": {
+          "antes": "Que mulher de Suném hospedava Eliseu?",
+          "depois": "Como era conhecida a mulher que hospedava Eliseu, segundo 2 Reis 4:8?"
+        }
+      }
+    },
+    {
+      "tipo": "quiz",
+      "id": "q_433",
+      "campos": {
+        "A": {
+          "antes": "De brandura",
+          "depois": "Brandura"
+        },
+        "B": {
+          "antes": "De pressa",
+          "depois": "Pressa"
+        },
+        "C": {
+          "antes": "De suspeita",
+          "depois": "Suspeita"
+        },
+        "D": {
+          "antes": "De severidade",
+          "depois": "Severidade"
+        },
+        "pergunta": {
+          "antes": "Segundo Gálatas 6:1, homens com qualificações espirituais devem tentar restabelecer alguém com que espírito?",
+          "depois": "Que qualidade deve caracterizar o espírito de quem tenta reajustar alguém, segundo Gálatas 6:1?"
+        }
+      }
+    },
+    {
+      "tipo": "quiz",
+      "id": "q_491",
+      "campos": {
+        "A": {
+          "antes": "Uma chama de fogo",
+          "depois": "Chama de fogo"
+        },
+        "B": {
+          "antes": "Uma nuvem",
+          "depois": "Nuvem"
+        },
+        "C": {
+          "antes": "Um raio de luz",
+          "depois": "Raio de luz"
+        },
+        "D": {
+          "antes": "Um vento forte",
+          "depois": "Vento forte"
+        },
+        "pergunta": {
+          "antes": "O que encobriu Jesus enquanto ele subia diante dos olhos dos discípulos?",
+          "depois": "O que encobriu Jesus durante sua subida diante dos discípulos?"
+        }
+      }
+    },
+    {
+      "tipo": "quiz",
+      "id": "q_528",
+      "campos": {
+        "pergunta": {
+          "antes": "De que material Moisés fez a serpente de cobre no deserto?",
+          "depois": "De que material Moisés fez a serpente que colocou numa haste no deserto?"
+        }
+      }
+    },
+    {
+      "tipo": "quiz",
+      "id": "q_595",
+      "campos": {
+        "A": {
+          "antes": "Um siclo",
+          "depois": "Siclo"
+        },
+        "B": {
+          "antes": "Uma mina",
+          "depois": "Mina"
+        },
+        "C": {
+          "antes": "Um denário",
+          "depois": "Denário"
+        },
+        "D": {
+          "antes": "Uma dracma",
+          "depois": "Dracma"
+        },
+        "pergunta": {
+          "antes": "Na ilustração dos trabalhadores do vinhedo, que pagamento diário foi combinado?",
+          "depois": "Qual moeda correspondia ao pagamento diário combinado na ilustração dos trabalhadores do vinhedo?"
+        }
+      }
+    },
+    {
+      "tipo": "quiz",
+      "id": "q_695",
+      "campos": {
+        "A": {
+          "antes": "No porão",
+          "depois": "Porão"
+        },
+        "B": {
+          "antes": "No terraço",
+          "depois": "Terraço"
+        },
+        "C": {
+          "antes": "No depósito",
+          "depois": "Depósito"
+        },
+        "D": {
+          "antes": "Numa cisterna",
+          "depois": "Cisterna"
+        },
+        "pergunta": {
+          "antes": "Onde Raabe escondeu os dois espias enviados a Jericó?",
+          "depois": "Qual parte da casa Raabe usou para esconder os dois espias enviados a Jericó?"
+        }
+      }
+    },
+    {
+      "tipo": "quiz",
+      "id": "q_700",
+      "campos": {
+        "A": {
+          "antes": "Lucas",
+          "depois": "Médico"
+        },
+        "B": {
+          "antes": "O carcereiro",
+          "depois": "Carcereiro"
+        },
+        "C": {
+          "antes": "Timóteo",
+          "depois": "Governador"
+        },
+        "D": {
+          "antes": "Barnabé",
+          "depois": "Sacerdote"
+        },
+        "pergunta": {
+          "antes": "Quem cuidou de Paulo e Silas depois do terremoto na prisão de Filipos?",
+          "depois": "Qual era a função do homem que cuidou de Paulo e Silas depois do terremoto na prisão de Filipos?"
+        }
+      }
+    },
+    {
+      "tipo": "quiz",
+      "id": "q_968",
+      "campos": {
+        "A": {
+          "antes": "Um terremoto",
+          "depois": "Terremoto"
+        },
+        "B": {
+          "antes": "Guardas",
+          "depois": "Tempestade"
+        },
+        "C": {
+          "antes": "Um anjo",
+          "depois": "Incêndio"
+        },
+        "D": {
+          "antes": "Discípulos",
+          "depois": "Enchente"
+        },
+        "pergunta": {
+          "antes": "O que abriu as portas da prisão e soltou as correntes de Paulo e Silas?",
+          "depois": "Que fenômeno abriu as portas da prisão e soltou as correntes de Paulo e Silas?"
+        }
+      }
+    },
+    {
+      "tipo": "quiz",
+      "id": "q_969",
+      "campos": {
+        "A": {
+          "antes": "Um fariseu",
+          "depois": "Sacerdote"
+        },
+        "B": {
+          "antes": "O governador",
+          "depois": "Governador"
+        },
+        "C": {
+          "antes": "Um soldado",
+          "depois": "Soldado"
+        },
+        "D": {
+          "antes": "O carcereiro",
+          "depois": "Carcereiro"
+        },
+        "pergunta": {
+          "antes": "Quem se converteu após o terremoto em Filipos?",
+          "depois": "Qual era a função do homem que se tornou crente após o terremoto na prisão de Filipos?"
+        }
+      }
+    },
+    {
+      "tipo": "quiz",
+      "id": "q_1001",
+      "campos": {
+        "pergunta": {
+          "antes": "Quantos anjos seguravam os quatro ventos?",
+          "depois": "Quantos anjos seguravam os ventos da terra na visão de Apocalipse 7:1?"
+        }
+      }
+    },
+    {
+      "tipo": "quiz",
+      "id": "q_1088",
+      "campos": {
+        "A": {
+          "antes": "Herodes",
+          "depois": "Governador"
+        },
+        "B": {
+          "antes": "Pilatos",
+          "depois": "Pescador"
+        },
+        "C": {
+          "antes": "Um soldado",
+          "depois": "Soldado"
+        },
+        "D": {
+          "antes": "Caifás",
+          "depois": "Sacerdote"
+        },
+        "pergunta": {
+          "antes": "Quem perfurou o lado de Jesus?",
+          "depois": "Qual era a ocupação do homem que perfurou o lado de Jesus?"
+        }
+      }
+    },
+    {
+      "tipo": "quiz",
+      "id": "q_1090",
+      "campos": {
+        "A": {
+          "antes": "Guardas",
+          "depois": "Guarda"
+        },
+        "B": {
+          "antes": "Apóstolos",
+          "depois": "Apóstolo"
+        },
+        "C": {
+          "antes": "Um anjo",
+          "depois": "Anjo"
+        },
+        "D": {
+          "antes": "Sacerdotes",
+          "depois": "Sacerdote"
+        },
+        "pergunta": {
+          "antes": "Quem disse às mulheres que Jesus havia sido levantado?",
+          "depois": "Que tipo de mensageiro disse às mulheres que Jesus havia sido levantado?"
+        }
+      }
+    },
+    {
+      "tipo": "quiz",
+      "id": "q_1188",
+      "campos": {
+        "categoria": {
+          "antes": "Personagens",
+          "depois": "Personagens bíblicos"
+        }
+      }
+    },
+    {
+      "tipo": "quiz",
+      "id": "q_1189",
+      "campos": {
+        "categoria": {
+          "antes": "Personagens",
+          "depois": "Personagens bíblicos"
+        }
+      }
+    },
+    {
+      "tipo": "quiz",
+      "id": "q_1190",
+      "campos": {
+        "categoria": {
+          "antes": "Personagens",
+          "depois": "Personagens bíblicos"
+        }
+      }
+    },
+    {
+      "tipo": "quiz",
+      "id": "q_1191",
+      "campos": {
+        "categoria": {
+          "antes": "Personagens",
+          "depois": "Personagens bíblicos"
+        }
+      }
+    },
+    {
+      "tipo": "quiz",
+      "id": "q_1193",
+      "campos": {
+        "A": {
+          "antes": "Em Betel",
+          "depois": "Betel"
+        },
+        "B": {
+          "antes": "Em Siló",
+          "depois": "Siló"
+        },
+        "C": {
+          "antes": "Em Hebrom",
+          "depois": "Hebrom"
+        },
+        "D": {
+          "antes": "Em Samir",
+          "depois": "Samir"
+        },
+        "pergunta": {
+          "antes": "Onde Tola foi enterrado?",
+          "depois": "Qual foi o lugar do sepultamento de Tola?"
+        }
+      }
+    },
+    {
+      "tipo": "quiz",
+      "id": "q_1198",
+      "campos": {
+        "categoria": {
+          "antes": "Personagens",
+          "depois": "Personagens bíblicos"
+        }
+      }
+    },
+    {
+      "tipo": "quiz",
+      "id": "q_1199",
+      "campos": {
+        "categoria": {
+          "antes": "Personagens",
+          "depois": "Personagens bíblicos"
+        }
+      }
+    },
+    {
+      "tipo": "quiz",
+      "id": "q_1200",
+      "campos": {
+        "categoria": {
+          "antes": "Reis",
+          "depois": "Reis e governantes"
+        }
+      }
+    },
+    {
+      "tipo": "quiz",
+      "id": "q_1201",
+      "campos": {
+        "categoria": {
+          "antes": "Reis",
+          "depois": "Reis e governantes"
+        }
+      }
+    },
+    {
+      "tipo": "quiz",
+      "id": "q_1205",
+      "campos": {
+        "categoria": {
+          "antes": "Reis",
+          "depois": "Reis e governantes"
+        }
+      }
+    },
+    {
+      "tipo": "quiz",
+      "id": "q_1206",
+      "campos": {
+        "categoria": {
+          "antes": "Reis",
+          "depois": "Reis e governantes"
+        }
+      }
+    },
+    {
+      "tipo": "quiz",
+      "id": "q_1207",
+      "campos": {
+        "categoria": {
+          "antes": "Personagens",
+          "depois": "Personagens bíblicos"
+        }
+      }
+    },
+    {
+      "tipo": "quiz",
+      "id": "q_1213",
+      "campos": {
+        "categoria": {
+          "antes": "Reis",
+          "depois": "Reis e governantes"
+        }
+      }
+    },
+    {
+      "tipo": "quiz",
+      "id": "q_1216",
+      "campos": {
+        "categoria": {
+          "antes": "Personagens",
+          "depois": "Personagens bíblicos"
+        }
+      }
+    },
+    {
+      "tipo": "quiz",
+      "id": "q_1224",
+      "campos": {
+        "A": {
+          "antes": "Uma cesta de figos",
+          "depois": "Cesta de figos"
+        },
+        "B": {
+          "antes": "Uma espada",
+          "depois": "Espada"
+        },
+        "C": {
+          "antes": "Um rolo",
+          "depois": "Rolo"
+        },
+        "D": {
+          "antes": "Uma arca",
+          "depois": "Arca"
+        },
+        "pergunta": {
+          "antes": "Que objeto Zacarias viu voando numa visão?",
+          "depois": "Qual objeto apareceu voando numa visão de Zacarias?"
+        }
+      }
+    },
+    {
+      "tipo": "quiz",
+      "id": "q_1226",
+      "campos": {
+        "categoria": {
+          "antes": "Personagens",
+          "depois": "Personagens bíblicos"
+        }
+      }
+    },
+    {
+      "tipo": "quiz",
+      "id": "q_1227",
+      "campos": {
+        "categoria": {
+          "antes": "Personagens",
+          "depois": "Personagens bíblicos"
+        }
+      }
+    },
+    {
+      "tipo": "quiz",
+      "id": "q_1228",
+      "campos": {
+        "categoria": {
+          "antes": "Personagens",
+          "depois": "Personagens bíblicos"
+        }
+      }
+    },
+    {
+      "tipo": "quiz",
+      "id": "q_1229",
+      "campos": {
+        "A": {
+          "antes": "Do sacerdócio levítico",
+          "depois": "Sacerdócio levítico"
+        },
+        "B": {
+          "antes": "Do grupo dos escribas do templo",
+          "depois": "Grupo dos escribas do templo"
+        },
+        "C": {
+          "antes": "Da guarda do templo",
+          "depois": "Guarda do templo"
+        },
+        "D": {
+          "antes": "Do Sinédrio",
+          "depois": "Sinédrio"
+        },
+        "categoria": {
+          "antes": "Personagens",
+          "depois": "Personagens bíblicos"
+        },
+        "pergunta": {
+          "antes": "De que corpo judaico José de Arimateia era membro?",
+          "depois": "Qual era o corpo judaico do qual José de Arimateia era membro?"
+        }
+      }
+    },
+    {
+      "tipo": "quiz",
+      "id": "q_1230",
+      "campos": {
+        "categoria": {
+          "antes": "Personagens",
+          "depois": "Personagens bíblicos"
+        }
+      }
+    },
+    {
+      "tipo": "quiz",
+      "id": "q_1231",
+      "campos": {
+        "categoria": {
+          "antes": "Personagens",
+          "depois": "Personagens bíblicos"
+        }
+      }
+    },
+    {
+      "tipo": "quiz",
+      "id": "q_1232",
+      "campos": {
+        "categoria": {
+          "antes": "Personagens",
+          "depois": "Personagens bíblicos"
+        }
+      }
+    },
+    {
+      "tipo": "quiz",
+      "id": "q_1233",
+      "campos": {
+        "categoria": {
+          "antes": "Personagens",
+          "depois": "Personagens bíblicos"
+        }
+      }
+    },
+    {
+      "tipo": "quiz",
+      "id": "q_1234",
+      "campos": {
+        "categoria": {
+          "antes": "Personagens",
+          "depois": "Personagens bíblicos"
+        }
+      }
+    },
+    {
+      "tipo": "quiz",
+      "id": "q_1235",
+      "campos": {
+        "categoria": {
+          "antes": "Personagens",
+          "depois": "Personagens bíblicos"
+        }
+      }
+    },
+    {
+      "tipo": "quiz",
+      "id": "q_1236",
+      "campos": {
+        "categoria": {
+          "antes": "Personagens",
+          "depois": "Personagens bíblicos"
+        }
+      }
+    },
+    {
+      "tipo": "quiz",
+      "id": "q_1237",
+      "campos": {
+        "categoria": {
+          "antes": "Personagens",
+          "depois": "Personagens bíblicos"
+        }
+      }
+    },
+    {
+      "tipo": "quiz",
+      "id": "q_1238",
+      "campos": {
+        "categoria": {
+          "antes": "Personagens",
+          "depois": "Personagens bíblicos"
+        }
+      }
+    },
+    {
+      "tipo": "quiz",
+      "id": "q_1239",
+      "campos": {
+        "categoria": {
+          "antes": "Personagens",
+          "depois": "Personagens bíblicos"
+        }
+      }
+    },
+    {
+      "tipo": "quiz",
+      "id": "q_1240",
+      "campos": {
+        "categoria": {
+          "antes": "Personagens",
+          "depois": "Personagens bíblicos"
+        }
+      }
+    },
+    {
+      "tipo": "quiz",
+      "id": "q_1241",
+      "campos": {
+        "categoria": {
+          "antes": "Personagens",
+          "depois": "Personagens bíblicos"
+        }
+      }
+    },
+    {
+      "tipo": "quiz",
+      "id": "q_1242",
+      "campos": {
+        "categoria": {
+          "antes": "Personagens",
+          "depois": "Personagens bíblicos"
+        }
+      }
+    },
+    {
+      "tipo": "quiz",
+      "id": "q_1244",
+      "campos": {
+        "categoria": {
+          "antes": "Personagens",
+          "depois": "Personagens bíblicos"
+        }
+      }
+    },
+    {
+      "tipo": "quiz",
+      "id": "q_1245",
+      "campos": {
+        "categoria": {
+          "antes": "Personagens",
+          "depois": "Personagens bíblicos"
+        }
+      }
+    },
+    {
+      "tipo": "knows",
+      "id": "asc_214",
+      "campos": {
+        "payload": {
+          "antes": {
+            "pairs": [
+              {
+                "left": "Febe",
+                "right": "Foi chamada ajudadora de muitos"
+              },
+              {
+                "left": "Andrônico e Júniass",
+                "right": "Foram lembrados com honra e experiência compartilhada"
+              },
+              {
+                "left": "Pérside",
+                "right": "Foi elogiada por muito trabalho no Senhor"
+              },
+              {
+                "left": "Conjunto das saudações",
+                "right": "Revela apreço por serviço fiel e diverso"
+              }
+            ],
+            "prompt": "Associe cada personagem ao elogio ou destaque correspondente."
+          },
+          "depois": {
+            "pairs": [
+              {
+                "left": "Febe",
+                "right": "Foi chamada ajudadora de muitos"
+              },
+              {
+                "left": "Andrônico e Júnias",
+                "right": "Foram lembrados com honra e experiência compartilhada"
+              },
+              {
+                "left": "Pérside",
+                "right": "Foi elogiada por muito trabalho no Senhor"
+              },
+              {
+                "left": "Conjunto das saudações",
+                "right": "Revela apreço por serviço fiel e diverso"
+              }
+            ],
+            "prompt": "Associe cada personagem ao elogio ou destaque correspondente."
+          }
+        }
+      }
+    },
+    {
+      "tipo": "knows",
+      "id": "who_225",
+      "campos": {
+        "revisaoPendente": {
+          "antes": null,
+          "depois": true
+        },
+        "motivoRevisao": {
+          "antes": null,
+          "depois": "Resposta não individualiza uma pessoa; conferir pistas e alternativas antes de reativar."
+        }
+      }
+    },
+    {
+      "tipo": "knows",
+      "id": "who_228",
+      "campos": {
+        "revisaoPendente": {
+          "antes": null,
+          "depois": true
+        },
+        "motivoRevisao": {
+          "antes": null,
+          "depois": "Resposta não individualiza uma pessoa; conferir pistas e alternativas antes de reativar."
+        }
+      }
+    },
+    {
+      "tipo": "knows",
+      "id": "who_251",
+      "campos": {
+        "revisaoPendente": {
+          "antes": null,
+          "depois": true
+        },
+        "motivoRevisao": {
+          "antes": null,
+          "depois": "Resposta não individualiza uma pessoa; conferir pistas e alternativas antes de reativar."
+        }
+      }
+    },
+    {
+      "tipo": "knows",
+      "id": "who_256",
+      "campos": {
+        "revisaoPendente": {
+          "antes": null,
+          "depois": true
+        },
+        "motivoRevisao": {
+          "antes": null,
+          "depois": "Resposta não individualiza uma pessoa; conferir pistas e alternativas antes de reativar."
+        }
+      }
+    },
+    {
+      "tipo": "knows",
+      "id": "who_341",
+      "campos": {
+        "revisaoPendente": {
+          "antes": null,
+          "depois": true
+        },
+        "motivoRevisao": {
+          "antes": null,
+          "depois": "Resposta não individualiza uma pessoa; conferir pistas e alternativas antes de reativar."
+        }
+      }
+    },
+    {
+      "tipo": "knows",
+      "id": "who_365",
+      "campos": {
+        "revisaoPendente": {
+          "antes": null,
+          "depois": true
+        },
+        "motivoRevisao": {
+          "antes": null,
+          "depois": "Resposta não individualiza uma pessoa; conferir pistas e alternativas antes de reativar."
+        }
+      }
+    },
+    {
+      "tipo": "knows",
+      "id": "who_376",
+      "campos": {
+        "revisaoPendente": {
+          "antes": null,
+          "depois": true
+        },
+        "motivoRevisao": {
+          "antes": null,
+          "depois": "Resposta não individualiza uma pessoa; conferir pistas e alternativas antes de reativar."
+        }
+      }
+    },
+    {
+      "tipo": "knows",
+      "id": "who_384",
+      "campos": {
+        "revisaoPendente": {
+          "antes": null,
+          "depois": true
+        },
+        "motivoRevisao": {
+          "antes": null,
+          "depois": "Resposta não individualiza uma pessoa; conferir pistas e alternativas antes de reativar."
+        }
+      }
+    },
+    {
+      "tipo": "knows",
+      "id": "who_391",
+      "campos": {
+        "revisaoPendente": {
+          "antes": null,
+          "depois": true
+        },
+        "motivoRevisao": {
+          "antes": null,
+          "depois": "Resposta não individualiza uma pessoa; conferir pistas e alternativas antes de reativar."
+        }
+      }
+    },
+    {
+      "tipo": "knows",
+      "id": "who_399",
+      "campos": {
+        "revisaoPendente": {
+          "antes": null,
+          "depois": true
+        },
+        "motivoRevisao": {
+          "antes": null,
+          "depois": "Resposta não individualiza uma pessoa; conferir pistas e alternativas antes de reativar."
+        }
+      }
+    },
+    {
+      "tipo": "knows",
+      "id": "who_402",
+      "campos": {
+        "revisaoPendente": {
+          "antes": null,
+          "depois": true
+        },
+        "motivoRevisao": {
+          "antes": null,
+          "depois": "Resposta não individualiza uma pessoa; conferir pistas e alternativas antes de reativar."
+        }
+      }
+    },
+    {
+      "tipo": "knows",
+      "id": "who_403",
+      "campos": {
+        "payload": {
+          "antes": {
+            "answer": "Júniass",
+            "choices": [
+              "Júniass",
+              "Febe",
+              "Priscila",
+              "Áfia"
+            ],
+            "hints": [
+              "Meu nome aparece numa saudação respeitosa.",
+              "Fui lembrado junto com outro servo fiel.",
+              "Paulo nos chamou de homens bem conhecidos pelos apóstolos."
+            ]
+          },
+          "depois": {
+            "answer": "Júnias",
+            "choices": [
+              "Júnias",
+              "Febe",
+              "Priscila",
+              "Áfia"
+            ],
+            "hints": [
+              "Meu nome aparece numa saudação respeitosa.",
+              "Fui lembrado junto com outro servo fiel.",
+              "Paulo nos chamou de homens bem conhecidos pelos apóstolos."
+            ]
+          }
+        }
+      }
+    },
+    {
+      "tipo": "knows",
+      "id": "who_433",
+      "campos": {
+        "revisaoPendente": {
+          "antes": null,
+          "depois": true
+        },
+        "motivoRevisao": {
+          "antes": null,
+          "depois": "Resposta não individualiza uma pessoa; conferir pistas e alternativas antes de reativar."
+        }
+      }
+    },
+    {
+      "tipo": "knows",
+      "id": "who_434",
+      "campos": {
+        "revisaoPendente": {
+          "antes": null,
+          "depois": true
+        },
+        "motivoRevisao": {
+          "antes": null,
+          "depois": "Resposta não individualiza uma pessoa; conferir pistas e alternativas antes de reativar."
+        }
+      }
+    },
+    {
+      "tipo": "knows",
+      "id": "who_435",
+      "campos": {
+        "revisaoPendente": {
+          "antes": null,
+          "depois": true
+        },
+        "motivoRevisao": {
+          "antes": null,
+          "depois": "Resposta não individualiza uma pessoa; conferir pistas e alternativas antes de reativar."
+        }
+      }
+    },
+    {
+      "tipo": "knows",
+      "id": "who_439",
+      "campos": {
+        "revisaoPendente": {
+          "antes": null,
+          "depois": true
+        },
+        "motivoRevisao": {
+          "antes": null,
+          "depois": "Resposta não individualiza uma pessoa; conferir pistas e alternativas antes de reativar."
+        }
+      }
+    },
+    {
+      "tipo": "trechos",
+      "id": "mateus-26-14-15-27-5",
+      "campos": {
+        "trecho": {
+          "antes": "‘O que me darão para entregá-lo a vocês? Estipularam-lhe 30 moedas de prata.",
+          "depois": "“O que me darão para entregá-lo a vocês?” Estipularam-lhe 30 moedas de prata."
+        }
+      }
+    }
+  ]
+}

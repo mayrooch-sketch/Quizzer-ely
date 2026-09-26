@@ -11,11 +11,8 @@
  */
 
 import type { Letra, Pergunta } from '../../shared/types/bank';
-import { LETRAS } from '../../shared/types/bank';
 import { useMemo } from 'react';
 import { embaralhar } from '../../shared/jogo/useBaralho';
-import { useSessao } from '../../shared/estudo/contexto';
-import { reduzirOpcoes } from '../../shared/estudo/dificuldade';
 
 interface Props {
   pergunta: Pergunta;
@@ -25,8 +22,7 @@ interface Props {
 }
 
 export function Alternativas({ pergunta, escolha, onEscolher }: Props) {
-  const nivel = useSessao()?.nivel ?? 'normal';
-  const opcoes = useMemo(() => reduzirOpcoes(embaralhar(LETRAS), pergunta.correta, nivel), [pergunta, nivel]);
+  const opcoes = useMemo(() => embaralhar(Object.keys(pergunta.alternativas) as Letra[]), [pergunta]);
   const respondido = escolha !== null;
 
   return (

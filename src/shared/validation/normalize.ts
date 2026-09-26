@@ -37,7 +37,7 @@ function isRecord(value: unknown): value is Record<string, unknown> {
 }
 
 function texto(value: unknown): string {
-  if (typeof value === 'string') return value.trim();
+  if (typeof value === 'string') return value.normalize('NFC').replace(/\s+/g, ' ').trim();
   if (typeof value === 'number' && Number.isFinite(value)) return String(value);
   return '';
 }
@@ -55,34 +55,18 @@ function listaDeTextos(value: unknown): string[] {
  * linhas; descobrir depois que meia dúzia de afirmações inverteu de resposta
  * custa muito mais.
  */
-function booleano(value: unknown): boolean {
+function booleano(value: unknown): boolean | null {
   if (typeof value === 'boolean') return value;
-  if (typeof value === 'number') return value === 1;
+  if (typeof value === 'number') return value === 1 ? true : value === 0 ? false : null;
   const t = texto(value).toLowerCase();
-  return t === 'true' || t === '1' || t === 'sim' || t === 'v';
+  if (['true', '1', 'sim', 'v'].includes(t)) return true;
+  if (['false', '0', 'não', 'nao', 'f'].includes(t)) return false;
+  return null;
 }
 
 function inteiro(value: unknown, padrao: number): number {
   const n = typeof value === 'number' ? value : Number(texto(value));
   return Number.isFinite(n) ? Math.trunc(n) : padrao;
-}
-
-/**
- * Texto sem acento e em minúsculas, para comparar e agrupar.
- *
- * Existe por um problema real do banco: etiquetas sem acento convivem com
- * versões acentuadas, como `associacao`/`associação` e `fe`/`fé`. São o
- * mesmo assunto escrito de dois jeitos, e sem isto um filtro por etiqueta
- * esconderia metade dos itens sem avisar.
- */
-export function chaveDeTexto(value: string): string {
-  return value
-    .normalize('NFD')
-    // Marcas de acento combinantes (U+0300–U+036F), escritas escapadas para
-    // que o arquivo não dependa de ser lido como UTF-8.
-    .replace(/[\u0300-\u036f]/g, '')
-    .toLowerCase()
-    .trim();
 }
 
 /* ------------------------------------------------------------------ *
@@ -111,6 +95,7 @@ function normalizePergunta(raw: unknown, indice: number): Pergunta | null {
 
   const correta = texto(raw.correta).toUpperCase();
   if (!LETRAS.includes(correta as Letra)) return null;
+  if (!textosDistintos(Object.values(alternativas))) return null;
 
   return {
     // Sem id no banco, a posição serve: o app só precisa distinguir uma
@@ -152,8 +137,13 @@ export function normalizeQuiz(raw: unknown): Pergunta[] {
 
 function payloadVf(p: Record<string, unknown>): PayloadVf | null {
   const statement = texto(p.statement);
-  if (!statement) return null;
-  return { statement, correct: booleano(p.correct) };
+  const correct = booleano(p.correct);
+  if (!statement || correct === null) return null;
+  return { statement, correct };
+}
+
+function textosDistintos(itens: string[]): boolean {
+  return new Set(itens.map(t => t.normalize('NFC').toLocaleLowerCase('pt-BR'))).size === itens.length;
 }
 
 /**
@@ -166,8 +156,10 @@ function payloadSelect(p: Record<string, unknown>): PayloadSelect | null {
   const options = p.options.flatMap((o) => {
     if (!isRecord(o)) return [];
     const t = texto(o.text);
-    return t ? [{ text: t, correct: booleano(o.correct) }] : [];
+    const correct = booleano(o.correct);
+    return t && correct !== null ? [{ text: t, correct }] : [];
   });
+  if (options.length !== p.options.length || !textosDistintos(options.map(o => o.text))) return null;
 
   const certas = options.filter((o) => o.correct).length;
   if (certas === 0 || certas === options.length) return null;
@@ -175,10 +167,9 @@ function payloadSelect(p: Record<string, unknown>): PayloadSelect | null {
   return {
     prompt: texto(p.prompt) || 'Marque as opções certas.',
     options,
-    // O banco declara min e max; quando faltam, a contagem real serve para os
-    // dois — é o que a instrução na tela precisa dizer.
-    minCorrect: inteiro(p.min_correct, certas),
-    maxCorrect: inteiro(p.max_correct, certas),
+    // O número exibido vem das respostas reais, nunca de metadados divergentes.
+    minCorrect: certas,
+    maxCorrect: certas,
   };
 }
 
@@ -195,6 +186,7 @@ function payloadCloze(p: Record<string, unknown>): PayloadCloze | null {
   const choices = listaDeTextos(p.choices);
   if (!sentence || !answer || choices.length < 2) return null;
   if (!choices.includes(answer)) return null;
+  if (!/_{2,}/.test(sentence) || !textosDistintos(choices)) return null;
 
   return {
     prompt: texto(p.prompt) || 'Complete a frase:',
@@ -218,6 +210,7 @@ function payloadAssociation(
 
   // Com um par só não há o que associar.
   if (pairs.length < 2) return null;
+  if (pairs.length !== p.pairs.length || !textosDistintos(pairs.map(x => x.left)) || !textosDistintos(pairs.map(x => x.right))) return null;
   return { prompt: texto(p.prompt) || 'Associe as colunas.', pairs };
 }
 
@@ -227,17 +220,23 @@ function payloadWhoAmI(p: Record<string, unknown>): PayloadWhoAmI | null {
   const hints = listaDeTextos(p.hints);
   if (!answer || hints.length === 0 || choices.length < 2) return null;
   if (!choices.includes(answer)) return null;
+  if (!textosDistintos(choices)) return null;
   return { answer, choices, hints };
 }
 
 /**
  * Ordena por `order` e devolve só os textos — a posição passa a ser a resposta.
  *
- * Empate ou buraco na numeração não invalida o item: a ordenação é estável, e
- * o resultado continua sendo uma sequência jogável.
+ * Lacunas numéricas são permitidas; empates são ambíguos e invalidam o item.
  */
 function payloadOrder(p: Record<string, unknown>): PayloadOrder | null {
   if (!Array.isArray(p.items)) return null;
+  const ordens = p.items.map((item, i) => {
+    if (typeof item === 'string') return i;
+    if (!isRecord(item) || item.order === undefined || texto(item.order) === '') return NaN;
+    return Number(item.order);
+  });
+  if (ordens.some(n => !Number.isInteger(n)) || new Set(ordens).size !== ordens.length) return null;
 
   const items = p.items
     .flatMap((item, i) => {
@@ -252,7 +251,7 @@ function payloadOrder(p: Record<string, unknown>): PayloadOrder | null {
     .sort((a, b) => a.ordem - b.ordem)
     .map((x) => x.text);
 
-  if (items.length < 2) return null;
+  if (items.length < 2 || items.length !== p.items.length || !textosDistintos(items)) return null;
   return { prompt: texto(p.prompt) || 'Coloque na ordem correta.', items };
 }
 
@@ -262,6 +261,8 @@ function normalizeKnowsItem(
   indice: number,
 ): KnowsItem | null {
   if (!isRecord(raw)) return null;
+  // Preserva o registro no JSON, mas não sorteia conteúdo pendente de revisão.
+  if (raw.revisaoPendente === true) return null;
 
   const tipo = texto(raw.type).toLowerCase() as KnowsType;
   const payloadBruto = isRecord(raw.payload) ? raw.payload : null;

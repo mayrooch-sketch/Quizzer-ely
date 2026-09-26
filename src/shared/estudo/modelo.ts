@@ -11,7 +11,6 @@ export interface Conteudo {
   assunto: string;
 }
 export interface Salvo extends Conteudo { jogo: string; sequencia: number }
-export type Nivel = 'facil' | 'normal' | 'dificil';
 export function conteudoDe(valor: unknown): Conteudo | null {
   if (!valor || typeof valor !== 'object') return null;
   if ('alternativas' in valor) {

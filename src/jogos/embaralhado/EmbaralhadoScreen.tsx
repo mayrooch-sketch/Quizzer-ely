@@ -43,14 +43,22 @@ function Rodada({
   progresso: { posicao: number; total: number };
   aoSeguir: () => void;
 }) {
-  const [pecas] = useState(() => criarPecas(trecho, todos));
+  const [pecas] = useState(() => {
+    try { return criarPecas(trecho, todos); }
+    catch { return null; }
+  });
   const [selecionadas, setSelecionadas] = useState<PecaDePalavra[]>([]);
   const [feedback, setFeedback] = useState<'quente' | 'frio' | null>(null);
   const [teveErro, setTeveErro] = useState(false);
   const [concluida, setConcluida] = useState(false);
   const totalCorretas = tokenizar(trecho.trecho).length;
   const idsSelecionados = new Set(selecionadas.map((peca) => peca.id));
-  const disponiveis = pecas.filter((peca) => !idsSelecionados.has(peca.id));
+  const disponiveis = pecas?.filter((peca) => !idsSelecionados.has(peca.id)) ?? [];
+
+  if (!pecas) return <div className="aviso" role="status">
+    <p>Não há textos diferentes suficientes para montar este desafio com quatro palavras intrusas.</p>
+    <button className="btn" onClick={aoSeguir}>Tentar outro trecho</button>
+  </div>;
 
   function colocar(peca: PecaDePalavra) {
     if (concluida) return;

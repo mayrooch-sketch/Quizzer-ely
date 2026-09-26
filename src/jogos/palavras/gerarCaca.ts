@@ -54,25 +54,6 @@ export interface Caca {
   soltas: number;
 }
 
-export interface Tamanho {
-  tam: number;
-  alvo: number;
-  label: string;
-}
-
-/**
- * Os três tamanhos oferecidos.
- *
- * O alvo de palavras cresce menos que a área de propósito: uma grade maior com
- * a mesma densidade viraria uma sopa de letras cruzadas onde qualquer sequência
- * parece uma palavra.
- */
-export const TAMANHOS: Tamanho[] = [
-  { tam: 8, alvo: 6, label: 'Pequena' },
-  { tam: 10, alvo: 8, label: 'Média' },
-  { tam: 12, alvo: 10, label: 'Grande' },
-];
-
 function embaralhar<T>(itens: readonly T[]): T[] {
   const copia = [...itens];
   for (let i = copia.length - 1; i > 0; i--) {

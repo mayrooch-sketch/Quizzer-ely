@@ -1,6 +1,6 @@
 import { useMemo, useState, type ReactNode } from 'react';
 import { Link } from 'react-router-dom';
-import { chave, conteudoDe, type Conteudo, type Nivel, type Salvo } from './modelo';
+import { chave, conteudoDe, type Conteudo, type Salvo } from './modelo';
 import { useEstudo } from './store';
 import { CopiaFavoritos, Revisao } from './TelasEstudo';
 import './estudo.css';
@@ -8,8 +8,7 @@ import { ContextoSessao, type Contexto } from './contexto';
 
 interface Resultado { item: Salvo; acertou: boolean; ajuda: boolean }
 export function Sessao({ jogo, children }: { jogo: string; children: ReactNode }) {
-  const [fase, setFase] = useState<'inicio' | 'jogando' | 'resumo' | 'revisao'>('inicio');
-  const [nivel, setNivel] = useState<Nivel>('normal');
+  const [fase, setFase] = useState<'jogando' | 'resumo' | 'revisao'>('jogando');
   const [conteudo, setConteudo] = useState<Conteudo | null>(null);
   const [resultados, setResultados] = useState<Resultado[]>([]);
   const [ajudas, setAjudas] = useState(0);
@@ -19,7 +18,6 @@ export function Sessao({ jogo, children }: { jogo: string; children: ReactNode }
   // Estável para não repetir a seleção do conteúdo ao atualizar o resumo.
   const atual = useMemo(() => (item: unknown) => setConteudo(conteudoDe(item)), []);
   const contexto = useMemo<Contexto>(() => ({
-    nivel,
     atual,
     registrar: (acertou, item, ajuda = false) => {
       const c = conteudoDe(item) ?? conteudo;
@@ -30,28 +28,15 @@ export function Sessao({ jogo, children }: { jogo: string; children: ReactNode }
       if (!acertou || (!ajuda && jogo !== 'encontre-referencia')) useEstudo.getState().resultado(entrada, acertou);
     },
     ajudar: () => setAjudas((n) => n + 1),
-  }), [nivel, jogo, conteudo, atual]);
+  }), [jogo, conteudo, atual]);
   const erros = [...new Map(resultados.filter((r) => !r.acertou).map((r) => [chave(r.item), r.item])).values()];
   const assuntos = [...new Set(erros.map((i) => i.assunto))];
   const certas = resultados.filter((r) => r.acertou && !r.ajuda).length;
   const erradas = resultados.filter((r) => !r.acertou).length;
   const assistidas = resultados.filter((r) => r.acertou && r.ajuda).length;
-  if (fase === 'inicio') return <section className="estudo">
-    <h2>Preparar partida</h2>
-    <label>Dificuldade <select value={nivel} onChange={(e) => setNivel(e.target.value as Nivel)}>
-      <option value="facil">Fácil</option><option value="normal">Normal</option><option value="dificil">Difícil</option>
-    </select></label>
-    <p>Você pode finalizar a qualquer momento. Perguntas não respondidas não contam como erros.</p>
-    <details open><summary>O que muda com a dificuldade?</summary>
-      <p>Fácil: duas alternativas em Quiz, Complete a frase e Quem sou eu; duas pistas iniciais em Quem sou eu. Referência reduz as portas a até duas. Anagrama libera dicas.</p>
-      <p>Normal: regras habituais. Difícil: todas as alternativas; Quem sou eu permite somente a primeira pista e Anagrama não oferece dicas.</p>
-      <p>Nos outros jogos as regras e opções próprias são preservadas. A dificuldade não altera o conteúdo bíblico nem a pontuação dos competitivos.</p>
-    </details>
-    <button className="btn" onClick={() => setFase('jogando')}>Começar partida</button>
-  </section>;
   if (fase === 'revisao') return <Revisao itens={erros} aoVoltar={() => setFase('resumo')} />;
   if (fase === 'resumo') return <section className="estudo">
-    <h2>Resumo da partida</h2><p>Dificuldade: {{ facil: 'Fácil', normal: 'Normal', dificil: 'Difícil' }[nivel]}</p>
+    <h2>Resumo da partida</h2>
     <p>{certas} {certas === 1 ? 'acerto' : 'acertos'} sem ajuda · {erradas} {erradas === 1 ? 'erro' : 'erros'} · {assistidas} {assistidas === 1 ? 'conclusão' : 'conclusões'} com ajuda</p>
     <p>{ajudas} {ajudas === 1 ? 'pedido' : 'pedidos'} de ajuda.</p>
     {jogo === 'encontre-referencia' ? <p>Os resultados contam portas. Para retirar o trecho da revisão, acerte a referência completa nos cartões de revisão.</p> : null}
@@ -61,7 +46,7 @@ export function Sessao({ jogo, children }: { jogo: string; children: ReactNode }
     <p>Itens não respondidos não contam como erros.</p>
     {assuntos.length ? <p>Assuntos para revisar: {assuntos.join('; ')}</p> : <p>Nenhum erro registrado nesta partida.</p>}
     <button className="btn" disabled={!erros.length} onClick={() => setFase('revisao')}>Revisar só os erros desta partida</button>
-    <button className="btn btn--ghost" onClick={() => { setResultados([]); setAjudas(0); setConteudo(null); setFase('inicio'); }}>Nova partida</button>
+    <button className="btn btn--ghost" onClick={() => { setResultados([]); setAjudas(0); setConteudo(null); setFase('jogando'); }}>Nova partida</button>
     <Link to="/estudo">Meus erros e favoritos</Link>
   </section>;
   return <ContextoSessao.Provider value={contexto}>

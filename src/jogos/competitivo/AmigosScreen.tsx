@@ -25,11 +25,14 @@ export function AmigosScreen() {
   const escolhidos = disponiveis.filter((d) => selecionados.includes(d.modo.soma) && d.itens.length > 0);
   return <section className="estudo"><h2>Partida entre amigos</h2>
     <p>O moderador segura o celular e aplica as regras. Os modos selecionados se alternam em ciclos embaralhados; os times A e B alternam a vez. O tempo nunca aplica uma penalidade sozinho.</p>
+    <p>Padrão: 10 rodadas, 60 segundos por rodada. Você pode finalizar antes.</p>
+    <details><summary>Ajustar encontro (opcional)</summary>
     <label>Quantidade de rodadas<select value={quantidade} onChange={(e) => setQuantidade(Number(e.target.value))}>{[4, 6, 10, 20].map((n) => <option key={n}>{n}</option>)}</select></label>
     <label>Segundos por rodada<select value={duracao} onChange={(e) => setDuracao(Number(e.target.value))}>{[30, 60, 90, 120].map((n) => <option key={n}>{n}</option>)}</select></label>
     <fieldset className="modos-amigos"><legend>Jogos participantes</legend>
       {disponiveis.map(({ modo, itens }) => <label key={modo.soma}><input type="checkbox" checked={selecionados.includes(modo.soma)} disabled={!itens.length} onChange={() => setSelecionados((atuais) => atuais.includes(modo.soma) ? atuais.filter((n) => n !== modo.soma) : [...atuais, modo.soma])} />{modo.nome}{!itens.length ? ' — sem conteúdo' : ''}</label>)}
     </fieldset>
+    </details>
     <button className="btn" disabled={!escolhidos.length} onClick={() => {
       const filas = new Map(escolhidos.map((d) => [d.modo.soma, embaralhar(d.itens)]));
       let modos: typeof escolhidos = [];

@@ -1,5 +1,6 @@
 // @vitest-environment jsdom
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { MemoryRouter } from 'react-router-dom';
 import { act, cleanup, fireEvent, render, renderHook, screen } from '@testing-library/react';
 import { useBaralho } from '../src/shared/jogo/useBaralho';
 import { useRelogioModerador } from '../src/shared/jogo/useRelogioModerador';
@@ -81,7 +82,7 @@ it('quiz competitivo restaura pergunta, pontos e turno ao desfazer', () => {
 
 it('dinâmico restaura o mesmo desafio e permite corrigir o julgamento', () => {
   vi.spyOn(dados, 'rolarDados').mockReturnValue({ a: 1, b: 1, soma: 2 });
-  render(<DinamicoScreen />);
+  render(<MemoryRouter><DinamicoScreen /></MemoryRouter>);
   fireEvent.click(screen.getByRole('button', { name: 'Rolar os dados' }));
   fireEvent.click(screen.getByRole('button', { name: 'Acertou +1' }));
   fireEvent.click(screen.getByRole('button', { name: /Desfazer último/ }));

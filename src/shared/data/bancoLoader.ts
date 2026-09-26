@@ -59,7 +59,19 @@ function lerCache(): Banco | null {
       return null;
     }
 
-    return { perguntas, knows, trechos, versao: versao ?? null };
+    // Cache também é entrada externa: uma versão antiga não pode contornar
+    // validações novas nem derrubar uma tela com registros incompletos.
+    const perguntasValidas = normalizeQuiz({ questions: perguntas.map(p => {
+      if (!p || typeof p !== 'object') return null;
+      return { ...p, ...p.alternativas };
+    }) });
+    const knowsValidos = normalizeKnows({ items: knows });
+    const limitesConfirmados = Object.fromEntries(trechos
+      .filter(t => t && typeof t === 'object' && typeof t.livro === 'string')
+      .map(t => [t.livro, t.limitesConfirmados]));
+    const trechosValidos = normalizeTrechos({ items: trechos, limitesConfirmados });
+    if (!perguntasValidas.length && !knowsValidos.length && !trechosValidos.length) return null;
+    return { perguntas: perguntasValidas, knows: knowsValidos, trechos: trechosValidos, versao: typeof versao === 'string' ? versao : null };
   } catch {
     // JSON corrompido ou armazenamento bloqueado: segue para a rede.
     return null;
@@ -89,7 +101,7 @@ export function versaoEmCache(): string | null {
  * ------------------------------------------------------------------ */
 
 async function pegarJson(caminho: string): Promise<unknown> {
-  const resposta = await fetch(`${BASE}/${caminho}.json`);
+  const resposta = await fetch(`${BASE}/${caminho}.json`, { signal: AbortSignal.timeout(15000) });
   if (!resposta.ok) throw new Error(`${caminho}: HTTP ${resposta.status}`);
   return resposta.json();
 }

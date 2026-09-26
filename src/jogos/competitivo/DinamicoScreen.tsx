@@ -15,6 +15,7 @@
  */
 
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useKnows, usePerguntas } from '../../app/store';
 import { usePocoDePalavras } from '../../shared/palavras/poco';
 import { Dado } from '../../shared/jogo/Dado';
@@ -264,6 +265,7 @@ export function DinamicoScreen() {
           <button type="button" className="btn" onClick={rolar} disabled={rolando}>
             {rolando ? 'Rolando…' : 'Rolar os dados'}
           </button>
+          {!rolando ? <details><summary>Outras formas de jogar</summary><Link to="/amigos">Partida entre amigos</Link></details> : null}
         </div>
       ) : (
         <>

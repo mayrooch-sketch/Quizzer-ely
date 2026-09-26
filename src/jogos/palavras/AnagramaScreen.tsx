@@ -124,7 +124,6 @@ function Rodada({ alvo, placar, onProxima }: PropsRodada) {
 
   function pedirAjuda() {
     if (acertou) return;
-    if (sessao?.nivel === 'dificil') return;
     sessao?.ajudar();
 
     // Primeira ajuda: a pergunta de onde a palavra saiu.
@@ -189,7 +188,7 @@ function Rodada({ alvo, placar, onProxima }: PropsRodada) {
           : {
               label: ajudas === 0 ? '💡 Dica' : '🔠 Uma letra',
               onClick: pedirAjuda,
-              disabled: sessao?.nivel === 'dificil' || (ajudas > 0 && !podeRevelarMais),
+              disabled: (ajudas > 0 && !podeRevelarMais),
             }
       }
       primaria={{

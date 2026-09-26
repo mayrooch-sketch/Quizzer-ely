@@ -8,8 +8,7 @@
  * meio. O toque duplo não falha nunca, e quem prefere arrastar nem descobre
  * que ele existe.
  *
- * A grade tem três tamanhos porque foi pedido, e trocar de tamanho monta uma
- * grade nova — não há como redimensionar sem refazer.
+ * A configuração automática usa grade 10×10 e até oito palavras.
  */
 
 import {
@@ -18,12 +17,10 @@ import {
   useState,
   type CSSProperties,
   type PointerEvent as ReactPointerEvent,
-  type ReactNode,
 } from 'react';
 import { usePocoDePalavras, type PalavraDoBanco } from '../../shared/palavras/poco';
 import { marcarUsadas } from '../../shared/palavras/memoria';
 import {
-  TAMANHOS,
   caminhoEntre,
   gerarCaca,
   palavraNoCaminho,
@@ -33,8 +30,6 @@ import './palavras.css';
 import { Explicacao } from '../../shared/jogo/Arena';
 import { useConteudoAtual, useSessao } from '../../shared/estudo/contexto';
 
-const CHAVE_TAM = 'quizzer.caca.tamanho';
-const CHAVE_DIAG = 'quizzer.caca.diagonais';
 const PISCA_ERRO = 450;
 
 /** Letra menor conforme a grade cresce, para caber na mesma largura. */
@@ -44,71 +39,14 @@ const FONTE_DA_CELULA: Record<number, string> = {
   12: '15px',
 };
 
-function ler(chave: string, padrao: string): string {
-  try {
-    return localStorage.getItem(chave) ?? padrao;
-  } catch {
-    return padrao;
-  }
-}
-
-function gravar(chave: string, valor: string): void {
-  try {
-    localStorage.setItem(chave, valor);
-  } catch {
-    // Armazenamento bloqueado: a escolha vale só nesta sessão.
-  }
-}
-
 export function CacaPalavrasScreen() {
-  const poco = usePocoDePalavras(12);
-  const [tam, setTam] = useState(() => {
-    const salvo = Number(ler(CHAVE_TAM, '10'));
-    return TAMANHOS.some((t) => t.tam === salvo) ? salvo : 10;
-  });
-  const [diagonais, setDiagonais] = useState(() => ler(CHAVE_DIAG, '0') === '1');
+  const poco = usePocoDePalavras(10);
+  const tam = 10;
+  const diagonais = false;
+  const alvo = Math.min(8, poco.length);
   const [rodada, setRodada] = useState(0);
 
-  function escolherTamanho(novo: number) {
-    setTam(novo);
-    gravar(CHAVE_TAM, String(novo));
-  }
-
-  function alternarDiagonais() {
-    setDiagonais((d) => {
-      gravar(CHAVE_DIAG, d ? '0' : '1');
-      return !d;
-    });
-  }
-
-  const alvo = TAMANHOS.find((t) => t.tam === tam)?.alvo ?? 8;
-
-  const opcoes = (
-    <div className="caca__opcoes">
-      {TAMANHOS.map((t) => (
-        <button
-          key={t.tam}
-          type="button"
-          className="caca__chip"
-          aria-pressed={t.tam === tam}
-          onClick={() => escolherTamanho(t.tam)}
-        >
-          {t.tam}×{t.tam}
-        </button>
-      ))}
-      <button
-        type="button"
-        className="caca__chip"
-        aria-pressed={diagonais}
-        aria-label="Palavras na diagonal"
-        onClick={alternarDiagonais}
-      >
-        ↘
-      </button>
-    </div>
-  );
-
-  if (poco.length < alvo) {
+  if (poco.length < 2) {
     return (
       <p className="aviso">
         O banco não tem palavras suficientes para montar a grade.
@@ -128,7 +66,6 @@ export function CacaPalavrasScreen() {
       alvo={alvo}
       diagonais={diagonais}
       poco={poco}
-      opcoes={opcoes}
       onNova={() => setRodada((r) => r + 1)}
     />
   );
@@ -139,11 +76,10 @@ interface PropsTabuleiro {
   alvo: number;
   diagonais: boolean;
   poco: PalavraDoBanco[];
-  opcoes: ReactNode;
   onNova: () => void;
 }
 
-function Tabuleiro({ tam, alvo, diagonais, poco, opcoes, onNova }: PropsTabuleiro) {
+function Tabuleiro({ tam, alvo, diagonais, poco, onNova }: PropsTabuleiro) {
   const sessao = useSessao();
   const [caca] = useState<Caca | null>(() =>
     gerarCaca({ tam, alvo, poco, diagonais }),
@@ -298,7 +234,6 @@ function Tabuleiro({ tam, alvo, diagonais, poco, opcoes, onNova }: PropsTabuleir
             ? '✓ Achou todas'
             : `${achadas.length} de ${grade.palavras.length}`}
         </span>
-        {opcoes}
       </div>
 
       <div

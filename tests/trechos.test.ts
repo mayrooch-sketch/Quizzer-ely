@@ -180,7 +180,7 @@ describe('Poço de palavras', () => {
     referencia: 'Teste 1:1',
   });
 
-  it('aceita expressões curtas ocultando somente os separadores', () => {
+  it('recusa expressões e nomes com separadores sem concatenar', () => {
     const palavras = extrairPalavras(
       [
         pergunta('1', 'Mar Vermelho'),
@@ -190,12 +190,7 @@ describe('Poço de palavras', () => {
       12,
     );
 
-    expect(palavras.map((item) => item.palavra)).toEqual([
-      'MARVERMELHO',
-      'BEMSUCEDIDO',
-      'DAVILA',
-    ]);
-    expect(palavras[0].original).toBe('Mar Vermelho');
+    expect(palavras).toEqual([]);
   });
 
   it('continua recusando números e pontuação não representada', () => {

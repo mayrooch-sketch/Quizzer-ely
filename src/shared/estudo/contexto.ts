@@ -1,7 +1,5 @@
 import { createContext, useContext, useEffect } from 'react';
-import type { Nivel } from './modelo';
 export interface Contexto {
-  nivel: Nivel;
   atual: (item: unknown) => void;
   registrar: (acertou: boolean, item?: unknown, ajuda?: boolean) => void;
   ajudar: () => void;

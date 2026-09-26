@@ -34,29 +34,6 @@
   color: var(--c-ok-text);
 }
 
-.caca__opcoes {
-  display: flex;
-  gap: var(--sp-4);
-  flex: none;
-}
-
-.caca__chip {
-  min-height: var(--tap-min);
-  padding: 0 var(--sp-12);
-  border: 1px solid var(--border-mid);
-  border-radius: var(--r-pill);
-  background: var(--surf-card);
-  color: var(--ink2);
-  font-size: var(--fs-xs);
-  font-weight: 600;
-}
-
-.caca__chip[aria-pressed='true'] {
-  border-color: var(--c-primary);
-  background: color-mix(in srgb, var(--c-primary) 14%, transparent);
-  color: var(--c-primary-dim);
-}
-
 /*
  * A grade é quadrada e ocupa a largura toda. `touch-action: none` é o que
  * permite arrastar o dedo pelas letras sem que o navegador entenda o gesto

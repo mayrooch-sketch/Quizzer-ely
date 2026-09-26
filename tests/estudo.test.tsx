@@ -11,7 +11,6 @@ import { BANCO_VAZIO, type KnowsItemOf } from '../src/shared/types/bank';
 import { VfScreen } from '../src/jogos/conhecimento/VfScreen';
 import { WhoAmIScreen } from '../src/jogos/conhecimento/WhoAmIScreen';
 import { AmigosScreen } from '../src/jogos/competitivo/AmigosScreen';
-import { reduzirOpcoes } from '../src/shared/estudo/dificuldade';
 
 const vf: KnowsItemOf<'vf'> = { id: 'vf1', type: 'vf', tags: ['História'], notes: 'Explicação de teste', reference: 'Referência de teste', payload: { statement: 'Afirmação de teste', correct: true } };
 const salvo: Salvo = { ...conteudoDe(vf)!, jogo: 'vf', sequencia: 0 };
@@ -48,7 +47,6 @@ it('avisa quando o armazenamento não funciona, sem impedir o jogo', () => {
 });
 it('finaliza imediatamente sem inventar erro para pergunta não respondida', () => {
   render(<MemoryRouter><Sessao jogo="vf"><VfScreen /></Sessao></MemoryRouter>);
-  fireEvent.click(screen.getByRole('button', { name: 'Começar partida' }));
   fireEvent.click(screen.getByRole('button', { name: 'Finalizar partida' }));
   expect(screen.getByText('Resumo da partida')).toBeTruthy();
   expect(screen.getByText(/0 acertos sem ajuda · 0 erros/)).toBeTruthy();
@@ -56,7 +54,6 @@ it('finaliza imediatamente sem inventar erro para pergunta não respondida', () 
 });
 it('registra erro, copia favorito sem sair, finaliza e revisa somente os erros', () => {
   render(<MemoryRouter><Sessao jogo="vf"><VfScreen /></Sessao></MemoryRouter>);
-  fireEvent.click(screen.getByRole('button', { name: 'Começar partida' }));
   fireEvent.click(screen.getByRole('button', { name: 'Favoritar conteúdo' }));
   fireEvent.click(screen.getByRole('button', { name: 'Copiar favoritos' }));
   expect((screen.getByRole('textbox') as HTMLTextAreaElement).value).toContain('Referência de teste');
@@ -83,17 +80,11 @@ it('botão copiar usa clipboard e falha oferece cópia manual', async () => {
   fireEvent.click(screen.getByRole('button', { name: 'Copiar texto' }));
   expect(await screen.findByText(/copie manualmente/)).toBeTruthy();
 });
-it('redução mantém a correta e a posição embaralhada', () => {
-  expect(reduzirOpcoes(['errada', 'certa', 'outra'], 'certa', 'facil')).toEqual(['errada', 'certa']);
-  expect(reduzirOpcoes(['errada', 'certa', 'outra'], 'certa', 'dificil')).toHaveLength(3);
-});
-it('Quem sou eu fácil começa com duas pistas e duas opções', () => {
+it('Quem sou eu começa direto com uma pista e todas as opções', () => {
   useAppStore.setState({ banco: { ...BANCO_VAZIO, knows: [{ ...vf, type: 'whoami', payload: { hints: ['Um', 'Dois', 'Três'], answer: 'Alvo', choices: ['Alvo', 'Outro', 'Terceiro', 'Quarto'] } }] } });
   render(<MemoryRouter><Sessao jogo="whoami"><WhoAmIScreen /></Sessao></MemoryRouter>);
-  fireEvent.change(screen.getByLabelText('Dificuldade'), { target: { value: 'facil' } });
-  fireEvent.click(screen.getByRole('button', { name: 'Começar partida' }));
-  expect(screen.getByText('Um')).toBeTruthy(); expect(screen.getByText('Dois')).toBeTruthy();
-  expect(document.querySelectorAll('.opcoes-grade button')).toHaveLength(2);
+  expect(screen.getByText('Um')).toBeTruthy(); expect(screen.queryByText('Dois')).toBeNull();
+  expect(document.querySelectorAll('.opcoes-grade button')).toHaveLength(4);
 });
 it('encontro permite selecionar modo, alterna times, desfaz e encerra cedo', () => {
   render(<AmigosScreen />);

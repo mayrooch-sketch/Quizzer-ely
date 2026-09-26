@@ -15,7 +15,7 @@
 import { useMemo } from 'react';
 import { usePerguntas } from '../../app/store';
 import type { Pergunta } from '../types/bank';
-import { chaveDeTexto } from '../validation/normalize';
+import { palavraJogavel } from '../validation/palavra';
 
 export interface PalavraDoBanco {
   /** Só A–Z maiúsculo, sem acento. É esta que o jogo compara. */
@@ -28,31 +28,10 @@ export interface PalavraDoBanco {
 }
 
 /**
- * Tira os acentos e sobe para maiúsculas.
- *
- * Sem isto, "ORAÇÃO" e "ORACAO" seriam palavras diferentes, e as letras Ç e Ã
- * apareceriam numa grade cujo teclado só tem A–Z. Reaproveita a mesma função
- * que o normalizador usa nas etiquetas: tirar acento é uma regra só, e ter
- * duas cópias dela é como as etiquetas do banco se partiram em duas.
- */
-function semAcento(texto: string): string {
-  return chaveDeTexto(texto).toUpperCase();
-}
-
-function letrasDaResposta(texto: string): string | null {
-  const limpa = texto.trim();
-  // Aceita expressões como "Mar Vermelho" e nomes hifenizados, mas continua
-  // recusando números e pontuação que os tabuleiros e teclados não representam.
-  if (!/^[\p{L}]+(?:[ '\u2019-][\p{L}]+)*$/u.test(limpa)) return null;
-  return semAcento(limpa).replace(/[ '\u2019-]/g, '');
-}
-
-/**
  * Extrai as palavras jogáveis de um banco de perguntas.
  *
  * Fica de fora o que não dá partida: resposta com número, pontuação não
- * linguística ou menos de três letras. Espaços, hífens e apóstrofos são
- * ocultados durante a mecânica; a grafia original reaparece no resultado.
+ * linguística, expressões compostas ou menos de três letras.
  * Duas respostas que viram a mesma sequência de letras contam como uma.
  */
 export function extrairPalavras(
@@ -64,9 +43,8 @@ export function extrairPalavras(
 
   for (const p of perguntas) {
     const original = p.alternativas[p.correta].trim();
-    const palavra = letrasDaResposta(original);
-    if (!palavra || palavra.length < 3) continue;
-    if (palavra.length > maxLetras) continue;
+    const palavra = palavraJogavel(original, maxLetras);
+    if (!palavra) continue;
     if (vistas.has(palavra)) continue;
     vistas.add(palavra);
     saida.push({ palavra, original, dica: p.pergunta, referencia: p.referencia });
